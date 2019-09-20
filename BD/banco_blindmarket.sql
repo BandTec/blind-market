@@ -1,5 +1,6 @@
-create database blind_market;
 use blind_market;
+
+/* criando tabelas */
 
 create table empresa (
 idempresa int primary key auto_increment,
@@ -34,5 +35,10 @@ porta varchar(50)
 create table produto (
 idprodutp int primary key auto_increment,
 nome varchar(50),
-preço varchar(50)
+preço decimal(5,2)
 );
+
+/* criando colunas fk*/
+
+alter table produto add fkCategoria int;
+alter table produto foreign key (fkCategoria) references categoria (idcategoria);
