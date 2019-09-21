@@ -2,6 +2,7 @@ const navSlide = () => {
   const burger = document.querySelector(".burger");
   const nav = document.querySelector(".nav-links");
   const navLinks = document.querySelectorAll(".nav-links li");
+  const navLinksA = document.querySelectorAll(".nav-links a[href^='#']");
 
   burger.addEventListener("click", () => {
     nav.classList.toggle("nav-active");
@@ -15,6 +16,30 @@ const navSlide = () => {
       }
     });
   });
+
+  navLinksA.forEach(item => {
+    item.addEventListener('click', scrollToIdOnClick);
+  });
+
+  function scrollToIdOnClick(event) {
+    event.preventDefault();
+    const to = getScrollTopByHref(event.target) - 30;
+
+    scrollToPosition(to)
+  }
+
+  function scrollToPosition(to) {
+    window.scroll({
+      top: to,
+      behavior: 'smooth'
+    })
+  }
+
+  function getScrollTopByHref(element) {
+    const id = element.getAttribute('href')
+    return document.querySelector(id).offsetTop;
+  }
+
 };
 
 navSlide();
