@@ -18,7 +18,7 @@ Colors:
 
 
 body {
-    height: 10000px;
+    height: 1000px;
 }
 
 /* Centralizando o conteudo e o maximo de expaço que ele ocupara*/
@@ -41,7 +41,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: 10%;
+    height: 100%;
     min-width: 100%;
 }
 
@@ -185,7 +185,7 @@ nav {
         right: 0px;
         height: 92vh;
         top: 8vh;
-        background-color: rgba(255, 91, 91, 0.8);
+        background-color: rgba(255, 91, 91, 0.95);
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -223,6 +223,10 @@ nav {
 
 .nav-active {
     transform: translateX(0%);
+}
+
+.nav-active li a{
+    color: white;
 }
 
 /* classe responsavél por mudar a cor da nav */
