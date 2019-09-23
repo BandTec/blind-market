@@ -57,7 +57,7 @@ alter table estabelecimento add foreign key (fkEmpresa) references Empresa (idem
 alter table registro add fkSensor int;
 alter table registro add fkRegistro int;
 alter table registro add foreign key (fkSensor) references Sensor (idsensor);
-alter table registro add foreign key (fkRegistro) references registro (idregistro);
+alter table registro add foreign key (fkProduto) references Produto (idproduto);
 
 alter table sensor add fkCategoria int;
 alter table sensor add foreign key (fkCategoria) references Categoria (idCategoria);
