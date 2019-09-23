@@ -1,9 +1,11 @@
+/* Dando um reset nos elementos iniciais da pagina*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
+/* Fim Reset*/
 
 /*
 Colors:
@@ -13,14 +15,18 @@ Colors:
     #515151
     #000000
 */
+
+
 body {
     height: 10000px;
 }
 
+/* Centralizando o conteudo e o maximo de expaço que ele ocupara*/
 .container {
-    max-width: 80%;
+    max-width: 1200px;
     margin: auto auto;
 }
+/* Fim Container */
 
 .wrapper {
     background-color: #ececec;
@@ -28,6 +34,7 @@ body {
     height: 100%;
 }
 
+/* Colocando a Imagem no her e seus devidos tamanhos */
 .img-hero {
     background-image: url(../img/market.jpg);
     background-position: center;
@@ -38,6 +45,7 @@ body {
     min-width: 100%;
 }
 
+/* Dando um tamanho e sua devida posição para classe inner-hero  */
 .inner-hero {
     text-align: center;
     position: absolute;
@@ -47,18 +55,21 @@ body {
     margin-top: 350px;
 }
 
+/* Editando o tamanho e a cor do h1 que está dentro do inner-hero*/
 .inner-hero h1 {
     color: #FF5B5B;
     font-size: 4em;
     font-weight: bold;
 }
 
+/* Editando o tamanho e a cor do h2 que está dentro do inner-hero*/
 .inner-hero h2 {
     margin-top: -15px;
     font-size: 1.7em;
     text-align: center;
 }
 
+/* Modificando atributos e cores do meu nav */
 nav {
     position: fixed;
     display: flex;
@@ -154,7 +165,7 @@ nav {
 }
 
 
-
+/* Modificando estilos para outros dispositivos */
 @media screen and (max-width:768px) {
     body {
         overflow-x: hidden;
@@ -214,12 +225,15 @@ nav {
     transform: translateX(0%);
 }
 
+/* classe responsavél por mudar a cor da nav */
+/* Somente quando ela é chamada no js(scroll.js) */
 .change {
     background: #FF5B5B;
     transition: all ease-in .5s;
 }
 
 
+/* Modificando o comportamento de um elemento */
 @keyframes navLinkFade {
     from {
         opacity: 0;
