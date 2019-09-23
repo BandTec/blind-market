@@ -42,6 +42,9 @@ preço decimal(5,2)
 select * from produto;
 select * from empresa;
 select * from estabelecimento;
+select * from registro;
+select * from categoria;
+select * from sensor;
 
 /* criando colunas fk*/
 
@@ -50,3 +53,11 @@ alter table produto add foreign key (fkCategoria) references categoria (idcatego
 
 alter table estabelecimento add fkEmpresa int;
 alter table estabelecimento add foreign key (fkEmpresa) references Empresa (idempresa);
+
+alter table registro add fkSensor int;
+alter table registro add fkRegistro int;
+alter table registro add foreign key (fkSensor) references Sensor (idsensor);
+alter table registro add foreign key (fkRegistro) references registro (idregistro);
+
+alter table sensor add fkCategoria int;
+alter table sensor add foreign key (fkCategoria) references Categoria (idCategoria);
