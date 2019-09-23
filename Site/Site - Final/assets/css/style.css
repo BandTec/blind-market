@@ -124,6 +124,7 @@ nav {
     border-radius: 5px;
     transition: all ease-in .8s;
     font-weight: bold;
+    min-width: 5vw;
 }
 
 .btnchange {
@@ -214,7 +215,7 @@ nav {
 
 
     .contex {
-        margin-left: -130px;
+        margin-left: -100px;
         margin-top: -70px;
         border-bottom: 1px solid #FF5B5B;
     }
