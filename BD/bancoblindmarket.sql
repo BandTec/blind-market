@@ -1,3 +1,4 @@
+create database blind_market;
 use blind_market;
 
 /* criando tabelas */
@@ -38,7 +39,14 @@ nome varchar(50),
 preço decimal(5,2)
 );
 
+select * from produto;
+select * from empresa;
+select * from estabelecimento;
+
 /* criando colunas fk*/
 
 alter table produto add fkCategoria int;
-alter table produto foreign key (fkCategoria) references categoria (idcategoria);
+alter table produto add foreign key (fkCategoria) references categoria (idcategoria);
+
+alter table estabelecimento add fkEmpresa int;
+alter table estabelecimento add foreign key (fkEmpresa) references Empresa (idempresa);
