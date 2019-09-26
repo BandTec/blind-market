@@ -34,9 +34,9 @@ porta varchar(50)
 );
 
 create table produto (
-idprodutp int primary key auto_increment,
+idproduto int primary key auto_increment,
 nome varchar(50),
-preço decimal(5,2)
+preco decimal(5,2)
 );
 
 select * from produto;
@@ -55,7 +55,7 @@ alter table estabelecimento add fkEmpresa int;
 alter table estabelecimento add foreign key (fkEmpresa) references Empresa (idempresa);
 
 alter table registro add fkSensor int;
-alter table registro add fkRegistro int;
+alter table registro add fkProduto int;
 alter table registro add foreign key (fkSensor) references Sensor (idsensor);
 alter table registro add foreign key (fkProduto) references Produto (idproduto);
 
