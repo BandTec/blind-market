@@ -61,17 +61,88 @@
         <div class="container">
             <div class="contex" id="Sobre">
                 <h2>Motivo</h2>
-                <p>O nosso motivo consiste na dificuldade nos quais os portadores de deficiência visual possuem ao
+                <p class="mt1">O nosso motivo consiste na dificuldade nos quais os portadores de deficiência visual possuem ao
                     realizar
                     compras nos mercados. Tendo em vista que os produtos não têm algo que auxilie o consumidor a saber
                     exatamente qual mercadoria ele está pegando, Nós da <strong>BlindMarket</strong> decidimos pela
                     elaboração de um sistema que ajude essas mesmas pessoas.</p>
                 <div class="quemSomos">
-                    <h2>Quem Somos</h2>
-                    <p>Somos uma empresa que visa mudar a maneira que o deficiente visual fazem suas compras, fazer com
+                    <h2 class="mt1">Quem Somos</h2>
+                    <p class="mt1">Somos uma empresa que visa mudar a maneira que o deficiente visual fazem suas compras, fazer com
                         que ele sejá autônomo, e não precise de ajuda para tal ação</p>
-                    <img src="assets/img/Logo-BlaindMarket.png" alt="BlindMarket logo">
+                    <div class="align-right">
+                        <img src="assets/img/Logo-BlaindMarket.png" alt="BlindMarket logo">
+                    </div>
                 </div>
+            </div>
+            <div class="contex">
+                <h2>Como funciona?</h2><br>
+                <div class="product-row-1">
+                    <img class="image mr5" src="assets/img/arduino_board.png" alt="Placa arduino">
+                    <div>
+                        <h3>Sensores</h3>
+                        <p class="mt1">Vários sensores serão instalados nas prateleiras do seu estabelecimento. Os
+                            sensores ficarão localizados de forma que somente os deficientes visuais tenham acesso.</p><br>
+                        <h3>Microcontrolador</h3>
+                        <p class="mt1">Um microcontrolador Arduino registra os eventos dos sensores e envia uma
+                            notificação ao
+                            sistema quando um usuário quiser verificar algum produto.</p><br>
+                        <h3>Auto-falante</h3>
+                        <p class="mt1">O sistema recupera as informações do produto no banco de dados e
+                            informa os dados
+                            do produto ao deficiente visual através de um auto-falante</p>
+                    </div>
+                </div>
+                <div class="product-row-2 mt5">
+                    <div>
+                        <h3>Servidor em nuvem</h3>
+                        <p class="mt1">Os dados coletados pelos sensores serão armazenados em um servidor em nuvem,
+                            garatindo a
+                            disponibilidade e segurança das informações obtidas.</p><br>
+                    </div>
+                    <img class="image ml5" src="assets/img/cloud.png" alt="Nuvem">
+                </div>
+                <div class="product-row-1 mt5">
+                    <img class="image mr5 mt-5" src="assets/img/chart-graph.png" alt="Gráfico estatístico">
+                    <div>
+                        <h3>Acesse onde e quando quiser</h3>
+                        <p class="mt1">Os dados de consulta de produtos dos clientes da sua empresa estarão disponíveis
+                            a qualquer momento no seu computador, tablet ou smartphone. Basta apenas fazer login no site
+                            e conferir o desempenho do seu estabelecimento.</p><br>
+                        <h3>Atualizações em tempo real!</h3>
+                        <p class="mt1">Os gráficos gerados são atualizados em tempo real para que você obtenha as
+                            informações mais valiosas assim que elas são extraidas.</p><br>
+                        <button class="button mt2">Fazer login</button>
+                        <button class="button outline">Cadastre-se</button>
+                    </div>
+                </div>
+            </div>
+            <div class="contex">
+                <br>
+                <h2>Contato</h2><br>
+                <p>Nossa equipe gostaria de tirar qualquer dúvida que você tenha.</p>
+                <form class="contact" action="">
+                    <div class="row">
+                        <label class="label" for="nome">Nome</label>
+                        <input class="input" type="text" id="nome">
+                    </div>
+                    <div class="row">
+                        <label class="label" for="">Email</label>
+                        <input class="input" type="email">
+                    </div>
+                    <div class="row">
+                        <label class="label" for="">Empresa</label>
+                        <input class="input" type="text"><br>
+                    </div>
+                    <div class="row">
+                        <label class="label" for="">Mensagem</label>
+                        <textarea class="input message" cols="70" rows="10"></textarea>
+                    </div>
+                    <div class="row">
+                        <label class="label"></label>
+                        <button class="button">Enviar mensagem</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

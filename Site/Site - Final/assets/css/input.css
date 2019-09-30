@@ -1,0 +1,34 @@
+.input {
+    padding: 10px;
+    border: 1px #D0D0D0 solid;
+    border-radius: 20px;
+    outline: none;
+}
+
+.button {
+    background-color: #FF5B5B;
+    color: #FFFFFF;
+    font-weight: bold;
+    border: 0px;
+    border-radius: 100px;
+    padding: 12px 20px;
+    outline: none;
+    cursor: pointer;
+    transition-duration: 150ms;
+}
+
+.button:hover {
+    background-color: #BF4545;
+    transition-duration: 150ms;
+}
+
+.button.outline {
+    background-color: transparent;
+    color: #999999;
+    border: 2px solid #999999;
+}
+
+.button.outline:hover {
+    background-color: #999999;
+    color: white;
+}

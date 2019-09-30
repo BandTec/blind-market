@@ -1,3 +1,8 @@
+@import "input.css";
+@import "margin.css";
+@import "contact.css";
+@import "product.css";
+
 /* Dando um reset nos elementos iniciais da pagina*/
 * {
     margin: 0;
@@ -16,22 +21,23 @@ Colors:
     #000000
 */
 
-
+/*
 body {
     height: 1000px;
 }
+*/
 
 /* Centralizando o conteudo e o maximo de expaço que ele ocupara*/
 .container {
-    max-width: 1200px;
-    margin: auto auto;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 /* Fim Container */
 
 .wrapper {
     background-color: #ececec;
-    width: 100%;
-    height: 100%;
+    padding: 20px 0;
 }
 
 /* Colocando a Imagem no her e seus devidos tamanhos */
@@ -41,7 +47,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    height: 100%;
+    height: 600px;
     min-width: 100%;
 }
 
@@ -52,7 +58,7 @@ body {
     width: 100%;
     height: auto;
     color: white;
-    margin-top: 350px;
+    margin-top: 250px;
 }
 
 /* Editando o tamanho e a cor do h1 que está dentro do inner-hero*/
@@ -140,15 +146,11 @@ nav {
 }
 
 .contex {
-    padding: 10px;
-    float: left;
-    padding: 100px;
+    padding-bottom: 20px;
     border-bottom: 1px solid #FF5B5B;
 }
 
 .contex p {
-    padding: 10px;
-    margin-bottom: 50px;
     text-align: justify;
 }
 
@@ -162,12 +164,14 @@ nav {
 
 .quemSomos img {
     max-width: 25rem;
-    float: right;
 }
 
+.align-right {
+    text-align: right;
+}
 
 /* Modificando estilos para outros dispositivos */
-@media screen and (max-width:768px) {
+@media screen and (max-width:860px) {
     body {
         overflow-x: hidden;
     }
@@ -215,12 +219,15 @@ nav {
 
 
     .contex {
-        margin-left: -100px;
-        margin-top: -70px;
         border-bottom: 1px solid #FF5B5B;
     }
 }
 
+@media (max-width: 500px) {
+    .quemSomos img {
+        width: 100%;
+    }
+}
 
 .nav-active {
     transform: translateX(0%);

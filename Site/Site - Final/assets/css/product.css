@@ -1,0 +1,28 @@
+.product-row-1, .product-row-2 {
+    display: flex;
+    align-items: center;
+}
+
+.product-row-1 .image, .product-row-2 .image {
+    max-width: 400px;
+}
+
+@media(max-width: 800px) {
+    .product-row-1 {
+        flex-direction: column-reverse;
+    }
+
+    .product-row-2 {
+        flex-direction: column;
+    }
+
+    .product-row-1 .image, .product-row-2 .image {
+        margin: 40px 20px 10px 20px;
+    }
+}
+
+@media(max-width: 500px) {
+    .product-row-1 .image, .product-row-2 .image {
+        width: 100%;
+    }
+}

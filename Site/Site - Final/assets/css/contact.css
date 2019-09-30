@@ -1,0 +1,40 @@
+.contact {
+    margin-top: 20px;
+}
+
+.contact .row {
+    display: flex;
+    align-items: flex-start;
+}
+
+.contact .label {
+    display: inline-block;
+    width: 150px;
+    margin-top: 10px;
+}
+
+.contact [type='text'], .contact [type='email'] {
+    width: 400px;
+    margin-bottom: 12px;
+}
+
+.contact .message {
+    width: 400px;
+    resize: unset;
+    margin-bottom: 12px;
+}
+
+.contact .button {
+    padding: 10px;
+    width: 400px;
+}
+
+@media (max-width: 500px) {
+    .contact .row {
+        flex-direction: column;
+    }
+
+    .contact [type='text'], .contact [type='email'], .contact .message, .contact .button {
+        width: 100%;
+    }
+}
