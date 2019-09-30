@@ -33,11 +33,11 @@ void loop() {
   for(int i = 0; i < 2; i++) {
 
     // Lendo a porta do sensor. 
-    int resultado = digitalRead(sensores[i].porta); 
-    int tempoMillis = millis() - sensores[i].tempo;
+    int resultado = digitalRead(sensores[i].porta);
+    int tempoMillis = millis() - sensores[i].tempo; 
     
     // Se o sensor detectou alguma coisa...
-    if(resultado == 0 && tempoMillis <= 3000) {
+    if(resultado == 0 && tempoMillis >= 3000) {
       
        // Imprime id do sensor e data/hora.
        Serial.println("Sensor: " + String(sensores[i].id) + " DataHora: 01/01/2001 00:00:00");
