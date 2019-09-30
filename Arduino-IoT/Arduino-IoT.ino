@@ -8,31 +8,43 @@ struct tcrt {
   
   int id; // Id do sensor no banco de dados.
   int porta; // Porta que recebe os dados do sensor.
+  int tempo;
 };
 
-// Criando um novo sensor usando a estrutura trct.
-struct tcrt sensor = { 1, 7 };
+// Criando um vetor de sensores usando a estrutura trct.
+struct tcrt sensores[2] = {{ 1, 7, 0 }, { 2, 8, 0 }};
+
+int tamanho = sizeof(sensores) / sizeof(sensores[0]);
 
 void setup() {   
 
-  // Configura o pino 7 digital como entrada.
-  pinMode(sensor.porta, INPUT); 
+  // para cada sensor
+  for(int i = 0; i < 2; i++) {
+    
+    // Configura o pino da porta digital como entrada.
+    pinMode(sensores[i].porta, INPUT); 
+  }
   // Inicia a comunicação serial em uma taxa de dados de 9600bps.
   Serial.begin(9600); 
 }
 
 void loop() {
 
-  // Lendo a porta do sensor. 
-  int resultado = digitalRead(sensor.porta); 
+  for(int i = 0; i < 2; i++) {
 
-  // Se o sensor detectou alguma coisa...
-  if(resultado == 0) {
+    // Lendo a porta do sensor. 
+    int resultado = digitalRead(sensores[i].porta); 
+    int tempoMillis = millis() - sensores[i].tempo;
     
-     // Imprime id do sensor e data/hora.
-     Serial.println("Sensor: " + String(sensor.id) + " DataHora: 01/01/2001 00:00:00");
-     delay(2000); // Pausa de 2 segundos.
+    // Se o sensor detectou alguma coisa...
+    if(resultado == 0 && tempoMillis <= 3000) {
+      
+       // Imprime id do sensor e data/hora.
+       Serial.println("Sensor: " + String(sensores[i].id) + " DataHora: 01/01/2001 00:00:00");
+       sensores[i].tempo = millis();
+    }
   }
 
-  delay(1000); // Aguarda 1 segundo para fazer a próxima leitura.
+  delay(100); // Aguarda 100 milissegundos para fazer a próxima leitura.
 }
+
