@@ -2,7 +2,7 @@
 @import "margin.css";
 @import "contact.css";
 @import "product.css";
-
+@import "simulador.css";
 /* Dando um reset nos elementos iniciais da pagina*/
 * {
     margin: 0;
@@ -143,6 +143,17 @@ nav {
     margin: 5px;
     display: none;
     cursor: pointer;
+}
+
+.simulador h2 {
+    font-weight: bold;
+    color: #FF5B5B;
+    font-size: 2.5em;
+    text-transform: uppercase; 
+}
+
+.simulador p {
+    text-align: justify;
 }
 
 .contex {
