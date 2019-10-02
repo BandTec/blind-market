@@ -37,7 +37,7 @@ const navSlide = () => {
   function scrollToIdOnClick(event) {
     event.preventDefault();
     // passando e pegando o conteudo de uma function para uma variavél
-    const to = getScrollTopByHref(event.target) - 30;
+    const to = getScrollTopByHref(event.target) - 50;
 
     // Chamando uma function dentro de uma function
     scrollToPosition(to)
@@ -64,9 +64,10 @@ const navSlide = () => {
 // Chamando a arrow function
 navSlide();
 
-function calcular_lucro(){
-  // calcula o aumento de clientes mensais a mais (5% dos numeros)
-  var clientes_mensais_mais = (clientes_mensais.value + 29100).toFixed(0);
+function calcular_lucro()
+{
+  // calcula o aumento de clientes mensais a mais (3.5% da população)
+  var clientes_mensais_mais = Number(clientes_mensais.value) + Number(clientes_mensais.value * 0.035).toFixed(0);
             
   // calcula o número de clientes anuais a mais multiplicando o número de cliente por 12 
   var clientes_anuais_mais = clientes_mensais_mais * 12;
@@ -74,17 +75,6 @@ function calcular_lucro(){
   // calcula o lucro mensal que é o lucro anterior mais o gasto dos clientes mensais a mais
   var lucro_mensal_total = parseFloat(Number(lucro_mensal.value) + Number(clientes_mensais_mais * 100 * 2));
 
-  // Mostra as frases
-  var frase = `Seu número atual de clientes é de ${clientes_mensais.value} clientes mensais e você teria em torno de ${clientes_mensais_mais} clientes mensais a mais.`;
-  mensagem1.innerHTML = frase; // colocando a frase dentro do div
-  mensagem1.style.display = 'block'; // deixando a div visível
-
-  var frase2 = `Além disso, teria um total de ${clientes_anuais_mais} clientes anuais, caso estivesse utilizando nosso sistema`;
-  mensagem2.innerHTML = frase2;
-  mensagem2.style.display = 'block';
-
-  var frase3 = `Supondo que cada cliente gaste R$100,00 em uma compra e vá 2 vezes no mês ao mercado, teria o lucro de R$${lucro_mensal_total.toFixed(2)} mensal`;
-  mensagem3.innerHTML = frase3;
-  mensagem3.style.display = 'block';
-
+  mensagem1.innerHTML = clientes_anuais_mais;
+  mensagem2.innerHTML = lucro_mensal_total.toFixed(2);
 }

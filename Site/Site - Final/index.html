@@ -45,7 +45,7 @@
         <!-- Fim Nav Links -->
         
         <!-- Criando o botão que direciona o usuario para a pagina de login e cadastro -->
-        <button class="btn" id="button">Login / Singup</button>
+        <button class="btn" id="button">Login / Signup</button>
         <!-- Fim button -->
         
         <!-- Criando o burger(as três barrinhas que aparece no mobile)-->
@@ -75,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            <div class="contex">
+            <div class="contex" id="Produto">
                 <h2>Como funciona?</h2><br>
                 <div class="product-row-1">
                     <img class="image mr5" src="assets/img/arduino_board.png" alt="Placa arduino">
@@ -90,7 +90,7 @@
                         <h3>Auto-falante</h3>
                         <p class="mt1">O sistema recupera as informações do produto no banco de dados e
                             informa os dados
-                            do produto ao deficiente visual através de um auto-falante</p>
+                            do produto ao deficiente visual através de um auto-falante.</p>
                     </div>
                 </div>
                 <div class="product-row-2 mt5">
@@ -118,7 +118,7 @@
                 </div>
             </div>
             
-            <div class="simulador">
+            <div class="simulador" id="Simulador">
                 <br>
                 <h2>Simulador</h2>
                 <p>Aqui é possível fazer uma simulação de forma que fique claro
@@ -129,24 +129,23 @@
                     mais precisamente 5% destas pessoas. <br> <br>Abaixo, complete com algumas
                     informações de sua empresa </p> <br>
 
-                    <form class="simulacao" action="">
-                            <div class="row">
-                                <label class="label" for="nome">Lucro mensal</label>
-                                <input class="input" type="text" id="lucro_mensal">
+                <div class="simulador">
+                    <label class="label" for="nome">Lucro mensal</label>
+                    <input class="input" type="text" id="lucro_mensal">
 
-                                <label class="label" for="">Clientes mensais</label>
-                                <input class="input" type="text" id="clientes_mensais">
+                    <label class="label" for="">Clientes mensais</label>
+                    <input class="input" type="text" id="clientes_mensais">
 
-                                <button class="button" onclick="calcular_lucro()">Calcular</button>
-                            </div> <br> <br>
-                            <div style="display: none" id="mensagem1"></div>
-                            <div style="display: none" id="mensagem2"></div>
-                            <div style="display: none" id="mensagem3"></div>
-                    </form>
-
+                    <button class="button" onclick="calcular_lucro()">Calcular</button> <br><br>
+                    
+                    Seu número de clientes anuais utilizando nosso software seria de <b id="mensagem1">0</b>. <br> <br>
+                    Supondo que cada cliente gaste R$100,00 em uma compra e vá 2 vezes no mês ao mercado, teria o lucro 
+                    mensal de R$ <b id="mensagem2">0.00</b>.
+                
+                </div> <br><br>
             </div>
-            <br> <br><br> <br>
-            <div class="contex">
+ 
+            <div class="contex" id="Contato">
                 <br>
                 <h2>Contato</h2><br>
                 <p>Nossa equipe gostaria de tirar qualquer dúvida que você tenha.</p>
@@ -178,7 +177,7 @@
 </body>
 
 </html>
-<script src="assets/js/blind_market.js"></script>
 <script src="assets/js/jquery.js"></script>
+<script src="assets/js/blind_market.js"></script>
 <script src="assets/js/scroll.js"></script>
 <script src="assets/js/all.js"></script>

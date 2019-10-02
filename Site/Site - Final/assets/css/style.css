@@ -131,6 +131,7 @@ nav {
     transition: all ease-in .8s;
     font-weight: bold;
     min-width: 5vw;
+    cursor:pointer;
 }
 
 .btnchange {
