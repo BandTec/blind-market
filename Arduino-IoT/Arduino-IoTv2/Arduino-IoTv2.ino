@@ -36,27 +36,21 @@ void loop(){
   int resultado = digitalRead(porta_sensor);
   int resultado2 = digitalRead(porta_sensor2);
 
+  int soma = 0;
+
   // Verifica se o sensor detectou algo.
   if (resultado == 0) {
   
-    // Serial print mostra na tela o que está dentro do parenteses. 
-    Serial.print("[1,");
-  }
-  else {
-
-    Serial.print("[0,");
+    soma++;
   }
 
   // Verifica se o sensor 2 detectou algo.
   if (resultado2 == 0) {
 
-    // Serial print mostra na tela o que está dentro do parenteses. 
-    Serial.println("1]");
+    soma++;
   }
-  else {
 
-    Serial.println("0]");
-  }
+  Serial.println(soma);
   
   // Aguarda um segundo para fazer a próxima leitura.
   delay(1000);
