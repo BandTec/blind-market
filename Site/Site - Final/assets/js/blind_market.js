@@ -1,6 +1,5 @@
-// Criando uma Arrow Function 
 // Colocando a função dentro de uma variavel
-const navSlide = () => {
+const navSlide = function () {
   // Criando variaveis que irão receber uma classe do html da pagina
   // querySelector irá selecionar o que foi pedido no caso a seguir a classe burger
   const burger = document.querySelector(".burger");
@@ -26,10 +25,12 @@ const navSlide = () => {
 
   // Suavizando o scroll da pagina
   // Selecionando todos os links(todos os li>a)
-  navLinksA.forEach(item => {
-    // Criando um evento ao ser clicado e chamando uma function
-    item.addEventListener('click', scrollToIdOnClick);
-  });
+  navLinksA.forEach(
+    function (item) {
+      // Criando um evento ao ser clicado e chamando uma function
+      item.addEventListener('click', scrollToIdOnClick);
+    }
+  );
 
   // Function para dar um certo espaço nos elementos alvo
   // Uma vez que, o nosso nav é fixo, então os elementos podem se sobrepor caso eu não
@@ -37,7 +38,7 @@ const navSlide = () => {
   function scrollToIdOnClick(event) {
     event.preventDefault();
     // passando e pegando o conteudo de uma function para uma variavél
-    const to = getScrollTopByHref(event.target) - 50;
+    const to = getScrollTopByHref(event.target) - 80;
 
     // Chamando uma function dentro de uma function
     scrollToPosition(to)
@@ -61,14 +62,11 @@ const navSlide = () => {
 
 };
 
-// Chamando a arrow function
-navSlide();
 
-function calcular_lucro()
-{
+function calcular_lucro() {
   // calcula o aumento de clientes mensais a mais (3.5% da população)
   var clientes_mensais_mais = Number(clientes_mensais.value) + Number(clientes_mensais.value * 0.035).toFixed(0);
-            
+
   // calcula o número de clientes anuais a mais multiplicando o número de cliente por 12 
   var clientes_anuais_mais = clientes_mensais_mais * 12;
 
@@ -78,3 +76,6 @@ function calcular_lucro()
   mensagem1.innerHTML = clientes_anuais_mais;
   mensagem2.innerHTML = lucro_mensal_total.toFixed(2);
 }
+
+// Chamando function
+navSlide();

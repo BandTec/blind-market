@@ -1,5 +1,6 @@
 //criando uma function para alterar a cor da nav 
-$(document).ready(function () {
+//Aqui usamos o jquery para encurtar o codigo para que não tenha que criar diversas funções
+$(document).ready(function () { //Quando o arquivo for carregado ele começa a fazer essa verificação
     //Detectando o scroll da pagina
     $(window).scroll(function () {
         //Verificando se o scroll da pagina é maior que 10px
