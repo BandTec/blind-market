@@ -1,12 +1,10 @@
 @import "input.css";
 
-.login {
+.login  {
     margin-left: auto;
     margin-right: auto;
     max-width: 300px;
-    margin-top: 25vh;
-    
-    
+    margin-top: 20vh;
 }
 * {
     margin: 0;
@@ -19,6 +17,15 @@
  
     display: inline-block;
     width: 75px;
+}
+button
+{
+    margin-left: 120px;
+}
 
-
+.cadastro  {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px;
+    margin-top: 10vh;
 }
