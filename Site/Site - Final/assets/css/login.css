@@ -1,10 +1,14 @@
 @import "input.css";
+@import "margin.css";
 
 .login  {
     margin-left: auto;
     margin-right: auto;
-    max-width: 300px;
-    margin-top: 20vh;
+    max-width: 400px;
+    margin-top: 15vh;
+    background-color:white;
+    padding:44px;
+    box-shadow:0 5px 8px 0 rgba(0,0,0,0.8),0 2px 10px 0 rgba(0,0,0,0.12);
 }
 * {
     margin: 0;
@@ -18,9 +22,11 @@
     display: inline-block;
     width: 75px;
 }
-button
-{
-    margin-left: 120px;
+
+.pudim {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .cadastro  {
@@ -28,4 +34,26 @@ button
     margin-right: auto;
     max-width: 300px;
     margin-top: 10vh;
+}
+
+.invisivel
+{
+    display:none;
+}
+
+.input 
+{
+    width: 100%;
+    
+}
+
+.login img{
+    height: 50px;
+    margin-left: 25%;
+}
+
+body {
+background-image: url("../img/fundo_login.jpg");
+background-size: cover;
+background-repeat: no-repeat;
 }

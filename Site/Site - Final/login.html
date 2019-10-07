@@ -6,39 +6,27 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="assets/css/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    
 </head>
 <body>
-<div class = "login">
-     <label class = "label">Email</label> <input class = "input" type="text" id = "cadastro" > <br><br>
-     <label class = "label">Senha</label> <input class = "input" type="text" id = "senha" > <br> <br>
-
-    <button class = "button" onclick="">Login</button> 
+<div id="tela_login" class = "login">
+    <img src="assets/img/logo.png" alt="logo"> <br><br>
+    <h2>Login</h2>
+     <label class = "label mt2">Email</label> <input class = "input mt1" type="text" id = "cadastro" > <br><br>
+     <label class = "label">Senha</label> <input class = "input mt1" type="text" id = "senha" > <br> <br>
+         <div class="pudim">
+         <a id="criar_conta" onclick="mostrar()" href="">Criar conta</a> <br>
+         <button class = "button" onclick="">Login</button> 
+     </div>  
 </div>
-<div class = "cadastro">
+
+<div id="mostrar_cadastro" class = "cadastro invisivel">
     <label class = "label">Nome</label> <input class = "input" type="text" id = "nome" > <br> <br>
     <label class = "label">Email</label> <input class = "input" type="text" id = "cadastro" > <br><br>
     <label class = "label">Senha</label> <input class = "input" type="text" id = "senha" > <br> <br>
-
    <button class = "button" onclick="">Cadastro</button> 
 </div>
-
-<footer>
-        <span>
-            <p>BlindMarket </p>
-        </span>
-        <span>
-<a href="#">          
-    <i class="fab fa-instagram"></i>
-</a>
-        </span>
-        <span> 
-<a href="#"> <i class="fab fa-facebook"></i>                   
-</a>
-        </span>
-    <div>
-        Todos os direitos reservados &copy;
-    </div>
-</footer>
-
+<script src="assets/js/js_login.js"></script>
 </body>
 </html>
