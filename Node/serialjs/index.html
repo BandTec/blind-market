@@ -18,7 +18,7 @@
 
 <body>
 	<section>
-		<h2>Média: <label id='average'>0.00</label></h2>
+		<h2>Soma: <label id='soma'>0.00</label></h2>
 	</section>
 	<section style="width:100%">
 		<canvas id="chart"></canvas>
@@ -100,7 +100,7 @@
                 chart.update();
 			});
 			
-			document.getElementById('average').textContent = obj.average
+			document.getElementById('soma').textContent = obj.sum;
 		} 
 		
 		get_data();

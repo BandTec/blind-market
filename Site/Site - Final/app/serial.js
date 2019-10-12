@@ -20,10 +20,10 @@ class ArduinoDataRead {
             });
             
             if (listArduinoSerial.length != 1){
-                throw new Error("The Arduino was not connected or has many boards connceted");
+                throw new Error("O arduino não foi conectado, verifique se as portas estão livre");
             }
 
-            console.log("Arduino found in the com %s", listArduinoSerial[0].comName);
+            console.log("Arduino iniciado na com %s", listArduinoSerial[0].comName);
              
             return  listArduinoSerial[0].comName;
             

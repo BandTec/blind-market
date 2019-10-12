@@ -1,57 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="assets/css/all.css">
-    <link rel="stylesheet" href="assets/css/dashboard.css">
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="assets/css/all.css" />
+    <link rel="stylesheet" href="assets/css/dashboard.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="menu-top">
-        <input type="checkbox" id="check">
-        <label for="check" id="icone"><i class="fas fa-bars"></i></label>
+      <input type="checkbox" id="check" />
+      <label for="check" id="icone"><i class="fas fa-bars"></i></label>
 
-        <span><i class="iconeMenu exit fas fa-sign-out-alt"></i></span>
+      <span
+        ><a href="./index.html"
+          ><i class="iconeMenu exit mr1 fas fa-sign-out-alt"></i
+        ></a>
+        <a href="./index.html"
+          ><img class="img-menu" src="assets/img/logo.png" alt=""
+        /></a>
+      </span>
 
-        <div class="menu-lateral">
-            <nav>
-                <ul>
-                    <a href="#">
-                        <li>Principal<i class="iconeMenu fas fa-home"></i></li>
-                    </a>
-                    <a href="#">
-                        <li>Estabelecimentos<i class="iconeMenu fas fa-cash-register"></i></li>
-                    </a>
-                    <a href="#">
-                        <li>Produtos<i class="iconeMenu fas fa-carrot"></i></li>
-                    </a>
-                    <a href="#">
-                        <li>Categorias<i class="iconeMenu fas fa-tags"></i></li>
-                    </a>
-                </ul>
-            </nav>
-        </div>
+      <div class="menu-lateral">
+        <nav>
+          <ul>
+            <a href="#">
+              <li>Principal<i class="iconeMenu fas fa-home"></i></li>
+            </a>
+            <a href="#">
+              <li>
+                Estabelecimentos<i class="iconeMenu fas fa-cash-register"></i>
+              </li>
+            </a>
+            <a href="#">
+              <li>Produtos<i class="iconeMenu fas fa-carrot"></i></li>
+            </a>
+            <a href="#">
+              <li>Categorias<i class="iconeMenu fas fa-tags"></i></li>
+            </a>
+          </ul>
+        </nav>
+      </div>
     </div>
 
     <div class="chartArea">
-        <div class="chart">
-            <div class="chart01">
-                <canvas id="chart"></canvas>
-            </div>
-
-            <div class="chart01">
-                <canvas id="chart2"></canvas>
-            </div>
+      <div class="chart">
+        <div class="chart01">
+          <canvas id="chart"></canvas>
         </div>
+
+        <div class="chart01">
+          <canvas id="chart2"></canvas>
+        </div>
+      </div>
     </div>
-
-</body>
-<script src="assets/js/all.js"></script>
-<script src="assets/js/chart.js"></script>
-<script src="assets/js/dashboardChart.js"></script>
-
+  </body>
+  <script src="assets/js/all.js"></script>
+  <script src="assets/js/chart.js"></script>
+  <script src="assets/js/dashboardChart.js"></script>
 </html>
