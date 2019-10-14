@@ -8,12 +8,12 @@ const navSlide = function () {
   const navLinksA = document.querySelectorAll(".nav-links a[href^='#']");
 
   // Adicionando um evento ao botão burger
-  burger.addEventListener("click", () => {
+  burger.addEventListener("click", function() {
     //Colocando a classe como invisivél
     nav.classList.toggle("nav-active");
 
     // Selecionando todos os li que estão dentro de navLinks
-    navLinks.forEach((link, index) => {
+    navLinks.forEach(function(link, index) {
       if (link.style.animation) {
         link.style.animation = "";
       } else {

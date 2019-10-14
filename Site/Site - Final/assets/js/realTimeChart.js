@@ -82,6 +82,6 @@ function get_data() {
 
 get_data();
 
-setInterval(() => {
+setInterval(function() {
     get_data();
 }, 1000);
