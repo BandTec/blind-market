@@ -15,11 +15,11 @@
     <div id="tela_login" class="login">
         <img src="assets/img/logo.png" alt="logo"> <br><br>
         <h2>Login</h2>
-        <label class="label mt2">Email</label> <input class="input mt1" type="text" id="cadastro"> <br><br>
-        <label class="label">Senha</label> <input class="input mt1" type="text" id="senha"> <br> <br>
+        <label class="label mt2">Email</label> <input class="input mt1" type="text" id="login_email"> <br><br>
+        <label class="label">Senha</label> <input class="input mt1" type="text" id="login_senha"> <br> <br>
         <div class="pudim">
             <a id="criar_conta" href="#">Criar conta</a> <br>
-           <a href="dashboard.html"><button class="button" onclick="">Login</button></a> 
+           <button class="button" onclick="fazerLogin()">Login</button>
         </div>
     </div>
 
@@ -31,7 +31,7 @@
         <label class="label">Senha</label> <input class="input" type="text" id="senha"> <br> <br>
         <div class="pudim">
             <a id="fazer_login" href="#">Fazer Login</a> <br>
-            <button class="button" onclick="">Cadastro</button>
+            <button class="button" onclick="singup()">Cadastro</button>
         </div>
     </div>
     <script src="assets/js/js_login.js"></script>

@@ -65,7 +65,7 @@ const navSlide = function () {
 
 function calcular_lucro() {
   // calcula o aumento de clientes mensais a mais (3.5% da população)
-  var clientes_mensais_mais = Number(clientes_mensais.value) + Number(clientes_mensais.value * 0.035).toFixed(0);
+  var clientes_mensais_mais = Number(clientes_mensais.value * 0.035).toFixed(0);
 
   // calcula o número de clientes anuais a mais multiplicando o número de cliente por 12 
   var clientes_anuais_mais = clientes_mensais_mais * 12;
