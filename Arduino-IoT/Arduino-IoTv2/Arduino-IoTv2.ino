@@ -36,21 +36,21 @@ void loop(){
   int resultado = digitalRead(porta_sensor);
   int resultado2 = digitalRead(porta_sensor2);
 
-  int soma = 0;
+  int soma = 0; // Soma é zerada a cada loop
 
   // Verifica se o sensor detectou algo.
   if (resultado == 0) {
   
-    soma++;
+    soma++; // soma + 1
   }
 
   // Verifica se o sensor 2 detectou algo.
   if (resultado2 == 0) {
 
-    soma++;
+    soma++; // soma + 1
   }
 
-  Serial.println(soma);
+  Serial.println(soma); // Escreve a soma na comunicação Serial
   
   // Aguarda um segundo para fazer a próxima leitura.
   delay(1000);

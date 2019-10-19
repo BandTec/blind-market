@@ -1,39 +1,40 @@
-var ctx = document.getElementById('chart').getContext('2d');
-var chart = new Chart(ctx, {
-    // The type of chart we want to create
-    type: 'line',
+/**
+ * Este arquivo contém o código dos gráficos estáticos na dashboard do site.
+ * São dois gráficos no total, um de linha e outro e barra.
+ */
 
-    // The data for our dataset
+/* Primeiro gráfico */
+var ctx = document.getElementById('chart').getContext('2d'); // recuperando o contexto de desenho do elemento canvas com id 'chart'
+var chart = new Chart(ctx, { // criando um novo gráfico
+    // O tipo do gráfico que queremos criar
+    type: 'line', // tipo = linha
+
+    // Os dados do gráfico
     data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'], // as etiquetas que aparecem na parte debaixo do gráfico
         datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45]
+            label: 'Quantidade de consultas (total)', // a legenda do gráfico
+            backgroundColor: 'rgb(255, 99, 132)', // cor de fundo do gráfico
+            borderColor: 'rgb(255, 99, 132)', // cor da borda do gráfico
+            data: [0, 10, 5, 2, 20, 30, 45] // os dados do gráfico
         }]
     },
-
-    // Configuration options go here
-    options: {}
 });
 
-var ctx2 = document.getElementById('chart2').getContext('2d');
-var chart = new Chart(ctx2, {
-    // The type of chart we want to create
+/* Segundo gráfico */
+var ctx2 = document.getElementById('chart2').getContext('2d'); // recuperando o contexto de desenho do elemento canvas com id 'chart2'
+var chart = new Chart(ctx2, { // criando um novo gráfico
+    // O tipo do gráfico que queremos criar
     type: 'bar',
 
-    // The data for our dataset
+    // Os dados do gráfico
     data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'], // as etiquetas que aparecem na parte debaixo do gráfico
         datasets: [{
-            label: 'My First dataset',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [0, 10, 5, 2, 20, 30, 45]
+            label: 'Quantidade de consultas (Maçã)', // a legenda do gráfico
+            backgroundColor: 'rgb(255, 99, 132)', // cor de fundo do gráfico
+            borderColor: 'rgb(255, 99, 132)', // cor da borda do gráfico
+            data: [0, 30, 15, 10, 20, 30, 25] // os dados do gráfico
         }]
     },
-
-    // Configuration options go here
-    options: {}
 });
