@@ -116,8 +116,6 @@
                         <h3>Atualizações em tempo real!</h3>
                         <p class="mt1">Os gráficos gerados são atualizados em tempo real para que você obtenha as
                             informações mais valiosas assim que elas são extraidas.</p><br>
-                        <button class="button mt2">Fazer login</button>
-                        <button class="button outline">Cadastre-se</button>
                     </div>
                 </div>
             </div>
@@ -142,7 +140,7 @@
 
                     <button class="button" onclick="calcular_lucro()">Calcular</button> <br><br>
 
-                    Seu número de clientes anuais utilizando nosso software seria de <b id="mensagem1">0</b>. <br> <br>
+                    Seu número de clientes a mais em seu estabelecimento será de <b id="mensagem1">0</b>. <br> <br>
                     Supondo que cada cliente gaste R$100,00 em uma compra e vá 2 vezes no mês ao mercado, teria o lucro
                     mensal de R$ <b id="mensagem2">0.00</b>.
 
@@ -153,26 +151,26 @@
                 <br>
                 <h2>Contato</h2><br>
                 <p>Nossa equipe gostaria de tirar qualquer dúvida que você tenha.</p>
-                <form class="contact" action="">
+                <form class="contact">
                     <div class="row">
                         <label class="label" for="nome">Nome</label>
-                        <input class="input" type="text" id="nome">
+                        <input id="nome_e" class="input" type="text" id="nome">
                     </div>
                     <div class="row">
                         <label class="label" for="">Email</label>
-                        <input class="input" type="email">
+                        <input id="email_e" class="input" type="email">
                     </div>
                     <div class="row">
                         <label class="label" for="">Empresa</label>
-                        <input class="input" type="text"><br>
+                        <input id="empresa_e" class="input" type="text"><br>
                     </div>
                     <div class="row">
                         <label class="label" for="">Mensagem</label>
-                        <textarea class="input message" cols="70" rows="10"></textarea>
+                        <textarea id="mensagem_e" class="input message" cols="70" rows="10"></textarea>
                     </div>
                     <div class="row">
                         <label class="label"></label>
-                        <button class="button">Enviar mensagem</button>
+                        <button type="button" onclick="enviar_mensagem()" class="button">Enviar mensagem</button>
                     </div>
                 </form>
             </div>
@@ -182,12 +180,12 @@
                     <p>BlindMarket </p>
                 </span>
                 <span>
-        <a href="#">          
+        <a href="https://www.instagram.com/?hl=pt-br">          
             <i class="fab fa-instagram"></i>
         </a>
                 </span>
                 <span> 
- <a href="#"> <i class="fab fa-facebook"></i>                   
+ <a href="https://pt-br.facebook.com/"> <i class="fab fa-facebook"></i>                   
  </a>
                 </span>
             <div>

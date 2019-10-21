@@ -68,13 +68,27 @@ function calcular_lucro() {
   var clientes_mensais_mais = Number(clientes_mensais.value * 0.035).toFixed(0);
 
   // calcula o número de clientes anuais a mais multiplicando o número de cliente por 12 
-  var clientes_anuais_mais = clientes_mensais_mais * 12;
-
   // calcula o lucro mensal que é o lucro anterior mais o gasto dos clientes mensais a mais
-  var lucro_mensal_total = parseFloat(Number(lucro_mensal.value) + Number(clientes_mensais_mais * 100 * 2));
-
-  mensagem1.innerHTML = clientes_anuais_mais;
+  var lucro_mensal_total = Number(lucro_mensal.value) + Number(clientes_mensais_mais * 100 * 2);
+  mensagem1.innerHTML = clientes_mensais_mais;
   mensagem2.innerHTML = lucro_mensal_total.toFixed(2);
+}
+
+function enviar_mensagem()
+{
+ var nome = nome_e.value;
+ var email = email_e.value;
+ var empresa = empresa_e.value;
+ var mensagem = mensagem_e.value; 
+
+  if(nome == "" || email == "" || empresa == "" || mensagem == "")
+  {
+    alert('Preencha todos os campos!')
+  }
+  else
+  {
+    alert('Mensagem enviada!')
+  }
 }
 
 // Chamando function

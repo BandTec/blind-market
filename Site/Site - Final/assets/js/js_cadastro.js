@@ -20,16 +20,19 @@ function fazerCadastro() {
     var senha = cadastro_senha.value;
     var email = cadastro_email.value;
 
-    if (nome == "Blind") {
+    if (nome == "" || senha=="" || email =="")
+    {
+        alert('Preencha todos os campos!')
     }
 
-    if (senha == "admin") {
-    
-    
-      if (email.endsWith  ("@blindmarket.com.br")) {
-        window.location = "login.html";
-    } else {
-        alert(`Usuário não cadastrado!`);
+    if (email.endsWith  ("@blindmarket.com.br"))
+    {
+        window.location = "dashboard.html";
     }
-}
+
+    else 
+    {
+        alert('E-mail inválido!')
+    }
+   
 }
