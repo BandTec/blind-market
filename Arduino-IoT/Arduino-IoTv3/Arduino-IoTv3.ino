@@ -8,7 +8,7 @@ unsigned long tempoAusencia = 0;
  * A função setup é chamada quando a execução começa. é usada para 
  * inicializar variáveis, configurar o modo dos pinos(INPUT ou OUTPUT), 
  * inicializar bibliotecas, etc. 
- * 
+ * '
  * A função setup() será executada apenas uma vez, após a placa ser 
  * alimentada ou acontecer um reset.
  */
@@ -40,6 +40,7 @@ void loop(){
   if (resultado == 0 && tempoPresenca == 0) {
 
     tempoPresenca = millis(); // guardando tempo atual do arduino
+    Serial.println("Working");
   }
 
   // Verifica se usuário se afastou.
