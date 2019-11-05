@@ -42,20 +42,65 @@
 	<div class="chartArea">
 		<div class="chart">
 			<!-- Gráfico dinâmico -->
-			<div class="chart01">
-				<h2>Soma: <label id='soma'>0.00</label></h2>
-				<canvas id="mainChart"></canvas>
+			<div class="estabelecimentos">
+				<div class="estabelecimento">
+					<img src="assets/img/shop.png" alt="">
+					<span>Estabelecimento 1</span>
+				</div>
+				<div class="estabelecimento danger">
+					<img src="assets/img/shop.png" alt="">
+					<span>Estabelecimento 2</span>
+				</div>
+				<div class="estabelecimento">
+					<img src="assets/img/shop.png" alt="">
+					<span>Estabelecimento 3</span>
+				</div>
+				<div class="estabelecimento warning">
+					<img src="assets/img/shop.png" alt="">
+					<span>Estabelecimento 4</span>
+				</div>
 			</div>
 
+			<div class="section-title">Overview</div>
+
 			<!-- Gráfico estático 1 -->
-			<div class="chart01">
+			<div class="global-chart">
+				<h2>Todos os estabelecimentos</h2>
 				<canvas id="chart"></canvas>
 			</div>
 
-			<!-- Gráfico estático 2 -->
-			<div class="chart01">
-				<canvas id="chart2"></canvas>
+			<div class="secondary-charts" style="background-color: #FFFFFF;">
+				<div class="chart-categoria">
+					<h2>Categorias</h2>
+					<canvas id="categoria"></canvas>
+				</div>
+				<div class="chart-estabelecimento">
+					<h2>Estabelecimentos</h2>
+					<canvas id="chart3"></canvas>
+				</div>
 			</div>
+
+			<div class="section-title">Mensagens</div>
+
+			<div class="mensagens">
+				<div class="mensagem">
+					<img src="assets/img/mail-send.png" alt="">
+					<span>Mensagem 1</span>
+				</div>
+				<div class="mensagem">
+					<img src="assets/img/mail-send.png" alt="">
+					<span>Mensagem 2</span>
+				</div>
+				<div class="mensagem">
+					<img src="assets/img/mail-send.png" alt="">
+					<span>Mensagem 3</span>
+				</div>
+				<div class="mensagem">
+					<img src="assets/img/mail-send.png" alt="">
+					<span>Mensagem 4</span>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </body>

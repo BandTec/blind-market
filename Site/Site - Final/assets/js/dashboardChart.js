@@ -11,30 +11,101 @@ var chart = new Chart(ctx, { // criando um novo gráfico
 
     // Os dados do gráfico
     data: {
-        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'], // as etiquetas que aparecem na parte debaixo do gráfico
+        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
         datasets: [{
-            label: 'Quantidade de consultas (total)', // a legenda do gráfico
-            backgroundColor: 'rgb(255, 99, 132)', // cor de fundo do gráfico
-            borderColor: 'rgb(255, 99, 132)', // cor da borda do gráfico
-            data: [0, 10, 5, 2, 20, 30, 45] // os dados do gráfico
+            label: 'Sensores consultados',
+            data: [12, 19, 16, 20, 19, 17, 18, 19, 22, 18, 15, 20],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(255, 99, 132, 1)'
+            ],
+            backgroundColor: 'rgba(255, 99, 132, 0.3)',
+            borderWidth: 3,
+            fill: true,
+            lineTension: 0.4
         }]
     },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
 });
 
 /* Segundo gráfico */
-var ctx2 = document.getElementById('chart2').getContext('2d'); // recuperando o contexto de desenho do elemento canvas com id 'chart2'
-var chart = new Chart(ctx2, { // criando um novo gráfico
-    // O tipo do gráfico que queremos criar
+var ctx2 = document.getElementById('categoria').getContext('2d');
+var categoria = new Chart(ctx2, {
     type: 'bar',
-
-    // Os dados do gráfico
     data: {
-        labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho'], // as etiquetas que aparecem na parte debaixo do gráfico
+        labels: ['Hortaliças', 'Laticínios', 'Bebidas', 'Doces', 'Frios', 'Carnes' ],
         datasets: [{
-            label: 'Quantidade de consultas (Maçã)', // a legenda do gráfico
-            backgroundColor: 'rgb(255, 99, 132)', // cor de fundo do gráfico
-            borderColor: 'rgb(255, 99, 132)', // cor da borda do gráfico
-            data: [0, 30, 15, 10, 20, 30, 25] // os dados do gráfico
+            label: 'Sensores consultados',
+            data: [12, 19, 14, 20, 19, 20],
+            backgroundColor: 'rgba(255, 99, 132, 1)',
+            borderColor: '#B3344F',
+            borderWidth: 3,
+            fill: false,
+            lineTension: 0.4
         }]
     },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        legend: {
+            display: false
+        }
+    }
+});
+
+/* Terceiro gráfico */
+var ctx3 = document.getElementById('chart3').getContext('2d'); // recuperando o contexto de desenho do elemento canvas com id 'chart2'
+var chart = new Chart(ctx3, { // criando um novo gráfico
+    type: 'doughnut',
+    data: {
+        labels: ['Estabelecimento 1', 'Estabelecimento 2', 'Estabelecimento 3', 'Estabelecimento 4'],
+        datasets: [{
+            label: 'Sensores consultados',
+            data: [12, 19, 14, 20],
+            backgroundColor: [
+                '#e74a3b',
+                '#1cc88a',
+                '#4e73df',
+                '#36b9cc'
+            ],
+            borderColor: '#FFFFFF',
+            borderWidth: 3,
+            fill: false,
+            lineTension: 0.4
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+            display: false
+        }
+    }
 });
