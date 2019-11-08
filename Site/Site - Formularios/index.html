@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<style>
+
+    .form-container {
+        margin: 24px;
+    }
+
+    .form-produto {
+        width: 350px;
+        margin-top: 8px;
+        justify-content: space-between;
+    }
+
+    .form-produto > * {
+        margin-bottom: 12px;
+    }
+
+    .form-categoria {
+        width: 350px;
+        display: flex;
+        align-items: flex-end;
+        margin-top: 8px;
+        justify-content: space-between;
+    }
+
+    .form-estabelecimento {
+        width: 350px;
+        margin-top: 8px;
+    }
+
+    .form-estabelecimento > * {
+        margin-bottom: 12px;
+    }
+
+    .flex-aligned {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .fill-width {
+        width: 100%;
+    }
+
+    select {
+        padding: 9px;
+    }
+
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulário de produtos</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="input.css">
+    <link rel="stylesheet" href="margin.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Novo produto</h2>
+        <div class="form-produto">
+            <label for="">Nome</label><br>
+            <input class="input fill-width" type="text">
+            <div class="flex-aligned">
+                <div class="mr1">
+                    <label for="">Sensor</label><br>
+                    <select name="" id="">
+                        <option value="">Sensor 1</option>
+                    </select>
+                </div>
+                <div class="mr1">
+                    <label for="">Categoria</label><br>
+                    <select name="" id="">
+                        <option value="">Laticínios</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="">Preço</label><br>
+                    <input class="input fill-width" type="text">
+                </div>
+            </div>
+            <div class="flex-aligned">
+                <div class="fill-width"></div>
+                <button class="button">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+    <div class="form-container">
+        <h2>Nova categoria</h2>
+        <div class="form-categoria">
+            <div>
+                <label for="">Nome</label><br>
+                <input class="input" type="text" style="width: 240px;">
+            </div>
+            <button class="button">Cadastrar</button>
+        </div>
+    </div>
+    <div class="form-container">
+        <h2>Novo estabelecimento</h2>
+        <div class="form-estabelecimento">
+            <div class="flex-aligned">
+                <div class="mr1">
+                    <label for="">Nome</label><br>
+                    <input class="input" type="text" style="width: 240px;">
+                </div>
+                <div>
+                    <label for="">CEP</label><br>
+                    <input class="input" type="text" style="width: 100px;">
+                </div>
+            </div>
+            <label for="">Endereço</label><br>
+            <input class="input fill-width" type="text">
+            <div class="flex-aligned">
+                <div class="fill-width"></div>
+                <button class="button">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
