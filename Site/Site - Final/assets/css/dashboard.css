@@ -44,7 +44,7 @@ body {
   background-color: #ff5b5b;
   border-top: 2px solid rgba(0, 0, 0, 0.16);
   width: 25vw;
-  height: 100%;
+  height: 63px;
   display: flex;
   position: absolute;
   left: -280px;
