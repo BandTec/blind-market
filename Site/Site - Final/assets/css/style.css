@@ -87,6 +87,10 @@ nav {
     top: 0;
 }
 
+.active {
+    background-color: rgba(63, 63, 63);
+}
+
 /* Modificando a cor e o tamanho do texto que usamos como logo*/
 .logo {
     color: rgb(240, 240, 240);
@@ -279,16 +283,19 @@ utilizado para quebra de conteudo
     }
 
 }
+
 footer {
     text-align: center;
-    margin: 10px; 
+    margin: 10px;
     max-width: 100vw;
 }
+
 footer span p {
     font-size: 20px;
-    display: block; 
+    display: block;
     margin-bottom: 20px;
 }
+
 footer span {
     display: inline-block;
     padding: 5px;

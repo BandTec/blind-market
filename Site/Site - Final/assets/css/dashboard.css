@@ -32,6 +32,10 @@ body {
   cursor: pointer;
 }
 
+.active {
+  background-color: #fa7f7f;
+}
+
 .img-menu {
   display: none;
 }
@@ -62,7 +66,7 @@ body {
   background-color: rgba(63, 63, 63);
 }
 
-#check:checked ~ .menu-lateral {
+#check:checked~.menu-lateral {
   transform: translateX(280px);
 }
 
@@ -111,7 +115,8 @@ body {
   border-radius: 5px;
 }
 
-.estabelecimento span, .mensagem span {
+.estabelecimento span,
+.mensagem span {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -120,7 +125,8 @@ body {
   font-weight: bold;
 }
 
-.estabelecimento img, .mensagem img {
+.estabelecimento img,
+.mensagem img {
   position: absolute;
   width: 100px;
   bottom: 0;
@@ -160,7 +166,7 @@ body {
   justify-content: space-between;
   padding: 36px 36px 8px 16px;
   margin-top: 100px;
-  box-shadow: 0px 0px 2px 1px rgba(0,0,0,0.16), 0 1px 2px 0 rgba(0,0,0,0.12);
+  box-shadow: 0px 0px 2px 1px rgba(0, 0, 0, 0.16), 0 1px 2px 0 rgba(0, 0, 0, 0.12);
 }
 
 .chart-categoria {
@@ -177,7 +183,9 @@ body {
   margin-left: 20px;
 }
 
-.global-chart h2, .chart-categoria h2, .chart-estabelecimento h2 {
+.global-chart h2,
+.chart-categoria h2,
+.chart-estabelecimento h2 {
   color: #424242;
   margin-bottom: 30px;
 }
@@ -192,13 +200,14 @@ body {
     margin-left: 8px;
     /*font-size: 40px;*/
   }
+
   .menu-lateral {
     width: 100vw;
     left: -435px;
     margin-top: 5px;
   }
 
-  #check:checked ~ .menu-lateral {
+  #check:checked~.menu-lateral {
     transform: translateX(425px);
   }
 
@@ -238,13 +247,14 @@ body {
     margin-left: 8px;
     /*font-size: 40px;*/
   }
+
   .menu-lateral {
     width: 40vw;
     left: -240px;
     margin-top: 5px;
   }
 
-  #check:checked ~ .menu-lateral {
+  #check:checked~.menu-lateral {
     transform: translateX(240px);
   }
 
@@ -277,6 +287,7 @@ body {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+
   /* ChartArea */
   .chartArea {
     float: none;
@@ -301,7 +312,7 @@ body {
     left: -435px;
   }
 
-  #check:checked ~ .menu-lateral {
+  #check:checked~.menu-lateral {
     transform: translateX(430px);
   }
 
@@ -329,7 +340,7 @@ body {
     left: -235px;
   }
 
-  #check:checked ~ .menu-lateral {
+  #check:checked~.menu-lateral {
     transform: translateX(230px);
   }
 
@@ -352,17 +363,18 @@ body {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-	
-	.exit {
-		margin-top: 10px;
-		margin-right: 20px;
-		cursor: pointer;
-	}
-	
-	.menu-top {
+
+  .exit {
+    margin-top: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  .menu-top {
     position: fixed;
     width: 100%;
   }
+
   .menu-top label#icone {
     display: none;
   }
@@ -372,6 +384,7 @@ body {
     width: 10vw;
     margin: auto;
   }
+
   .menu-lateral {
     width: 100vw;
     left: 0;
@@ -385,19 +398,19 @@ body {
   }
 
   .menu-lateral nav ul li {
-		display: inline-flex;
-		flex-direction: column-reverse;
-		align-items: center;
-		font-size: 16px;
-		font-weight: bold;
+    display: inline-flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    font-size: 16px;
+    font-weight: bold;
     padding: 5px;
-		/*margin-left: 10px;*/
-		/*margin-right: 10px;*/
+    /*margin-left: 10px;*/
+    /*margin-right: 10px;*/
     width: 200px;
   }
 
   .menu-lateral nav ul li svg {
-	  margin-bottom: 8px;
+    margin-bottom: 8px;
   }
 
   /* ChartArea */
