@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BlindMarket - Busca de Supermercados na região</title>
+    <link rel="stylesheet" href="../assets/css/pages/page-search.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="../index.html"><img src="../assets/img/logo.png" alt="Logo BlindMarket"></a>
+        </div>
+
+        <ul>
+            <a href="../index.html">
+                <li>Home</li>
+            </a>
+
+            <a href="./search-market.html">
+                <li>Busca de Estabelecimentos</li>
+            </a>
+
+            <a href="./search-product.html">
+                <li>Busca de Produtos</li>
+            </a>
+        </ul>
+    </nav>
+    <header>
+        <div class="search-box" id="search">
+            <div class="title-serach">
+                <h1>Procure Supermercados próximos da sua região</h1>
+            </div>
+
+            <div class="section-search">
+                <input type="search" id="search-input" placeholder="Digite seu CEP">
+                <img src="../assets/img/lupa.png" class="lupa" id="pesquisa" onclick="procurar()">
+            </div>
+        </div>
+
+        <div class="results-search" id="search_results">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Endereço</th>
+                        <th>Horário de Atendimento</th>
+                        <th>Ver no Maps</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Assai Atacadista</td>
+                        <td>Rua 123</td>
+                        <td>08:00 - 23:00/ SEG - Dom </td>
+                        <td><a href="https://goo.gl/maps/ZguALFs6Vo1HLHNG8">Clique Aqui</a>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Extra</td>
+                        <td>Rua 345</td>
+                        <td>08:00 - 23:00/ SEG - Dom </td>
+                        <td><a href="https://goo.gl/maps/NWAWhz4hYgU1R7vRA">Clique Aqui</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </header>
+</body>
+
+</html>
+
+<script>
+    function procurar() {
+        search.style.display = 'none'
+        search_results.style.display = 'block'
+    }
+</script>

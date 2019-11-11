@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #CC1C1C;
+}
+
+body {
+    background-image: url(../../img/market-search.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-width: 100vw;
+    min-height: 100vh;
+
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo img {
+    max-width: 180px;
+    padding: 10px;
+}
+
+nav {
+    padding: 5px;
+    background-color: rgb(32, 32, 32);
+    max-height: 80px;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul a {
+    position: relative;
+    display: inline-block;
+    padding: 30px;
+    text-decoration: none;
+    color: #fff;
+}
+
+nav ul a li {
+    display: inline-block;
+    margin-left: 10px;
+    color: #FF5B5B;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+nav ul a li:hover {
+    color: white;
+}
+
+
+
+.title-serach {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    width: 60vw;
+    margin: 8% 50%;
+    transform: translate(-50%, 40%);
+}
+
+.section-search {
+    height: 35vh;
+    text-align: center;
+    margin-top: -50px;
+}
+
+.section-search input {
+    width: 40%;
+    padding: 15px;
+}
+
+
+.section-search .lupa {
+    width: 30px;
+    height: 30px;
+    background-color: #FF5B5B;
+    margin-top: 0px;
+    position: absolute;
+    padding: 0.6em;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.section-search .lupa:hover {
+    background-color: salmon;
+}
+
+/* Resultados da pesquisa */
+
+.results-search {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(255, 91, 91, .95);
+    font-size: 1.5em;
+}
+
+.results-search table {
+    margin: 10% auto;
+    width: 80vw;
+    border-collapse: collapse;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+.results-search thead tr {
+    background-color: #A01111;
+    color: white;
+    text-align: left;
+    font-weight: bold;
+}
+
+.results-search th,
+.results-search td {
+    padding: 12px 15px;
+}
+
+.results-search tbody {
+    background-color: white;
+}
+
+.results-search tbody td {
+    border-bottom: 1px solid #ddd;
+}
+
+.results-search tbody tr:last-of-type {
+    border-bottom: 5px solid #CC1C1C;
+}
