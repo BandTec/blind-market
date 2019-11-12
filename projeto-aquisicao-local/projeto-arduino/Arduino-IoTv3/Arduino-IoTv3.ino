@@ -1,4 +1,5 @@
 // Variáveis para saber onde o sensor está setado.
+int idSensor = 1;
 int porta_sensor = 7;
 
 unsigned long tempoPresenca = 0;
@@ -8,7 +9,7 @@ unsigned long tempoAusencia = 0;
  * A função setup é chamada quando a execução começa. é usada para 
  * inicializar variáveis, configurar o modo dos pinos(INPUT ou OUTPUT), 
  * inicializar bibliotecas, etc. 
- * '
+ * 
  * A função setup() será executada apenas uma vez, após a placa ser 
  * alimentada ou acontecer um reset.
  */
@@ -40,7 +41,6 @@ void loop(){
   if (resultado == 0 && tempoPresenca == 0) {
 
     tempoPresenca = millis(); // guardando tempo atual do arduino
-    Serial.println("Working");
   }
 
   // Verifica se usuário se afastou.
@@ -56,13 +56,11 @@ void loop(){
 
     if (tempoAproximacao > 1000) {
 
-      Serial.print("Tempo de aproximação: " + String(tempoAproximacao));
-      Serial.println(" (Informações detalhadas)"); // Se usuário se aproximou por pelo menos um segundo.
+      Serial.println(String(idSensor) + ":1");
     }
     else if (tempoAproximacao > 200){
 
-      Serial.print("Tempo de aproximação: " + String(tempoAproximacao));
-      Serial.println(" (Informações básicas)"); // Se usuário se aproximou por pelo menos meio segundo.
+      Serial.println(String(idSensor) + ":2");
     }
 
     // resetando tempos de presença e ausência
