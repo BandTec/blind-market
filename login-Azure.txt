@@ -1,6 +1,10 @@
-USUÁRIO E SENHA AZURE
+AZURE
 
 USER: 192-1-grupo9@bandtec.com.br
+PASS: #Gfgrupo9
+
+SQL
+SERV. NAME: srvblindmarket.database.windows.net
 PASS: #Gfgrupo9
 
 user para Editor de Consultas: userblindmarket
