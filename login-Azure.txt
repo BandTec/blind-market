@@ -1,0 +1,7 @@
+USUÁRIO E SENHA AZURE
+
+USER: 192-1-grupo9@bandtec.com.br
+PASS: #Gfgrupo9
+
+user para Editor de Consultas: userblindmarket
+pass para Editor de Consultas: #Gfgrupo9
