@@ -3,7 +3,9 @@ int idSensor = 1;
 int porta_sensor = 7;
 
 unsigned long tempoPresenca = 0;
-unsigned long tempoAusencia = 0;
+
+int resultado = 0;
+int tempoAproximacao;
 
 /**
  * A função setup é chamada quando a execução começa. é usada para 
@@ -35,7 +37,8 @@ void setup(){
 void loop(){
   
   // Pegando a leitura e setando na variável "resultado".
-  int resultado = digitalRead(porta_sensor);
+  resultado = digitalRead(porta_sensor);
+  tempoAproximacao = 0;
 
   // Verifica se usuário se aproximou.
   if (resultado == 0 && tempoPresenca == 0) {
@@ -46,10 +49,8 @@ void loop(){
   // Verifica se usuário se afastou.
   if (resultado == 1 && tempoPresenca > 0) {
 
-    tempoAusencia = millis(); // guardando tempo atual do arduino
+    tempoAproximacao = millis() - tempoPresenca;
   }
-
-  int tempoAproximacao = tempoAusencia - tempoPresenca;
 
   // Se usuário se aproximou...
   if (tempoPresenca > 0 && (tempoAproximacao > 0)) {
@@ -65,7 +66,5 @@ void loop(){
 
     // resetando tempos de presença e ausência
     tempoPresenca = 0;
-    tempoAusencia = 0;
-    tempoAproximacao = 0;
   }
 }
