@@ -74,5 +74,18 @@ router.get('/estatisticas', function (req, res, next) {
   
 });
 
+router.get('/categorias', function (req, res, next) {
+	console.log(`Recuperando a quantidade por categoria`);
+
+	const instrucaoSql = `select categoria.nome, count(idregistro) qtd from registro, sensor, estabelecimento, produto, categoria where registro.fkProduto = idproduto and fkCategoria = idcategoria and fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = 1 group by categoria.nome`;
+
+	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+})
 
 module.exports = router;
