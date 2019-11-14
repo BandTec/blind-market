@@ -29,9 +29,22 @@
         <div id="mostrar_cadastro" class="login invisivel">
             <img src="assets/img/logo.png" alt="logo"> <br><br>
             <h2>Cadastro</h2>
-            <label class="label mt2">Nome</label> <input class="input mt1" type="text" id="cadastro_nome"> <br> <br>
-            <label class="label">Email</label> <input class="input" type="text" id="cadastro_email"> <br><br>
-            <label class="label">Senha</label> <input class="input" type="password" id="cadastro_senha"> <br> <br>
+            <label class="label mt2">Nome</label> 
+            
+            <input class="input mt1" type="text" id="cadastro_nome" name="cadastro_nome"> <br> <br>
+            
+            <label class="label">Login</label> 
+            
+            <input class="input" type="text" id="cadastro_login" name="cadastro_login"> <br><br>
+
+            <label class="label">Email</label> 
+            
+            <input class="input" type="text" id="cadastro_email" name="cadastro_email"> <br><br>
+            
+            <label class="label">Senha</label> 
+            
+            <input class="input" type="password" id="cadastro_senha" name="cadastro_senha"> <br> <br>
+            
             <div class="pudim">
                 <a id="fazer_login" href="#">Fazer Login</a> <br>
                 <button class="button">Cadastro</button>
@@ -45,6 +58,8 @@
 </html>
 
 <script>
+
+    // Validando o usuario para fazer o login
     function logar() {
         var formLogin = new URLSearchParams(new FormData(form_login));
         fetch("/usuarios/autenticar", {
@@ -57,6 +72,7 @@
                 resposta.json().then(json => {
 
                     sessionStorage.login_usuario_meuapp = json.login;
+
                     sessionStorage.nome_usuario_meuapp = json.nome;
 
                     window.location.href = 'dashboard.html';
@@ -65,6 +81,49 @@
             } else {
 
                 console.log('Erro de login!');
+
+                response.text().then(texto => {
+                    console.error(texto);
+                    finalizar_aguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+
+
+
+
+
+    // Cadastrando o usuario no banco de dados
+    function cadastrar() {
+        var formCadastro = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formCadastro
+        }).then(resposta => {
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+
+                    sessionStorage.nome_usuario_meuapp = json.nome;
+
+                    sessionStorage.login_usuario_meuapp = json.login;
+
+                    sessionStorage.email_usuario_meuapp = json.email;
+
+                    sessionStorage.senha_usuario_meuapp = json.senha;
+
+                
+
+                    window.location.href = 'login.html';
+                });
+
+            } else {
+
+                console.log('Erro ao Cadastrar!');
 
                 response.text().then(texto => {
                     console.error(texto);
