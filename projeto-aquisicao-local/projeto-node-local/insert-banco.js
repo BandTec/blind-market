@@ -7,7 +7,7 @@
 */ 
 
 // se usar 'true' aqui, os dados serão gerados aleatórios e não recebidos da placa arduíno
-const gerar_dados_aleatorios = true; 
+const gerar_dados_aleatorios = false; 
 
 // leitura dos dados do Arduino
 var porta_serial = require('serialport');
@@ -25,8 +25,8 @@ function iniciar_escuta() {
 
         // este bloco trata a verificação de Arduino conectado (inicio)
 
-        var entradas_seriais_arduino = entradas_seriais.filter(entrada_serial => {
-            return entrada_serial.vendorId == 2341 && entrada_serial.productId == 8037;
+        var entradas_seriais_arduino = entradas_seriais.filter(serialDevice => {
+            return serialDevice.vendorId == 2341 && serialDevice.productId == 43;
         });
 
         if (entradas_seriais_arduino.length != 1) {
