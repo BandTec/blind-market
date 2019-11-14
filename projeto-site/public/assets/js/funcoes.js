@@ -30,8 +30,6 @@ function validar_sessao() {
         if (resposta.ok) {
             resposta.text().then(texto => {
                 console.log('Sessão :) ', texto);
-                configurarGrafico();
-                atualizarGrafico();
             });
         } else {
             console.error('Sessão :.( ');
