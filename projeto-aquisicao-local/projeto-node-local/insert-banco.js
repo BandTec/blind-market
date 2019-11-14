@@ -7,7 +7,7 @@
 */ 
 
 // se usar 'true' aqui, os dados serão gerados aleatórios e não recebidos da placa arduíno
-const gerar_dados_aleatorios = false; 
+const gerar_dados_aleatorios = true; 
 
 // leitura dos dados do Arduino
 var porta_serial = require('serialport');
@@ -81,20 +81,22 @@ function registrar_leitura(temperatura, umidade) {
     if (efetuando_insert) {
         console.log('Execução em curso. Aguardando 7s...');
         setTimeout(() => {
-            registrar_leitura(temperatura, umidade);
+            registrar_leitura(idregistro, fkproduto, fksensor, datahora);
         }, 7000);
         return;
     }
 
     efetuando_insert = true;
 
-    console.log(`temperatura: ${temperatura}`);
-    console.log(`umidade: ${umidade}`);
+    console.log(`registro: ${idregistro}`);
+    console.log(`produtp: ${fkproduto}`);
+    console.log(`sensor: ${fksensor}`);
+    console.log(`data_hora: ${datahora}`);
 
     banco.conectar().then(() => {
 
-        return banco.sql.query(`INSERT into leitura (temperatura, umidade, momento)
-                                values (${temperatura}, ${umidade}, CONVERT(Datetime, '${agora()}', 120));`);
+        return banco.sql.query(`INSERT into registro (idregistro, fkproduto, fksensor, datahora)
+                                values (${idregistro}, ${fkproduto}, ${fksensor}, ${fkproduto} CONVERT(Datetime, '${agora()}', 120));`);
 
     }).catch(erro => {
 

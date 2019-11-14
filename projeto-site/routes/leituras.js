@@ -37,7 +37,7 @@ router.get('/tempo-real', function (req, res, next) {
 	
 	console.log(`Recuperando as últimas leituras`);
 
-	const instrucaoSql = `select top 1 temperatura, umidade from leitura order by id desc`;
+	const instrucaoSql = `select top 1 fksensor, fkProduto, datahora from registro order by idregistro desc`;
 
 	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
 		.then(resultado => {
@@ -56,13 +56,13 @@ router.get('/estatisticas', function (req, res, next) {
 	console.log(`Recuperando as estatísticas atuais`);
 
 	const instrucaoSql = `select 
-							max(temperatura) as temp_maxima, 
-							min(temperatura) as temp_minima, 
-							avg(temperatura) as temp_media,
-							max(umidade) as umidade_maxima, 
-							min(umidade) as umidade_minima, 
-							avg(umidade) as umidade_media 
-						from leitura`;
+							max(fkproduto) as produto_max, 
+							min(fkproduto) as produto_min, 
+							avg(fkproduto) as produto_avg,
+							max(fksensor) as sensor_max, 
+							min(fksensor) as sensor_min, 
+							avg(fksensor) as sensor_avg 
+						from registro`;
 
 	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
 		.then(resultado => {
