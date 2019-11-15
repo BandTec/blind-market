@@ -21,7 +21,7 @@ router.post('/autenticar', function (req, res, next) {
 		console.log(`Encontrados: ${resultado.length}`);
 
 		if (resultado.length == 1) {
-			sessoes.push(resultado[0].dataValues.email);
+			sessoes.push(resultado[0].dataValues.login);
 			console.log('sessoes: ', sessoes);
 			res.json(resultado[0]);
 		} else if (resultado.length == 0) {

@@ -119,4 +119,48 @@ router.get('/topestabelecimentos/:login', function (req, res, next) {
 		});
 });
 
+router.get('/qtdestabelecimentos/:login', function (req, res, next) {
+	console.log(`Recuperando a quantidade por categoria`);
+
+	let login = req.params.login;
+	const instrucaoSql = `SELECT idEstabelecimento id, estabelecimento.nome, count(idregistro) qtd 
+							FROM estabelecimento
+							LEFT JOIN sensor on fkEstabelecimento = idEstabelecimento
+							LEFT JOIN registro on fkSensor = idsensor
+							INNER JOIN empresa on fkEmpresa = idempresa
+							WHERE (datahora > DATEADD(WEEK, DATEDIFF(WEEK, '1905-01-01', CURRENT_TIMESTAMP), '1905-01-01') or datahora is null) 
+								and login = '${login}'
+							GROUP BY idEstabelecimento, estabelecimento.nome, DATEPART(Year, datahora), DATEPART(Month, datahora), DATEPART(Week, datahora)`;
+
+	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
+router.get('/estatisticas/estabelecimento/:estabelecimento', function (req, res, next) {
+	console.log(`Recuperando a quantidade por categoria`);
+
+	let estabelecimento = req.params.estabelecimento;
+	const instrucaoSql = `SELECT idestabelecimento id, nome, AVG(qtd) media from (
+							SELECT idestabelecimento, nome, count(idregistro) as qtd 
+							FROM estabelecimento
+							LEFT JOIN sensor on fkEstabelecimento = idEstabelecimento
+							LEFT JOIN registro on fkSensor = idsensor
+							WHERE idEstabelecimento = ${estabelecimento}
+							GROUP BY idestabelecimento, nome, DATEPART(Year, datahora), DATEPART(Month, datahora), DATEPART(Week, datahora)
+						) as quantidade group by idestabelecimento, nome`;
+
+	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
 module.exports = router;
