@@ -76,3 +76,22 @@ select categoria.nome, count(idregistro) qtd from registro, sensor, estabelecime
 -- Quantidade de sensores ativos por estabelecimento
 select top 4 estabelecimento.nome, count(idregistro) as qtd from registro, sensor, estabelecimento, empresa where fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = idempresa and login = 'carrefour' group by estabelecimento.nome;
 
+-- Quantidade de registros semanais de cada estabelecimento
+SELECT idEstabelecimento id, estabelecimento.nome, count(idregistro) qtd 
+FROM estabelecimento
+LEFT JOIN sensor on fkEstabelecimento = idEstabelecimento
+LEFT JOIN registro on fkSensor = idsensor
+INNER JOIN empresa on fkEmpresa = idempresa
+WHERE (datahora > DATEADD(WEEK, DATEDIFF(WEEK, '1905-01-01', CURRENT_TIMESTAMP), '1905-01-01') or datahora is null) 
+	and login = 'extra01'
+GROUP BY idEstabelecimento, estabelecimento.nome, DATEPART(Year, datahora), DATEPART(Month, datahora), DATEPART(Week, datahora);
+
+-- Média semanal do estabelecimento
+SELECT idestabelecimento id, nome, AVG(qtd) media from (
+	SELECT idestabelecimento, nome, count(idregistro) as qtd 
+	FROM estabelecimento
+	LEFT JOIN sensor on fkEstabelecimento = idEstabelecimento
+	LEFT JOIN registro on fkSensor = idsensor
+	WHERE idEstabelecimento = 8
+	GROUP BY idestabelecimento, nome, DATEPART(Year, datahora), DATEPART(Month, datahora), DATEPART(Week, datahora)
+) as quantidade group by idestabelecimento, nome;

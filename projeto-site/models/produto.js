@@ -14,6 +14,14 @@ module.exports = (sequelize, DataTypes) => {
 		preco: {
 			type: DataTypes.DECIMAL,
 			allowNull: false
+		},
+		fkcategoria: {
+			type: DataTypes.INTEGER,
+			allowNull: false
+		},
+		unidade: {
+			type: DataTypes.STRING,
+			allowNull: false
 		}
 	}, {
 		tableName: 'produto',
