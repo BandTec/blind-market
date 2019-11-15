@@ -75,7 +75,7 @@ function obterDadosGrafico() {
         ]
     };
 
-    fetch('/leituras/ultimas', { cache: 'no-store' }).then(function (response) {
+    fetch('/leituras/categorias', { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
 
