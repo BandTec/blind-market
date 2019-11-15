@@ -12,48 +12,46 @@
 </head>
 
 <body>
-    <form id="form_login" method="post" onsubmit="return logar()">
-        <div id="tela_login" class="login">
+    <div id="tela_login" class="login">
+        <form id="form_login" method="post" onsubmit="return logar()">
             <a href="index.html"><img src="assets/img/logo.png" alt="logo"></a> <br><br>
             <h2>Login</h2>
-            <label class="label mt2">Email/Login</label> <input class="input mt1" type="text" id="login_email" name="login_email"> <br><br>
-            <label class="label">Senha</label> <input class="input mt1" type="password" id="login_senha" name="login_senha"> <br> <br>
+            <label class="label mt2">Email/Login</label> <input class="input mt1" type="text" id="login_email"
+                name="login_email"> <br><br>
+            <label class="label">Senha</label> <input class="input mt1" type="password" id="login_senha"
+                name="login_senha"> <br> <br>
             <div class="pudim">
                 <a id="criar_conta" href="#">Criar conta</a> <br>
                 <button class="button">Login</button>
             </div>
             <br><br>
-            <div id="error" style="display: none;color: #FF5B5B; font-weight: bold">Erro ao fazer login, email ou senha inválidos</div>
-        </div>
-    </form>
+            <div id="error" style="display: none;color: #FF5B5B; font-weight: bold">Erro ao fazer login, email ou senha
+                inválidos</div>
+        </form>
+    </div>
 
-<<<<<<< HEAD
-    <form id="form_cadastro" method="post" onsubmit="validaCadastro(event)">
-        <div id="mostrar_cadastro" class="login invisivel">
-            <img src="assets/img/logo.png" alt="logo"> <br><br>
-=======
-    <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
-        <div id="mostrar_cadastro" class="cadastro invisivel">
+    <div id="mostrar_cadastro" class="login invisivel">
+        <form id="form_cadastro" method="post" onsubmit="validaCadastro(event)">
             <a href="index.html"><img src="assets/img/logo.png" alt="logo"></a> <br><br>
->>>>>>> d68ea311fcc8196a861df666b2d0536a9cf878a2
             <h2>Cadastro</h2>
-            <label class="label mt2">Nome</label>       
-            <input class="input mt1" type="text" id="cadastro_nome" name="cadastro_nome"> <br> <br> 
-            <label class="label">Login</label> 
+            <label class="label mt2">Nome</label>
+            <input class="input mt1" type="text" id="cadastro_nome" name="cadastro_nome"> <br> <br>
+            <label class="label">Login</label>
             <input class="input" type="text" id="cadastro_login" name="cadastro_login"> <br><br>
-            <label class="label">Email</label>            
-            <input class="input" type="text" id="cadastro_email" name="cadastro_email"> <br><br>            
-            <label class="label">Senha</label>             
-            <input class="input" type="password" id="cadastro_senha" name="cadastro_senha"> <br> <br>            
+            <label class="label">Email</label>
+            <input class="input" type="text" id="cadastro_email" name="cadastro_email"> <br><br>
+            <label class="label">Senha</label>
+            <input class="input" type="password" id="cadastro_senha" name="cadastro_senha"> <br> <br>
             <div class="pudim">
                 <a id="fazer_login" href="#">Fazer Login</a> <br>
                 <button class="button">Cadastro</button>
             </div>
             <br>
             <br>
-            <div id="error2" style="display: none;color: #FF5B5B    ; font-weight: bold">Erro ao cadastrar, por favor verifique todos os campos</div>
-        </div>
-    </form>
+            <div id="error2" style="display: none;color: #FF5B5B    ; font-weight: bold">Erro ao cadastrar, por
+                favor verifique todos os campos</div>
+        </form>
+    </div>
     <script src="assets/js/js_login.js"></script>
     <script src="assets/js/js_cadastro.js"></script>
 </body>
@@ -61,7 +59,6 @@
 </html>
 
 <script>
-
     // Validando o usuario para fazer o login
     function logar() {
         var formLogin = new URLSearchParams(new FormData(form_login));
@@ -74,12 +71,9 @@
 
                 resposta.json().then(json => {
 
-<<<<<<< HEAD
                     sessionStorage.login_usuario_meuapp = json.email;
 
-=======
                     sessionStorage.login_usuario_meuapp = json.login;
->>>>>>> d68ea311fcc8196a861df666b2d0536a9cf878a2
                     sessionStorage.nome_usuario_meuapp = json.nome;
 
                     window.location.href = 'dashboard.html';
@@ -101,8 +95,7 @@
         return false;
     }
 
-<<<<<<< HEAD
-    function validaCadastro(event) { 
+    function validaCadastro(event) {
         var nome = form_cadastro.cadastro_nome
         var login = form_cadastro.cadastro_login
         var email = form_cadastro.cadastro_email
@@ -114,25 +107,23 @@
             error2.innerHTML = "Erro, preencha o campo Nome"
             error2.style.display = "block"
             nome.focus();
-        }else if(login.value == ""){
+        } else if (login.value == "") {
             error2.innerHTML = "Erro, preencha o campo Login"
             error2.style.display = "block"
             login.focus();
-        }else if(email.value == ""){
+        } else if (email.value == "") {
             error2.innerHTML = "Erro, preencha o campo Email"
             error2.style.display = "block"
             email.focus();
-        }else if(senha.value == ""){
+        } else if (senha.value == "") {
             error2.innerHTML = "Erro, preencha o campo Senha"
             error2.style.display = "block"
             senha.focus();
-        }else{
+        } else {
             cadastrar()
         }
     }
 
-=======
->>>>>>> d68ea311fcc8196a861df666b2d0536a9cf878a2
     // Cadastrando o usuario no banco de dados
     function cadastrar() {
         var formCadastro = new URLSearchParams(new FormData(form_cadastro));
