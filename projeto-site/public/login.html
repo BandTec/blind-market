@@ -71,9 +71,8 @@
 
                 resposta.json().then(json => {
 
+                    sessionStorage.email_usuario_meuapp = json.email;
                     sessionStorage.login_usuario_meuapp = json.email;
-
-                    sessionStorage.login_usuario_meuapp = json.login;
                     sessionStorage.nome_usuario_meuapp = json.nome;
 
                     window.location.href = 'dashboard.html';
