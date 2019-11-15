@@ -13,15 +13,3 @@ login.addEventListener("click", function () {
     telaLogin.classList.remove('invisivel')
     telaCadastro.classList.add('invisivel')
 })
-
-function fazerLogin() {
-
-    var senha = login_senha.value;
-    var email = login_email.value;
-
-    if (senha == "admin" && email == "admin@blindmarket.com.br") {
-        window.location = "dashboard.html";
-    } else {
-        alert(`Usuário ou senha incorreta!`);
-    }
-}

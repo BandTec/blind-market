@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="assets/css/login.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
 
@@ -16,7 +16,7 @@
         <div id="tela_login" class="login">
             <img src="assets/img/logo.png" alt="logo"> <br><br>
             <h2>Login</h2>
-            <label class="label mt2">Email</label> <input class="input mt1" type="text" id="login_email" name="login_email"> <br><br>
+            <label class="label mt2">Email/Login</label> <input class="input mt1" type="text" id="login_email" name="login_email"> <br><br>
             <label class="label">Senha</label> <input class="input mt1" type="password" id="login_senha" name="login_senha"> <br> <br>
             <div class="pudim">
                 <a id="criar_conta" href="#">Criar conta</a> <br>
@@ -26,25 +26,17 @@
     </form>
 
     <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
-        <div id="mostrar_cadastro" class="login invisivel">
+        <div id="mostrar_cadastro" class="cadastro invisivel">
             <img src="assets/img/logo.png" alt="logo"> <br><br>
             <h2>Cadastro</h2>
-            <label class="label mt2">Nome</label> 
-            
-            <input class="input mt1" type="text" id="cadastro_nome" name="cadastro_nome"> <br> <br>
-            
+            <label class="label mt2">Nome</label>       
+            <input class="input mt1" type="text" id="cadastro_nome" name="cadastro_nome"> <br> <br> 
             <label class="label">Login</label> 
-            
             <input class="input" type="text" id="cadastro_login" name="cadastro_login"> <br><br>
-
-            <label class="label">Email</label> 
-            
-            <input class="input" type="text" id="cadastro_email" name="cadastro_email"> <br><br>
-            
-            <label class="label">Senha</label> 
-            
-            <input class="input" type="password" id="cadastro_senha" name="cadastro_senha"> <br> <br>
-            
+            <label class="label">Email</label>            
+            <input class="input" type="text" id="cadastro_email" name="cadastro_email"> <br><br>            
+            <label class="label">Senha</label>             
+            <input class="input" type="password" id="cadastro_senha" name="cadastro_senha"> <br> <br>            
             <div class="pudim">
                 <a id="fazer_login" href="#">Fazer Login</a> <br>
                 <button class="button">Cadastro</button>
@@ -72,7 +64,6 @@
                 resposta.json().then(json => {
 
                     sessionStorage.login_usuario_meuapp = json.login;
-
                     sessionStorage.nome_usuario_meuapp = json.nome;
 
                     window.location.href = 'dashboard.html';
@@ -92,11 +83,6 @@
         return false;
     }
 
-
-
-
-
-
     // Cadastrando o usuario no banco de dados
     function cadastrar() {
         var formCadastro = new URLSearchParams(new FormData(form_cadastro));
@@ -109,14 +95,9 @@
                 resposta.json().then(json => {
 
                     sessionStorage.nome_usuario_meuapp = json.nome;
-
                     sessionStorage.login_usuario_meuapp = json.login;
-
                     sessionStorage.email_usuario_meuapp = json.email;
-
                     sessionStorage.senha_usuario_meuapp = json.senha;
-
-                
 
                     window.location.href = 'login.html';
                 });

@@ -78,7 +78,7 @@ router.get('/todosestabelecimentos/:login', function (req, res, next) {
 	console.log(`Recuperando estabelecimentos`);
 
 	let login = req.params.login;
-	const instrucaoSql = `select DATEPART(Year, datahora) ano, DATEPART(Month, datahora) as mes, count(idregistro) as qtd from registro, sensor, estabelecimento, empresa where fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = idempresa and login = '${login}' and datahora >= DATEADD(Month, -12, getdate()) group by DATEPART(Year, datahora), DATEPART(Month, datahora) order by ano desc, mes desc;`;
+	const instrucaoSql = `select DATEPART(Year, datahora) ano, DATEPART(Month, datahora) as mes, count(idregistro) as qtd from registro, sensor, estabelecimento, empresa where fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = idempresa and login = '${login}' and datahora >= DATEADD(Month, -12, getdate()) group by DATEPART(Year, datahora), DATEPART(Month, datahora) order by ano desc, mes desc`;
 
 	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
 		.then(resultado => {
@@ -87,7 +87,7 @@ router.get('/todosestabelecimentos/:login', function (req, res, next) {
 			console.error(erro);
 			res.status(500).send(erro.message);
 		});
-})
+});
 
 router.get('/categorias/:login', function (req, res, next) {
 	console.log(`Recuperando a quantidade por categoria`);
@@ -102,6 +102,21 @@ router.get('/categorias/:login', function (req, res, next) {
 			console.error(erro);
 			res.status(500).send(erro.message);
 		});
-})
+});
+
+router.get('/topestabelecimentos/:login', function (req, res, next) {
+	console.log(`Recuperando a quantidade por categoria`);
+
+	let login = req.params.login;
+	const instrucaoSql = `select top 5 estabelecimento.nome, count(idregistro) as qtd from registro, sensor, estabelecimento, empresa where fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = idempresa and login = '${login}' group by estabelecimento.nome;`;
+
+	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
 
 module.exports = router;

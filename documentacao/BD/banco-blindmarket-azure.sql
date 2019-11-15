@@ -68,10 +68,11 @@ alter table sensor add foreign key (fkEstabelecimento) references Estabeleciment
 /* Selects para compor os gráficos estatísticos */
 
 -- Quantidade de sensores ativos de todos os estabelecimentos
-select DATEPART(Year, datahora) ano, DATEPART(Month, datahora) as mes, count(idregistro) as qtd from registro, sensor, estabelecimento where fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = 1 and datahora >= DATEADD(Month, -12, getdate()) group by DATEPART(Year, datahora), DATEPART(Month, datahora) order by ano, mes;
+select DATEPART(Year, datahora) ano, DATEPART(Month, datahora) as mes, count(idregistro) as qtd from registro, sensor, estabelecimento, empresa where fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = idempresa and login = '${login}' and datahora >= DATEADD(Month, -12, getdate()) group by DATEPART(Year, datahora), DATEPART(Month, datahora) order by ano desc, mes desc;
 
 -- Quantidade de sensores ativos por categoria de produto
-select categoria.nome, count(idregistro) qtd from registro, sensor, estabelecimento, produto, categoria where registro.fkProduto = idproduto and fkCategoria = idcategoria and fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = 1 group by categoria.nome;
+select categoria.nome, count(idregistro) qtd from registro, sensor, estabelecimento, empresa, produto, categoria where registro.fkProduto = idproduto and fkCategoria = idcategoria and fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = idEmpresa and login = 'carrefour' group by categoria.nome
 
 -- Quantidade de sensores ativos por estabelecimento
-select nome, count(idregistro) from registro, sensor, estabelecimento where fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = 2 group by nome;
+select top 4 estabelecimento.nome, count(idregistro) as qtd from registro, sensor, estabelecimento, empresa where fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = idempresa and login = 'carrefour' group by estabelecimento.nome;
+
