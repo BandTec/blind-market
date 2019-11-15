@@ -73,7 +73,7 @@
 				</div>
 				<div class="chart-estabelecimento">
 					<h2>Estabelecimentos</h2>
-					<canvas id="chart3"></canvas>
+					<canvas id="estabelecimentos"></canvas>
 				</div>
 			</div>
 
@@ -104,42 +104,43 @@
 </body>
 <script src="assets/js/all.js"></script>
 <script src="assets/js/chart.js"></script>
-<!-- <script src="assets/js/dashboardChart.js"></script> -->
 <script src="assets/js/funcoes.js"></script>
 <script src="assets/js/dashboard/categorias.js"></script>
+<script src="assets/js/dashboard/topEstabelecimentos.js"></script>
+<script src="assets/js/dashboard/todosEstabelecimentos.js"></script>
 
 </html>
 
 
 <script>
 	function logar() {
-        var formLogin = new URLSearchParams(new FormData(form_login));
-        fetch("/usuarios/autenticar", {
-            method: "POST",
-            body: formLogin
-        }).then(resposta => {
+		var formLogin = new URLSearchParams(new FormData(form_login));
+		fetch("/usuarios/autenticar", {
+			method: "POST",
+			body: formLogin
+		}).then(resposta => {
 
-            if (resposta.ok) {
+			if (resposta.ok) {
 
-                resposta.json().then(json => {
+				resposta.json().then(json => {
 
-                    sessionStorage.login_usuario_meuapp = json.login;
-                    sessionStorage.nome_usuario_meuapp = json.nome;
+					sessionStorage.login_usuario_meuapp = json.login;
+					sessionStorage.nome_usuario_meuapp = json.nome;
 
-                    window.location.href = 'dashboard.html';
-                });
+					window.location.href = 'dashboard.html';
+				});
 
-            } else {
+			} else {
 
-                console.log('Erro de login!');
+				console.log('Erro de login!');
 
-                response.text().then(texto => {
-                    console.error(texto);
-                    finalizar_aguardar(texto);
-                });
-            }
-        });
+				response.text().then(texto => {
+					console.error(texto);
+					finalizar_aguardar(texto);
+				});
+			}
+		});
 
-        return false;
-    }
+		return false;
+	}
 </script>

@@ -90,7 +90,7 @@
             datasets: [
                 {
                     yAxisID: 'y-temperatura',
-                    label: 'Temperatura',
+                    label: 'Sensor',
                     borderColor: window.chartColors.red,
                     backgroundColor: window.chartColors.red,
                     fill: false,
@@ -98,7 +98,7 @@
                 },
                 {
                     yAxisID: 'y-umidade',
-                    label: 'Umidade',
+                    label: 'Produto',
                     borderColor: window.chartColors.blue,
                     backgroundColor: window.chartColors.blue,
                     fill: false,
@@ -122,10 +122,10 @@
                         // dos atributos que vem no JSON 
                         // que gerou na consulta ao banco de dados
 
-                        dados.labels.push(registro.momento);
+                        dados.labels.push(registro.momento_grafico);
 
-                        dados.datasets[0].data.push(registro.temperatura);
-                        dados.datasets[1].data.push(registro.umidade);
+                        dados.datasets[0].data.push(registro.fkproduto);
+                        dados.datasets[1].data.push(registro.fksensor);
                     }
                     console.log(JSON.stringify(dados));
 

@@ -6,8 +6,9 @@
     "start": "node insert-banco.js"
   },
   "dependencies": {
-    "serialport": "~7.1.5",
     "events": "~3.0.0",
-    "mssql": "~5.1.0"
+    "mssql": "~5.1.0",
+    "nodemon": "^1.19.4",
+    "serialport": "~7.1.5"
   }
 }

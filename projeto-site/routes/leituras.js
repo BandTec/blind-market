@@ -37,7 +37,7 @@ router.get('/tempo-real', function (req, res, next) {
 	
 	console.log(`Recuperando as últimas leituras`);
 
-	const instrucaoSql = `select top 1 temperatura, umidade from leitura order by id desc`;
+	const instrucaoSql = `select top 1 fksensor, fkProduto, datahora from registro order by idregistro desc`;
 
 	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
 		.then(resultado => {
@@ -56,13 +56,13 @@ router.get('/estatisticas', function (req, res, next) {
 	console.log(`Recuperando as estatísticas atuais`);
 
 	const instrucaoSql = `select 
-							max(temperatura) as temp_maxima, 
-							min(temperatura) as temp_minima, 
-							avg(temperatura) as temp_media,
-							max(umidade) as umidade_maxima, 
-							min(umidade) as umidade_minima, 
-							avg(umidade) as umidade_media 
-						from leitura`;
+							max(fkproduto) as produto_max, 
+							min(fkproduto) as produto_min, 
+							avg(fkproduto) as produto_avg,
+							max(fksensor) as sensor_max, 
+							min(fksensor) as sensor_min, 
+							avg(fksensor) as sensor_avg 
+						from registro`;
 
 	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
 		.then(resultado => {
@@ -74,10 +74,11 @@ router.get('/estatisticas', function (req, res, next) {
   
 });
 
-router.get('/categorias', function (req, res, next) {
-	console.log(`Recuperando a quantidade por categoria`);
+router.get('/todosestabelecimentos/:login', function (req, res, next) {
+	console.log(`Recuperando estabelecimentos`);
 
-	const instrucaoSql = `select categoria.nome, count(idregistro) qtd from registro, sensor, estabelecimento, produto, categoria where registro.fkProduto = idproduto and fkCategoria = idcategoria and fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = 1 group by categoria.nome`;
+	let login = req.params.login;
+	const instrucaoSql = `select DATEPART(Year, datahora) ano, DATEPART(Month, datahora) as mes, count(idregistro) as qtd from registro, sensor, estabelecimento, empresa where fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = idempresa and login = '${login}' and datahora >= DATEADD(Month, -12, getdate()) group by DATEPART(Year, datahora), DATEPART(Month, datahora) order by ano desc, mes desc`;
 
 	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
 		.then(resultado => {
@@ -86,6 +87,36 @@ router.get('/categorias', function (req, res, next) {
 			console.error(erro);
 			res.status(500).send(erro.message);
 		});
-})
+});
+
+router.get('/categorias/:login', function (req, res, next) {
+	console.log(`Recuperando a quantidade por categoria`);
+
+	let login = req.params.login;
+	const instrucaoSql = `select categoria.nome, count(idregistro) qtd from registro, sensor, estabelecimento, empresa, produto, categoria where registro.fkProduto = idproduto and fkCategoria = idcategoria and fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = idEmpresa and login = '${login}' group by categoria.nome`;
+
+	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
+router.get('/topestabelecimentos/:login', function (req, res, next) {
+	console.log(`Recuperando a quantidade por categoria`);
+
+	let login = req.params.login;
+	const instrucaoSql = `select top 5 estabelecimento.nome, count(idregistro) as qtd from registro, sensor, estabelecimento, empresa where fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = idempresa and login = '${login}' group by estabelecimento.nome;`;
+
+	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
 
 module.exports = router;

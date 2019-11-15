@@ -1,30 +1,27 @@
 var exibiu_grafico = false;
 
-verificar_autenticacao();
-
 // só mexer se quiser alterar o tempo de atualização
 // ou se souber o que está fazendo!
-function atualizarGraficoCategoria() {
-    obterDadosGraficoCategoria();
-    setTimeout(atualizarGraficoCategoria, 10000);
+function atualizarGraficoEstabelecimento() {
+    obterDadosGraficoEstabelecimento();
+    setTimeout(atualizarGraficoEstabelecimento, 10000);
 }
 
 // altere aqui as configurações do gráfico
 // (tamanhos, cores, textos, etc)
-function configurarGraficoCategoria() {
+function configurarGraficoEstabelecimento() {
     var configuracoes = {
         responsive: true,
+        maintainAspectRatio: false,
         animation: exibiu_grafico ? false : {duration: 1500},
-        hoverMode: 'index',
-        stacked: false,
+        // hoverMode: 'index',
+        // stacked: false,
         title: {
-            display: true,
+            display: false,
             text: 'Registros por categoria'
         },
-        scales: {
-            yAxes: [{
-                display: false,
-            }]
+        legend: {
+            display: false
         }
     };
 
@@ -35,7 +32,7 @@ function configurarGraficoCategoria() {
 
 // altere aqui como os dados serão exibidos
 // e como são recuperados do BackEnd
-function obterDadosGraficoCategoria() {
+function obterDadosGraficoEstabelecimento() {
 
     // neste JSON tem que ser 'labels', 'datasets' etc, 
     // porque é o padrão do Chart.js
@@ -43,16 +40,23 @@ function obterDadosGraficoCategoria() {
         labels: [],
         datasets: [
             {
-                label: 'Quantidade de sensores',
-                borderColor: '#B3344F',
-                backgroundColor: 'rgba(255, 99, 132, 1)',
+                label: 'Sensores consultados',
+                borderColor: '#FFFFFF',
+                backgroundColor: [
+                    '#e74a3b',
+                    '#1cc88a',
+                    '#4e73df',
+                    '#36b9cc'
+                ],
                 fill: false,
+                lineTension: 0.4,
+                borderWidth: 3,
                 data: []
             }
         ]
     };
 
-    fetch(`/leituras/categorias/${login_usuario}`, { cache: 'no-store' }).then(function (response) {
+    fetch(`/leituras/topestabelecimentos/${login_usuario}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {
 
@@ -67,7 +71,7 @@ function obterDadosGraficoCategoria() {
                     // dos atributos que vem no JSON 
                     // que gerou na consulta ao banco de dados
 
-                    dados.labels.push(registro.nome);
+                    dados.labels.push(`${registro.nome}`);
 
                     dados.datasets[0].data.push(registro.qtd);
                 }
@@ -75,7 +79,7 @@ function obterDadosGraficoCategoria() {
 
                 //div_aguarde.style.display = 'none';
 
-                plotarGraficoCategoria(dados);
+                plotarGraficoEstabelecimento(dados);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -88,14 +92,14 @@ function obterDadosGraficoCategoria() {
 }
 
 // só altere aqui se souber o que está fazendo!
-function plotarGraficoCategoria(dados) {
+function plotarGraficoEstabelecimento(dados) {
     console.log('iniciando plotagem do gráfico...');
 
-    var ctx = categoria.getContext('2d');
-    window.grafico_linha = Chart.Bar(ctx, {
+    var ctx = estabelecimentos.getContext('2d');
+    window.grafico_linha = Chart.Doughnut(ctx, {
         data: dados,
-        options: configurarGraficoCategoria()
+        options: configurarGraficoEstabelecimento()
     });
 }
 
-atualizarGraficoCategoria();
+atualizarGraficoEstabelecimento();
