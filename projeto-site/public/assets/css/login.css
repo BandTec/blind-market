@@ -63,6 +63,6 @@
 
 body {
 background-image: url("../img/fundo_login.jpg");
-background-size: cover;
+background-size: auto;
 background-repeat: no-repeat;
 }

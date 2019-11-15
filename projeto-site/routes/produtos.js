@@ -23,5 +23,24 @@ router.post('/cadastrar', function (req, res, next) {
     });
 });
 
+router.get('/todosprodutos/:login', function (req, res, next) {
+	console.log(`Recuperando a quantidade por categoria`);
+
+	let login = req.params.login;
+	const instrucaoSql = `SELECT idproduto id, produto.nome, categoria.nome categoria, preco, corredor FROM produto
+                            INNER JOIN sensor on idproduto = fkProduto
+                            INNER JOIN estabelecimento on fkEstabelecimento = idEstabelecimento
+                            INNER JOIN categoria on fkCategoria = idcategoria
+                            INNER JOIN empresa on fkEmpresa = idempresa
+                            WHERE login = '${login}'`;
+
+	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
 
 module.exports = router;

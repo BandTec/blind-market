@@ -1,3 +1,46 @@
+verificar_autenticacao();
+
+function atualizarProdutos() {
+    
+    popularTabelaProdutos();
+    setTimeout(atualizarProdutos, 2000);
+}
+
+function popularTabelaProdutos() {
+    
+    fetch(`/produtos/todosprodutos/${login_usuario}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+    
+                var tbody = tableProducts.getElementsByTagName('tbody')[0];
+                tbody.innerHTML = '';
+    
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+    
+                resposta.reverse();
+    
+                for (i = 0; i < resposta.length; i++) {
+                    var registro = resposta[i];
+    
+                    tbody.innerHTML += `<tr>
+                                            <td>${registro.id}</td>
+                                            <td>${registro.nome}</td>
+                                            <td>${registro.categoria}</td>
+                                            <td>R$${Number(registro.preco).toFixed(2)}</td>
+                                            <td>Corredor ${registro.corredor}</td>
+                                        </tr>`;
+                }
+                console.log(JSON.stringify(dados));
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ tabela de produtos: ${error.message}`);
+    });
+}
+
 var ctx = document.getElementById('chart').getContext('2d');
 var chart = new Chart(ctx, {
 
@@ -40,3 +83,5 @@ var chart = new Chart(ctx, {
         }
     }
 });
+
+atualizarProdutos();
