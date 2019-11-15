@@ -59,16 +59,8 @@ function obterDadosGrafico() {
             {
                 yAxisID: 'y-temperatura',
                 label: 'Temperatura',
-                borderColor: window.chartColors.red,
-                backgroundColor: window.chartColors.red,
-                fill: false,
-                data: []
-            },
-            {
-                yAxisID: 'y-umidade',
-                label: 'Umidade',
-                borderColor: window.chartColors.blue,
-                backgroundColor: window.chartColors.blue,
+                borderColor: '#B3344F',
+                backgroundColor: 'rgba(255, 99, 132, 1)',
                 fill: false,
                 data: []
             }
@@ -90,14 +82,13 @@ function obterDadosGrafico() {
                     // dos atributos que vem no JSON 
                     // que gerou na consulta ao banco de dados
 
-                    dados.labels.push(registro.momento);
+                    dados.labels.push(registro.nome);
 
-                    dados.datasets[0].data.push(registro.temperatura);
-                    dados.datasets[1].data.push(registro.umidade);
+                    dados.datasets[0].data.push(registro.qtd);
                 }
                 console.log(JSON.stringify(dados));
 
-                div_aguarde.style.display = 'none';
+                //div_aguarde.style.display = 'none';
 
                 plotarGrafico(dados);
             });
@@ -116,7 +107,7 @@ function plotarGrafico(dados) {
     console.log('iniciando plotagem do gráfico...');
 
     var ctx = categoria.getContext('2d');
-    window.grafico_linha = Chart.Line(ctx, {
+    window.grafico_linha = Chart.Bar(ctx, {
         data: dados,
         options: configurarGrafico()
     });
