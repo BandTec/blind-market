@@ -14,6 +14,14 @@ module.exports = (sequelize, DataTypes) => {
 		endereco: {
 			type: DataTypes.STRING,
 			allowNull: false
+		},
+		cep: {
+			type: DataTypes.CHAR,
+			allowNull: false
+		},
+		fkEmpresa: {
+			type: DataTypes.STRING,
+			allowNull: false
 		}
 	}, {
 		tableName: 'estabelecimento',

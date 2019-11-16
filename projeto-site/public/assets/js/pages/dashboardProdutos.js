@@ -6,8 +6,7 @@ function atualizarProdutos() {
     setTimeout(atualizarProdutos, 2000);
 }
 
-function popularTabelaProdutos() {
-    
+function popularTabelaProdutos() {    
     fetch(`/produtos/todosprodutos/${login_usuario}`, { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (resposta) {

@@ -56,20 +56,21 @@
                         <div class="flex-aligned">
                             <div class="mr1">
                                 <label for="">Sensor</label><br>
-                                <select name="" id="">
-                                    <option value="">Sensor 1</option>
-                                    <option value="">Sensor 2</option>
-                                    <option value="">Sensor 3</option>
-                                    <option value="">Sensor 4</option>
-                                    <option value="">Sensor 5</option>
+                                <select name="produto_sensor" id="">
+                                    <option value="1">Sensor 1</option>
+                                    <option value="2">Sensor 2</option>
+                                    <option value="3">Sensor 3</option>
+                                    <option value="4">Sensor 4</option>
+                                    <option value="5">Sensor 5</option>
                                 </select>
                             </div>
                             <div class="mr1">
                                 <label for="">Categoria</label><br>
-                                <select name="" id="">
-                                    <option value="">Laticínios</option>
-                                    <option value="">Laticínios</option>
-                                    <option value="">Laticínios</option>
+                                <select name="produto_categoria" id="">
+                                    <option value="1">Laticínios</option>
+                                    <option value="2">Padaria</option>
+                                    <option value="3">Carnes</option>
+                                    <option value="4">frutas</option>
                                 </select>
                             </div>
                             <div>
@@ -135,31 +136,31 @@
 
 </html>
 <script>
+    verificar_autenticacao()
+    validar_sessao()
+    popularTabelaProdutos()
+
+
     function cadastrarProduto() {
-        var formCadastroProduto = new URLSearchParams(new FormData(formCadProduto));
+        var CadProduto = new URLSearchParams(new FormData(formCadProduto));
         fetch("/produtos/cadastrar", {
             method: "POST",
-            body: formCadastroProduto
+            body: CadProduto
         }).then(resposta => {
+
             if (resposta.ok) {
+
                 resposta.json().then(json => {
 
-                    /*sessionStorage.produto_nome_meuapp = json.nome;
-                    sessionStorage.produto_preco_meuapp = json.preco;
-                    sessionStorage.produto_fkCategoria_meuapp = json.fkCategoria;
-                    sessionStorage.produto_unidade_meuapp = json.unidade;*/
+                    sessionStorage.nome_produto_meuapp = json.produto_nome;
+                    sessionStorage.sensor_produto_meuapp = json.produto_sensor;
+                    sessionStorage.categoria_produto_meuapp = json.produt_categoria;
+                    sessionStorage.preco_produto_meuapp = json.produto_preco;
+                    sessionStorage.unidade_produto_meuapp = json.produto_unidade;
 
-                    //window.location.href = 'login.html';
+                    window.location.href = './dashboard-produtos.html';
                 });
 
-            } else {
-
-                console.log('Erro ao Cadastrar!');
-
-                response.text().then(texto => {
-                    console.error(texto);
-                    finalizar_aguardar(texto);
-                });
             }
         });
 

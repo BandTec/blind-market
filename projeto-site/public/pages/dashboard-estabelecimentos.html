@@ -39,14 +39,14 @@
     <div class="chartArea">
         <div class="chart">
             <!-- Gráfico dinâmico -->
-            <div class="section-title">Todos os Estabelecimentos - Gráficos</div>
+            <div class="section-title"><span id="estabelecimentoNome"></span> - Gráfico</div>
 
             <!-- Gráfico estático 1 -->
             <div class="global-chart">
-                <canvas id="chart"></canvas>
+                <canvas id="chartEstabelecimento"></canvas>
             </div>
 
-            <div class="section-title mt5">Estebelecimentos</div>
+            <div class="section-title mt5">Estebelecimento</div>
             <div class="mt1 mb5 estabelecimentos">
                 <div class="box-estabelecimentos">
                     <div class="box-img-content">
@@ -56,20 +56,17 @@
                     </div>
 
                     <div class="box-status">
-                        <div class="box-title">Extra</div>
+                        <div class="box-title" id="nomeEstabelecimento"></div>
                         <div class="box-text">
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, tempore!</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, tempore!</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, tempore!</li>
-                            <div class="box-button mt5 ">
+                            <li id="enderecoEstabelecimento"></li>
+                            <li id="cepEstabelecimento"></li>
+                            <!-- <div class="box-button mt5 ">
                                 <button class="button mb5">Detalhes</button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
-
-
 
 
             <div class="section-title mt5">Cadastrar novo Estabelecimento</div>
@@ -96,6 +93,8 @@
 
         </div>
     </div>
+
+
 </body>
 <script src="../assets/js/all.js"></script>
 <script src="../assets/js/chart.js"></script>
@@ -103,3 +102,8 @@
 <script src="../assets/js/pages/dashboardEstabelecimentos.js"></script>
 
 </html>
+
+<script>
+    verificar_autenticacao()
+    validar_sessao()
+</script>
