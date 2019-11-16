@@ -88,7 +88,7 @@
                             <button class="button">Cadastrar</button>
                         </div>
 
-                        <div class="mensagem mt3">Error ao cadastrar</div>
+                        <div id="error_mensagem" class="mensagem mt3">Error ao cadastrar</div>
                     </form>
                 </div>
             </div>
@@ -161,6 +161,8 @@
                     window.location.href = './dashboard-produtos.html';
                 });
 
+            } else {
+                error_mensagem.style.display = "block"
             }
         });
 

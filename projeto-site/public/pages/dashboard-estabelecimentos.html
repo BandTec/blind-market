@@ -39,7 +39,8 @@
     <div class="chartArea">
         <div class="chart">
             <!-- Gráfico dinâmico -->
-            <div class="section-title"><span id="estabelecimentoNome"></span> - Gráfico</div>
+            <div class="section-title"><span id="estabelecimentoNome"></span>{DEVE VIR O NOME DO ESTABELECIMENTO} -
+                Gráfico</div>
 
             <!-- Gráfico estático 1 -->
             <div class="global-chart">
@@ -72,23 +73,28 @@
             <div class="section-title mt5">Cadastrar novo Estabelecimento</div>
 
             <div class="form-container mt2 mb5">
-                <div class="form-produto">
-                    <label for="">Nome do Estabelecimento</label><br>
-                    <input class="input fill-width" type="text">
+                <form onsubmit="return cadastrarEstabelecimento()" id="formEstabelecimento">
+                    <div class="form-produto">
+                        <label for="">Nome do Estabelecimento</label><br>
+                        <input class="input fill-width" type="text" name="nomeEstabelecimento">
 
-                    <label for="">Endereço</label><br>
-                    <input class="input fill-width" type="text">
+                        <label for="">Endereço</label><br>
+                        <input class="input fill-width" type="text" name="enderecoEstabelecimento">
 
-                    <label for="">CEP</label><br>
-                    <input class="input fill-width" type="text">
+                        <label for="">CEP</label><br>
+                        <input class="input fill-width" type="text" name="cepEstabelecimento">
 
-                    <div class="flex-aligned">
-                        <div class="fill-width"></div>
-                        <button class="button">Cadastrar</button>
+                        <label for="">Nome da Empresa</label><br>
+                        <input disabled class="input fill-width" type="text" value="" id="nomeEmpresa" name="nomeEmpresa">
+
+                        <div class="flex-aligned">
+                            <div class="fill-width"></div>
+                            <button class="button">Cadastrar</button>
+                        </div>
+
+                        <div id="error_mensagem" class="mensagem mt3">Error ao cadastrar</div>
                     </div>
-
-                    <div class="mensagem mt3">Error ao cadastrar</div>
-                </div>
+                </form>
             </div>
 
         </div>
@@ -106,4 +112,30 @@
 <script>
     verificar_autenticacao()
     validar_sessao()
+
+
+    function cadastrarEstabelecimento() {
+        var cadEstabelecimento = new URLSearchParams(new FormData(formEstabelecimento));
+        fetch("/estabelecimentos/cadastrar", {
+            method: "POST",
+            body: cadEstabelecimento
+        }).then(resposta => {
+
+            if (resposta.ok) {
+                resposta.json().then(json => {
+                    sessionStorage.nome_estabelecimento_meuapp = json.nomeEstabelecimento;
+                    sessionStorage.endereco_estabelecimento_meuapp = json.enderecoEstabelecimento;
+                    sessionStorage.cep_estabelecimento_meuapp = json.cepEstabelecimento;
+                    sessionStorage.nome_empresa_meuapp = json.nomeEmpresa;
+
+                    window.location.href = './dashboard-estabelecimentos.html';
+                });
+
+            } else {
+                error_mensagem.style.display = "block"
+            }
+        });
+
+        return false;
+    }
 </script>

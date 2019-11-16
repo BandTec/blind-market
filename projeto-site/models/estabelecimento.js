@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.CHAR,
 			allowNull: false
 		},
-		fkEmpresa: {
+		fkempresa: {
 			type: DataTypes.STRING,
 			allowNull: false
 		}

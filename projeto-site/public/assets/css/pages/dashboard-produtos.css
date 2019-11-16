@@ -62,7 +62,7 @@ body {
   background-color: rgba(63, 63, 63);
 }
 
-#check:checked ~ .menu-lateral {
+#check:checked~.menu-lateral {
   transform: translateX(280px);
 }
 
@@ -123,7 +123,7 @@ body {
     margin-top: 5px;
   }
 
-  #check:checked ~ .menu-lateral {
+  #check:checked~.menu-lateral {
     transform: translateX(425px);
   }
 
@@ -164,7 +164,7 @@ body {
     margin-top: 5px;
   }
 
-  #check:checked ~ .menu-lateral {
+  #check:checked~.menu-lateral {
     transform: translateX(240px);
   }
 
@@ -191,6 +191,7 @@ body {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+
   /* ChartArea */
   .chartArea {
     float: none;
@@ -215,7 +216,7 @@ body {
     left: -435px;
   }
 
-  #check:checked ~ .menu-lateral {
+  #check:checked~.menu-lateral {
     transform: translateX(430px);
   }
 
@@ -243,7 +244,7 @@ body {
     left: -235px;
   }
 
-  #check:checked ~ .menu-lateral {
+  #check:checked~.menu-lateral {
     transform: translateX(230px);
   }
 
@@ -340,7 +341,7 @@ body {
   justify-content: space-between;
 }
 
-.form-produto > * {
+.form-produto>* {
   margin-bottom: 12px;
 }
 
@@ -384,6 +385,10 @@ select {
 
 .mensagem {
   color: #ff5b5b;
+}
+
+#error_mensagem {
+  display: none;
 }
 
 /* Listagem dos produtos */

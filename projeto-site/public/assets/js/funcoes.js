@@ -12,7 +12,7 @@ function verificar_autenticacao() {
     if (login_usuario == undefined) {
         redirecionar_login();
     } else {
-        // b_user.innerHTML = login_usuario;
+        nomeEmpresa.value = login_usuario;
         validar_sessao();
     }
 

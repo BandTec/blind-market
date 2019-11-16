@@ -9,9 +9,10 @@ router.post('/cadastrar', function (req, res, next) {
     console.log('Criando um Estabelecimento');
 
     Estabelecimento.create({
-        nome: req.body.cadastro_nome,
-        endereco: req.body.cadastro_login,
-        cep: req.body.cadastro_email
+        nome: req.body.nomeEstabelecimento,
+        endereco: req.body.enderecoEstabelecimento,
+        cep: req.body.cepEstabelecimento,
+        fkempresa: req.body.nomeEmpresa
     }).then(resultado => {
         console.log(`Registro criado: ${resultado}`)
         res.send(resultado);
