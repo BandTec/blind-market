@@ -12,7 +12,6 @@ function verificar_autenticacao() {
     if (login_usuario == undefined) {
         redirecionar_login();
     } else {
-        nomeEmpresa.value = login_usuario;
         validar_sessao();
     }
 

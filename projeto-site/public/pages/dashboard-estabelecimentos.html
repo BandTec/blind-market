@@ -85,7 +85,8 @@
                         <input class="input fill-width" type="text" name="cepEstabelecimento">
 
                         <label for="">Nome da Empresa</label><br>
-                        <input disabled class="input fill-width" type="text" value="" id="nomeEmpresa" name="nomeEmpresa">
+                        <input disabled class="input fill-width" type="text" value="" id="nomeEmpresa"
+                            name="nomeEmpresa">
 
                         <div class="flex-aligned">
                             <div class="fill-width"></div>
@@ -112,6 +113,7 @@
 <script>
     verificar_autenticacao()
     validar_sessao()
+    nomeEmpresa.value = nome_usuario;
 
 
     function cadastrarEstabelecimento() {
