@@ -26,10 +26,10 @@
                         <li>Principal<i class="iconeMenu fas fa-home"></i></li>
                     </a>
                     <a href="./dashboard-estabelecimentos.html">
-                        <li>Estabelecimentos<i class="iconeMenu fas fa-cash-register"></i></li>
+                        <li class="active">Estabelecimentos<i class="iconeMenu fas fa-cash-register"></i></li>
                     </a>
                     <a href="./dashboard-produtos.html">
-                        <li class="active">Produtos<i class="iconeMenu fas fa-carrot"></i></li>
+                        <li>Produtos<i class="iconeMenu fas fa-carrot"></i></li>
                     </a>
                 </ul>
             </nav>
@@ -38,7 +38,37 @@
 
     <div class="chartArea">
         <div class="chart">
-            <div class="section-title">Todos os Estabelecimentos</div>
+            <!-- Gráfico dinâmico -->
+            <div class="section-title">Todos os Estabelecimentos - Gráficos</div>
+
+            <!-- Gráfico estático 1 -->
+            <div class="global-chart">
+                <canvas id="chart"></canvas>
+            </div>
+
+            <div class="section-title mt5">Estebelecimentos</div>
+            <div class="mt1 mb5 estabelecimentos">
+                <div class="box-estabelecimentos">
+                    <div class="box-img-content">
+                        <div class="box-image">
+                            <img src="../assets/img/estabelecimentos/extra-id-01.png" alt="logo estabelecimento">
+                        </div>
+                    </div>
+
+                    <div class="box-status">
+                        <div class="box-title">Extra</div>
+                        <div class="box-text">
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, tempore!</li>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, tempore!</li>
+                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, tempore!</li>
+                            <div class="box-button mt5 ">
+                                <button class="button mb5">Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
 
 
@@ -68,6 +98,8 @@
     </div>
 </body>
 <script src="../assets/js/all.js"></script>
+<script src="../assets/js/chart.js"></script>
 <script src="../assets/js/funcoes.js"></script>
+<script src="../assets/js/pages/dashboardEstabelecimentos.js"></script>
 
 </html>
