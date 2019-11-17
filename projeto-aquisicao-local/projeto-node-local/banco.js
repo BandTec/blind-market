@@ -4,8 +4,8 @@ var configuracoes = {
     producao: {
         server: "srvblindmarket.database.windows.net",
         user: "userblindmarket",
-        password: "b@ndtec2018",
-        database: "#Gfgrupo9",
+        password: "#Gfgrupo9",
+        database: "bdblindmarket",
         options: {
             encrypt: true
         },
@@ -26,7 +26,7 @@ var configuracoes = {
         }
     }
 }
- 
+
 var sql = require('mssql');
 sql.on('error', err => {
     console.error(`Erro de Conexão: ${err}`);
@@ -35,9 +35,9 @@ sql.on('error', err => {
 var perfil = desenvolvimento ? 'desenvolvimento' : 'producao';
 
 function conectar() {
-  sql.close();
-  return sql.connect(configuracoes[perfil])
-} 
+    sql.close();
+    return sql.connect(configuracoes[perfil])
+}
 
 module.exports = {
     conectar: conectar,

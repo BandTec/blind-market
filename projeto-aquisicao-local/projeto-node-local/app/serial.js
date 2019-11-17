@@ -47,11 +47,11 @@ class ArduinoDataRead {
                 var sensor = data.split(':')[0];
                 var tempo = Number(data.split(':')[1]);
 
-                if(tempo == 1){
+                if (tempo == 1) {
                     player.play({
                         path: `./assets/audios/produto_detalhado_${sensor}.wav`
                     })
-                }else if(tempo == 2){
+                } else if (tempo == 2) {
                     player.play({
                         path: `./assets/audios/produto_${sensor}.wav`
                     })
@@ -60,7 +60,6 @@ class ArduinoDataRead {
 
         }).catch(error => console.log(error));
     }
-
 }
 
 const serial = new ArduinoDataRead();
