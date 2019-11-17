@@ -7,7 +7,7 @@
 */
 
 // se usar 'true' aqui, os dados serão gerados aleatórios e não recebidos da placa arduíno
-const gerar_dados_aleatorios = true;
+const gerar_dados_aleatorios = false;
 
 // leitura dos dados do Arduino
 var porta_serial = require('serialport');
@@ -26,7 +26,7 @@ function iniciar_escuta() {
         // este bloco trata a verificação de Arduino conectado (inicio)
 
         var entradas_seriais_arduino = entradas_seriais.filter(serialDevice => {
-            return serialDevice.vendorId == 2341 && serialDevice.productId == 43;
+            return serialDevice.vendorId == 2341 && serialDevice.productId == 42;
         });
 
         if (entradas_seriais_arduino.length != 1) {
@@ -47,7 +47,7 @@ function iniciar_escuta() {
         // o baudRate deve ser igual ao valor em
         // Serial.begin(xxx) do Arduino (ex: 9600 ou 115200)
         var arduino = new porta_serial(arduinoCom, {
-            baudRate: 115200
+            baudRate: 9600
         });
 
         var parser = new leitura_recebida();
@@ -63,7 +63,7 @@ function iniciar_escuta() {
                 // O Arduino deve enviar a temperatura e umidade de uma vez,
                 // separadas por ":" (temperatura : umidade)
                 var leitura = dados.split(':');
-                registrar_leitura(Number(leitura[0]), Number(leitura[1]));
+                registrar_leitura(Number(leitura[0]));
             } catch (e) {
                 throw new Error(`Erro ao tratar os dados recebidos do Arduino: ${e}`);
             }
@@ -76,26 +76,24 @@ function iniciar_escuta() {
 
 // função que recebe valores de temperatura e umidade
 // e faz um insert no banco de dados
-function registrar_leitura(fkproduto, fksensor, datahora) {
+function registrar_leitura(fksensor) {
 
     if (efetuando_insert) {
         console.log('Execução em curso. Aguardando 7s...');
         setTimeout(() => {
-            registrar_leitura(fkproduto, fksensor, datahora);
+            registrar_leitura(fksensor);
         }, 7000);
         return;
     }
 
     efetuando_insert = true;
 
-    console.log(`produto: ${fkproduto}`);
     console.log(`sensor: ${fksensor}`);
-    console.log(`data_hora: ${datahora}`);
 
     banco.conectar().then(() => {
 
         return banco.sql.query(`INSERT into registro (fkproduto, fksensor, datahora)
-                                values (${fkproduto}, ${fksensor}, CONVERT(Datetime, '${agora()}', 120));`);
+                                values ((SELECT fkProduto from sensor where idsensor = ${fksensor}), ${fksensor}, CONVERT(Datetime, '${agora()}', 120));`);
 
     }).catch(erro => {
 
@@ -124,7 +122,7 @@ if (gerar_dados_aleatorios) {
     // dados aleatórios
     setInterval(function () {
         console.log('Gerando valores aleatórios!');
-        registrar_leitura(Math.round(Math.random() * (7 - 1) + 1), Math.round(Math.random() * (4 - 1) + 1), agora())
+        registrar_leitura(Math.round(Math.random() * (4 - 1) + 1), agora())
     }, 5000);
 } else {
     // iniciando a "escuta" de dispositivos Arduino.

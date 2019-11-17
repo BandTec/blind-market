@@ -9,6 +9,7 @@
     "events": "~3.0.0",
     "mssql": "~5.1.0",
     "nodemon": "^1.19.4",
-    "serialport": "~7.1.5"
+    "serialport": "~7.1.5",
+    "node-wav-player": "~0.1.0"
   }
 }
