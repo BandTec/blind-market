@@ -124,8 +124,38 @@
                     </div>
                 </div>
             </div>
-
-
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="chart">
+                <div class="modal-header">
+                    <div class="modal-header-title-bar">
+                        <div class="modal-header-title">
+                            <h2>Nome do produto</h2>
+                            <h2 class="percent">+4%</h2>
+                        </div>
+                        <button onclick="fecharProduto()">Fechar</button>
+                    </div><br>
+                    <div>
+                        Preço: <b>R$4,30</b><br>
+                        Categoria: <b>Frutas</b><br>
+                        Localização: <b>Corredor 1</b>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="secondary-charts">
+                        <div class="chart-produto">
+                            <h2>Estatísticas semanais</h2>
+                            <canvas id="chartProduto"></canvas>
+                        </div>
+                        <div class="chart-estabelecimento">
+                            <h2>Estabelecimentos</h2>
+                            <canvas id="estabelecimentos"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
@@ -133,6 +163,7 @@
 <script src="../assets/js/chart.js"></script>
 <script src="../assets/js/funcoes.js"></script>
 <script src="../assets/js/pages/dashboardProdutos.js"></script>
+<script src="../assets/js/pages/detalhesProduto.js"></script>
 
 </html>
 <script>
