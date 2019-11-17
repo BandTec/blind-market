@@ -114,9 +114,6 @@ router.get('/dashboard/estabelecimentos/:login', function (req, res, next) {
 		});
 });
 
-
-
-
 router.get('/categorias/:login', function (req, res, next) {
 	console.log(`Recuperando a quantidade por categoria`);
 
@@ -185,6 +182,29 @@ router.get('/estatisticas/estabelecimento/:estabelecimento', function (req, res,
 							WHERE idEstabelecimento = ${estabelecimento}
 							GROUP BY idestabelecimento, nome, DATEPART(Year, datahora), DATEPART(Month, datahora), DATEPART(Week, datahora)
 						) as quantidade group by idestabelecimento, nome`;
+
+	sequelize.query(instrucaoSql, {
+			type: sequelize.QueryTypes.SELECT
+		})
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
+router.get('/qtdprodutos/:login', function (req, res, next) {
+	console.log(`Recuperando a quantidade por categoria`);
+
+	let login = req.params.login;
+	const instrucaoSql = `SELECT TOP 10 idproduto, produto.nome, count(idregistro) qtd FROM registro
+							INNER JOIN produto on fkProduto = idproduto
+							INNER JOIN sensor on fkSensor = idsensor
+							INNER JOIN estabelecimento on fkEstabelecimento = idEstabelecimento
+							INNER JOIN empresa on fkEstabelecimento = idempresa
+							WHERE (datahora > DATEADD(DAY, -(DATEPART(WEEKDAY, '2019-11-16') - 1), '2019-11-16')) and login = '${login}'
+							GROUP BY idproduto, produto.nome`;
 
 	sequelize.query(instrucaoSql, {
 			type: sequelize.QueryTypes.SELECT
