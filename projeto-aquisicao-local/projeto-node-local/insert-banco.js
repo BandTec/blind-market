@@ -27,7 +27,7 @@ function iniciar_escuta() {
         // este bloco trata a verificação de Arduino conectado (inicio)
 
         var entradas_seriais_arduino = entradas_seriais.filter(serialDevice => {
-            return serialDevice.vendorId == 2341 && serialDevice.productId == 42;
+            return serialDevice.vendorId == 2341 && serialDevice.productId == 43;
         });
 
         if (entradas_seriais_arduino.length != 1) {
