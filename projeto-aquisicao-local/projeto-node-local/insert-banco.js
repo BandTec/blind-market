@@ -17,7 +17,8 @@ var banco = require(`./banco`);
 // prevenir problemas com muitos recebimentos de dados do Arduino
 require('events').EventEmitter.defaultMaxListeners = 15;
 
-
+// reproduz os arquivos de áudio
+const player = require('node-wav-player');
 
 function iniciar_escuta() {
 
@@ -63,6 +64,17 @@ function iniciar_escuta() {
                 // O Arduino deve enviar a temperatura e umidade de uma vez,
                 // separadas por ":" (temperatura : umidade)
                 var leitura = dados.split(':');
+
+                if (leitura[1] == 1) {
+                    player.play({
+                        path: `./assets/audios/produto_detalhado_${leitura[0]}.wav`
+                    });
+                } else if (leitura[1] == 2) {
+                    player.play({
+                        path: `./assets/audios/produto_${leitura[0]}.wav`
+                    });
+                }
+
                 registrar_leitura(Number(leitura[0]));
             } catch (e) {
                 throw new Error(`Erro ao tratar os dados recebidos do Arduino: ${e}`);
