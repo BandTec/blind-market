@@ -9,15 +9,15 @@ a {
 }
 
 a:hover {
-    color: #CC1C1C;
+    color: rgb(255, 91, 91);
 }
 
 body {
-    background-image: url(../../img/market-search.jpg);
-    background-position: center;
-    background-size: cover;
+    background: linear-gradient(rgba(255, 91, 91, .2),
+    rgba(248, 41, 41, 1)), url(../../img/product-search.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;    
     background-repeat: no-repeat;
-    min-width: 100vw;
     min-height: 100vh;
 
     font-family: 'Montserrat', sans-serif;
@@ -75,15 +75,13 @@ nav ul a li:hover {
     color: white;
 }
 
-
-
 .title-serach {
-    font-size: 22px;
+    font-size: 1.3rem;
     font-weight: bold;
     color: white;
-    width: 60vw;
-    margin: 8% 50%;
-    transform: translate(-50%, 40%);
+    width: 80vw;
+    margin: 10% 20%;
+    transform: translate(-40%, 40%);
 }
 
 .section-search {
@@ -101,10 +99,10 @@ nav ul a li:hover {
 .section-search .lupa {
     width: 30px;
     height: 30px;
-    background-color: #FF5B5B;
+    background-color: rgb(248, 76, 76);
     margin-top: 0px;
     position: absolute;
-    padding: 0.6em;
+    padding: 0.7em;
     transition: all .3s ease-in-out;
     cursor: pointer;
 }
@@ -114,19 +112,35 @@ nav ul a li:hover {
 }
 
 /* Resultados da pesquisa */
+.fechar{
+    cursor: pointer; 
+    background-color: rgb(197, 22, 22);
+    transition: all .09s ease-in;
+}
+
+.fechar:hover{
+    background-color: rgb(236, 49, 49);
+    color: rgb(126, 2, 2);
+}
+
 
 .results-search {
     display: none;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     position: absolute;
-    background-color: rgba(255, 91, 91, .95);
-    font-size: 1.5em;
+    font-size: 1.3em;
+
+    background: linear-gradient(rgba(255, 91, 91, .2),
+    rgba(248, 41, 41, 1)), url(../../img/product-search.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .results-search table {
-    margin: 10% auto;
-    width: 80vw;
+    margin: 5% auto;
+    width: 90vw;
     border-collapse: collapse;
     border-radius: 5px 5px 0 0;
     overflow: hidden;
@@ -138,7 +152,14 @@ nav ul a li:hover {
     color: white;
     text-align: left;
     font-weight: bold;
+    font-size: 1.2rem;
+    text-align: center;
 }
+
+.results-search thead td {
+    font-size: 1rem;
+}
+
 
 .results-search th,
 .results-search td {
@@ -151,8 +172,111 @@ nav ul a li:hover {
 
 .results-search tbody td {
     border-bottom: 1px solid #ddd;
+    border-right: 3px solid #ddd;
+}
+
+.results-search thead tr th{
+    border-right: 1px solid #CC1C1C;
+}
+
+.results-search thead tr:last-of-type {
+    border-bottom: 5px solid #CC1C1C;
+}
+
+.results-search thead tr th:last-of-type {
+    border-right: none;
 }
 
 .results-search tbody tr:last-of-type {
     border-bottom: 5px solid #CC1C1C;
 }
+
+.results-search tbody td:first-of-type {
+    border-right: none;
+}
+
+
+
+/* Media Queries */
+
+@media only screen and (max-width: 600px) {
+    .logo img {
+        max-width: 130px;
+        padding: 15px;
+        margin-left: 10px;
+    }
+
+    nav ul a li {
+        display: inline-block;
+        margin-left: 0px;
+        color: #FF5B5B;
+        font-weight: bold;
+        font-size: .9rem;
+        text-transform: uppercase;
+    }
+} 
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .logo img {
+        max-width: 130px;
+        padding: 15px;
+        margin-left: 10px;
+    }
+    nav ul a li {
+        display: inline-block;
+        margin-left: 0px;
+        color: #FF5B5B;
+        font-weight: bold;
+        font-size: .9rem;
+        text-transform: uppercase;
+    }
+} 
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .results-search {
+        min-height: 95vh;
+    }
+
+    .results-search table {
+        margin: 2% auto;
+        width: 100vw;
+    }
+
+    .title-serach {
+        font-size: .9rem;
+        margin: 10% 53%;
+    }
+
+    .results-search thead tr {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .results-search tbody td {
+        font-size: 1rem;
+    }
+} 
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+    .results-search table {
+        margin: 2% auto;
+        width: 95vw;
+    }
+
+    .title-serach {
+        font-size: .9rem;
+        margin: 14% 53%;
+    }
+
+    .results-search thead tr {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .results-search tbody td {
+        font-size: 1rem;
+    }
+} 

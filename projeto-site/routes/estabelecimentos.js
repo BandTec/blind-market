@@ -1,13 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
-var Produto = require('../models').Estabelecimento;
+var Estabelecimento = require('../models').Estabelecimento;
 
 
 /* Cadastrar estabelecimento */
 router.post('/cadastrar', function (req, res, next) {
     console.log('Criando um Estabelecimento');
-
     Estabelecimento.create({
         nome: req.body.nomeEstabelecimento,
         endereco: req.body.enderecoEstabelecimento,

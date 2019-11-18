@@ -14,9 +14,11 @@ function tabelaSearchMarket(cep) {
                     var registro = resposta[i];
     
                     tbody.innerHTML += `<tr">
+                                            <td></td>
                                             <td>${registro.nome}</td>
                                             <td>${registro.endereco}</td>
                                             <td><a target="_blank" href='https://www.google.com/maps/search/${registro.nome.split(' ').join('+')}+${registro.endereco.split(' ').join('+')}'>Clique Aqui</a></td>
+
                                         </tr>`;
                 }
             });

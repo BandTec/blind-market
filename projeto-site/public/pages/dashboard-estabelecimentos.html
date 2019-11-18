@@ -84,7 +84,7 @@
                         <label for="">CEP</label><br>
                         <input class="input fill-width" type="text" name="cepEstabelecimento">
 
-                        <label for="">Nome da Empresa</label><br>
+                        <label for="">ID da Empresa</label><br>
                         <input disabled class="input fill-width" type="text" value="" id="nomeEmpresa"
                             name="nomeEmpresa">
 
@@ -113,7 +113,8 @@
 <script>
     verificar_autenticacao()
     validar_sessao()
-    nomeEmpresa.value = nome_usuario;
+    nomeEmpresa.value = sessionStorage.id_usuario_meuapp;
+
 
 
     function cadastrarEstabelecimento() {
@@ -125,10 +126,10 @@
 
             if (resposta.ok) {
                 resposta.json().then(json => {
-                    sessionStorage.nome_estabelecimento_meuapp = json.nomeEstabelecimento;
+                    /*sessionStorage.nome_estabelecimento_meuapp = json.nomeEstabelecimento;
                     sessionStorage.endereco_estabelecimento_meuapp = json.enderecoEstabelecimento;
                     sessionStorage.cep_estabelecimento_meuapp = json.cepEstabelecimento;
-                    sessionStorage.nome_empresa_meuapp = json.nomeEmpresa;
+                    sessionStorage.id_e_meuapp = json.nomeEmpresa;*/
 
                     window.location.href = './dashboard-estabelecimentos.html';
                 });

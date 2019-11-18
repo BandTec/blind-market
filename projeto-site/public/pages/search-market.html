@@ -48,6 +48,7 @@
             <table id="estabelecimentos">
                 <thead>
                     <tr>
+                        <th onclick="fechar()" class="fechar">X</th>
                         <th>Nome</th>
                         <th>Endereço</th>
                         <th>Ver no Maps</th>
@@ -85,4 +86,9 @@
         search_results.style.display = 'block'
         tabelaSearchMarket(form_cep.cep.value)
     }
+
+    function fechar() { 
+        search.style.display = 'block'
+        search_results.style.display = 'none'
+     }
 </script>
