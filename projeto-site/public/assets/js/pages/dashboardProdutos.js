@@ -2,8 +2,7 @@ var exibiu_grafico = false;
 
 verificar_autenticacao();
 
-function atualizarProdutos() {
-    
+function atualizarProdutos() {    
     popularTabelaProdutos();
     setTimeout(atualizarProdutos, 2000);
 }

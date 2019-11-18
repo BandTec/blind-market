@@ -22,4 +22,22 @@ router.post('/cadastrar', function (req, res, next) {
     });
 });
 
+
+router.get('/buscar/:cep', function (req, res, next) {
+	console.log(`Buscando estabelecimentos`);
+
+	let cep = req.params.cep;
+	const instrucaoSql = `select * from estabelecimento where (CONVERT(int, substring(cep, 0, 6))) - ${cep} between -200 and 200`;
+
+	sequelize.query(instrucaoSql, {
+			type: sequelize.QueryTypes.SELECT
+		})
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
 module.exports = router;

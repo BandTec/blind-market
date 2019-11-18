@@ -37,37 +37,34 @@
             </div>
 
             <div class="section-search">
-                <input type="search" id="search-input" placeholder="Digite seu CEP">
-                <img src="../assets/img/lupa.png" class="lupa" id="pesquisa" onclick="procurar()">
+                <form onsubmit="procurar(event)" id="form_cep">
+                    <input type="search" id="search-input" placeholder="Digite seu CEP" name="cep">
+                    <input type="image" src="../assets/img/lupa.png" class="lupa">
+                </form>
             </div>
         </div>
 
         <div class="results-search" id="search_results">
-            <table>
+            <table id="estabelecimentos">
                 <thead>
                     <tr>
                         <th>Nome</th>
                         <th>Endereço</th>
-                        <th>Horário de Atendimento</th>
                         <th>Ver no Maps</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <!-- Modelo  
+                        
+                        <tr>
                         <td>Assai Atacadista</td>
                         <td>Rua 123</td>
                         <td>08:00 - 23:00/ SEG - Dom </td>
                         <td><a href="https://goo.gl/maps/ZguALFs6Vo1HLHNG8">Clique Aqui</a>
                         </td>
-                    </tr>
+                    </tr> -->
 
-                    <tr>
-                        <td>Extra</td>
-                        <td>Rua 345</td>
-                        <td>08:00 - 23:00/ SEG - Dom </td>
-                        <td><a href="https://goo.gl/maps/NWAWhz4hYgU1R7vRA">Clique Aqui</a>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
@@ -76,9 +73,16 @@
 
 </html>
 
+<script src="../assets/js/pages/searchMarket.js"></script>
+
 <script>
-    function procurar() {
+    
+
+    function procurar(event) {
+        event.preventDefault()
+
         search.style.display = 'none'
         search_results.style.display = 'block'
+        tabelaSearchMarket(form_cep.cep.value)
     }
 </script>
