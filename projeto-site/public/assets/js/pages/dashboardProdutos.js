@@ -147,4 +147,31 @@ function load() {
     atualizarProdutos();
 }
 
+fetch(`/leituras/combobox/categorias`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (resposta) {
+
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+            resposta.reverse();
+
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+            
+                // aqui, após 'registro.' use os nomes 
+                // dos atributos que vem no JSON 
+                // que gerou na consulta ao banco de dados
+
+                cmbCategoria.innerHTML += `<option value="${registro.id}">${registro.nome}</option>`;
+            }
+            console.log(JSON.stringify(dados));
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+})
+.catch(function (error) {
+    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+});
+
 window.onload = load();

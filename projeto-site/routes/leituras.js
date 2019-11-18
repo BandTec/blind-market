@@ -216,4 +216,20 @@ router.get('/qtdprodutos/:login', function (req, res, next) {
 		});
 });
 
+router.get('/combobox/categorias', function (req, res, next) {
+	console.log(`Recuperando a quantidade por categoria`);
+
+	const instrucaoSql = `select idcategoria id, nome from categoria`;
+
+	sequelize.query(instrucaoSql, {
+			type: sequelize.QueryTypes.SELECT
+		})
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
 module.exports = router;
