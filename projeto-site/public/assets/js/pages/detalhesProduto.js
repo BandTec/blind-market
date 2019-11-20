@@ -5,6 +5,32 @@ function mostrarProduto(e) {
     
     modal.style.display = 'block';
 
+    var id = e.getElementsByClassName('idproduto')[0].innerHTML;
+
+    fetch(`/produtos/produto/${login_usuario}/${id}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+    
+                var tbody = tableProducts.getElementsByTagName('tbody')[0];
+                tbody.innerHTML = '';
+    
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+    
+                var registro = resposta[0];
+    
+                modal_nome_produto.innerHTML = registro.nome;
+                modal_preco.innerHTML = `R$${Number(registro.preco).toFixed(2)}`;
+                modal_categoria.innerHTML = registro.categoria;
+                modal_localizacao.innerHTML = registro.corredor == null ? 'Não disponível' : `Corredor ${registro.corredor}`;
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ tabela de produtos: ${error.message}`);
+    });
+
     var ctx = document.getElementById('chartProduto').getContext('2d');
     var produto = new Chart(ctx, {
         type: 'line',

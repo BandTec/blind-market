@@ -132,25 +132,18 @@
                                 <!-- Modelo de sensor
                                     <tr>
                                         <td>001</td>
-                                        <td>Maçã Fuji</td>
-                                        <td>Frutas</td>
-                                        <td>R$ 6,90</td>
+                                        <td>Sensor 1</td>
+                                        <td>
+                                            <select name="" id="">
+                                                <option value="">Maça</option>
+                                                <option value="">Banana</option>
+                                                <option value="">Caramelo</option>
+                                            </select>
+                                        </td>
+                                        <td>Extra - Liberdade II</td>
                                         <td>Corredor 7</td>
                                     </tr>
                                 -->
-                                <tr>
-                                    <td>001</td>
-                                    <td>Sensor 1</td>
-                                    <td>
-                                        <select name="" id="">
-                                            <option value="">Maça</option>
-                                            <option value="">Banana</option>
-                                            <option value="">Caramelo</option>
-                                        </select>
-                                    </td>
-                                    <td>Extra - Liberdade II</td>
-                                    <td>Corredor 7</td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -164,15 +157,14 @@
                 <div class="modal-header">
                     <div class="modal-header-title-bar">
                         <div class="modal-header-title">
-                            <h2>Nome do produto</h2>
-                            <h2 class="percent">+4%</h2>
+                            <h2 id="modal_nome_produto">Nome do produto</h2>
                         </div>
                         <button onclick="fecharProduto()">Fechar</button>
                     </div><br>
                     <div>
-                        Preço: <b>R$4,30</b><br>
-                        Categoria: <b>Frutas</b><br>
-                        Localização: <b>Corredor 1</b>
+                        Preço: <b id="modal_preco">R$4,30</b><br>
+                        Categoria: <b id="modal_categoria">Frutas</b><br>
+                        Localização: <b id="modal_localizacao">Corredor 1</b>
                     </div>
                 </div>
                 <div class="modal-body">

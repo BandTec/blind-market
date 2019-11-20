@@ -45,4 +45,28 @@ router.get('/todosprodutos/:login', function (req, res, next) {
         });
 });
 
+router.get('/produto/:login/:id', function (req, res, next) {
+    console.log(`Recuperando a quantidade por categoria`);
+
+    let login = req.params.login;
+    let id = req.params.id;
+
+    const instrucaoSql = `select idproduto id, produto.nome, preco, categoria.nome categoria, corredor from produto 
+                            inner join categoria on fkCategoria = idcategoria
+                            left join sensor on fkProduto = idproduto
+                            left join estabelecimento on fkEstabelecimento = idestabelecimento
+                            left join empresa on fkEmpresa = idempresa
+                            where idproduto = ${id} and (login = '${login}' or login is null)`;
+
+    sequelize.query(instrucaoSql, {
+            type: sequelize.QueryTypes.SELECT
+        })
+        .then(resultado => {
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
+});
+
 module.exports = router;

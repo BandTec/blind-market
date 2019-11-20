@@ -31,7 +31,7 @@ function popularTabelaProdutos() {
                     var registro = resposta[i];
     
                     tbody.innerHTML += `<tr onclick="mostrarProduto(this)">
-                                            <td>${registro.id}</td>
+                                            <td class="idproduto">${registro.id}</td>
                                             <td>${registro.nome}</td>
                                             <td>${registro.categoria}</td>
                                             <td>R$${Number(registro.preco).toFixed(2)}</td>
