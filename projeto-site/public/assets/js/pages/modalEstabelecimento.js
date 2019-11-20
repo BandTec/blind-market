@@ -2,7 +2,6 @@ function abrirEstabelecimento(param) {
     fetch(`/leituras/dashboard/estabelecimentos/modal/${param}`, {
             cache: 'no-store'
         }).then(function (response) {
-            modalEstabelecimento.style.display = "block"
             if (response.ok) {
                 response.json().then(function (resposta) {
 

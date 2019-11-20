@@ -130,10 +130,15 @@
     function getUrlParameter(p) {
         var params = window.location.search
         console.log(`Parametro normal ${params}`)
-
         var valor = params.split('=')[1]
-        console.log(`Parametro editado ${valor}`)
-        abrirEstabelecimento(valor)
+
+        if (params.split('=')[0] == "?id") {
+            abrirEstabelecimento(valor)
+            modalEstabelecimento.style.display = "block"
+        } else {
+            modalEstabelecimento.style.display = "none"
+
+        }
     }
 
     window.load = getUrlParameter();
