@@ -216,10 +216,46 @@ router.get('/qtdprodutos/:login', function (req, res, next) {
 		});
 });
 
+router.get('/todossensores/:login', function (req, res, next) {
+    console.log(`Recuperando a quantidade por categoria`);
+
+    let login = req.params.login;
+    const instrucaoSql = `SELECT idsensor id, fkProduto, estabelecimento.nome estabelecimento, corredor FROM sensor
+							INNER JOIN estabelecimento on fkEstabelecimento = idEstabelecimento
+							INNER JOIN empresa on fkEmpresa = idempresa
+							WHERE login = '${login}'`;
+
+    sequelize.query(instrucaoSql, {
+            type: sequelize.QueryTypes.SELECT
+        })
+        .then(resultado => {
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
+});
+
 router.get('/combobox/categorias', function (req, res, next) {
 	console.log(`Recuperando a quantidade por categoria`);
 
 	const instrucaoSql = `select idcategoria id, nome from categoria`;
+
+	sequelize.query(instrucaoSql, {
+			type: sequelize.QueryTypes.SELECT
+		})
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
+router.get('/combobox/produtos', function (req, res, next) {
+	console.log(`Recuperando a quantidade por categoria`);
+
+	const instrucaoSql = `select idproduto id, nome from produto`;
 
 	sequelize.query(instrucaoSql, {
 			type: sequelize.QueryTypes.SELECT

@@ -1,3 +1,5 @@
+var combobox_produtos = document.createElement('select');
+
 var exibiu_grafico = false;
 
 verificar_autenticacao();
@@ -35,6 +37,59 @@ function popularTabelaProdutos() {
                                             <td>R$${Number(registro.preco).toFixed(2)}</td>
                                             <td>Corredor ${registro.corredor}</td>
                                         </tr>`;
+                }
+            });
+        } else {
+            console.error('Nenhum dado encontrado ou erro na API');
+        }
+    })
+    .catch(function (error) {
+        console.error(`Erro na obtenção dos dados p/ tabela de produtos: ${error.message}`);
+    });
+}
+
+function popularTabelaSensores() {
+    fetch(`/leituras/todossensores/${login_usuario}`, { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (resposta) {
+    
+                var tbody = tableSensors.getElementsByTagName('tbody')[0];
+                tbody.innerHTML = '';
+    
+                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+    
+                for (i = 0; i < resposta.length; i++) {
+                    var registro = resposta[i];
+    
+                    var combo = combobox_produtos.cloneNode(true);
+                    combo.value = registro.fkProduto;
+
+                    /*tbody.innerHTML += `<tr>
+                                            <td>${registro.id}</td>
+                                            <td>Sensor ${registro.id}</td>
+                                            <td>${combo.outerHTML}</td>
+                                            <td>${registro.estabelecimento}</td>
+                                            <td>Corredor ${registro.corredor}</td>
+                                        </tr>`;*/
+
+                    var tr = document.createElement('tr');
+                    tr.innerHTML += `<td>${registro.id}</td>`;
+                    tr.innerHTML += `<td>Sensor ${registro.id}</td>`;
+
+                    var td = document.createElement('td');
+                    td.appendChild(combo);
+
+                    var td2 = document.createElement('td');
+                    td2.appendChild(document.createTextNode(registro.estabelecimento));
+
+                    var td3 = document.createElement('td');
+                    td3.appendChild(document.createTextNode(`Corredor ${registro.corredor}`));
+
+                    tr.appendChild(td);
+                    tr.appendChild(td2);
+                    tr.appendChild(td3);
+                    
+                    tbody.appendChild(tr);
                 }
             });
         } else {
@@ -145,6 +200,7 @@ function load() {
     
     atualizarGrafico();
     atualizarProdutos();
+    popularTabelaSensores();
 }
 
 fetch(`/leituras/combobox/categorias`, { cache: 'no-store' }).then(function (response) {
@@ -163,6 +219,31 @@ fetch(`/leituras/combobox/categorias`, { cache: 'no-store' }).then(function (res
                 // que gerou na consulta ao banco de dados
 
                 cmbCategoria.innerHTML += `<option value="${registro.id}">${registro.nome}</option>`;
+            }
+            console.log(JSON.stringify(dados));
+        });
+    } else {
+        console.error('Nenhum dado encontrado ou erro na API');
+    }
+})
+.catch(function (error) {
+    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+});
+
+fetch(`/leituras/combobox/produtos`, { cache: 'no-store' }).then(function (response) {
+    if (response.ok) {
+        response.json().then(function (resposta) {
+
+            console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+            for (i = 0; i < resposta.length; i++) {
+                var registro = resposta[i];
+            
+                // aqui, após 'registro.' use os nomes 
+                // dos atributos que vem no JSON 
+                // que gerou na consulta ao banco de dados
+
+                combobox_produtos.innerHTML += `<option value="${registro.id}">${registro.nome}</option>`;
             }
             console.log(JSON.stringify(dados));
         });
