@@ -39,7 +39,8 @@
     <div class="chartArea">
         <div class="chart">
             <!-- Gráfico dinâmico -->
-            <div class="section-title"><span id="estabelecimentoNome"></span>Todos os Estabelecimentos</div>
+            <div class="section-title"><span id="estabelecimentoNome"></span>Estabelecimento em <span
+                    style="color: #b91010;">Alerta</span> - Gráfico</div>
 
             <!-- Gráfico estático 1 -->
             <div class="global-chart">
@@ -47,11 +48,11 @@
             </div>
 
             <div class="section-title mt5">Estabelecimento em <span style="color: #b91010;">Alerta</span></div>
-            <div class="mt1 mb5 estabelecimentos" onclick="abrirEstabelecimento(4)">
+            <div class="mt1 mb5 estabelecimentos">
                 <div class="box-estabelecimentos">
                     <div class="box-img-content">
                         <div class="box-image">
-                            <img src="../assets/img/estabelecimentos/extra-id-01.png" alt="logo estabelecimento">
+                            <img src="../assets/img/alert/amarelo.png" alt="logo estabelecimento">
                         </div>
                     </div>
 
@@ -63,6 +64,11 @@
                             <!-- <div class="box-button mt5 ">
                                 <button class="button mb5">Detalhes</button>
                             </div> -->
+                        </div>
+
+                        <div class="alert-message">
+                            *Notamos uma queda nas consultas de um determinado estabelecimento,
+                            o gráfico está especificando qual produto está com baixa consulta.
                         </div>
                     </div>
                 </div>
@@ -92,11 +98,10 @@
                             <button class="button">Cadastrar</button>
                         </div>
 
-                        <div id="error_mensagem" class="mensagem mt3">Error ao cadastrar</div>
+                        <div id="error_mensagem" class="mensagem mt3" style="display: none;">Error ao cadastrar</div>
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 
@@ -129,7 +134,6 @@
     // Pegando id do estabelecimento atraves do parametro passado por URL 
     function getUrlParameter(p) {
         var params = window.location.search
-        console.log(`Parametro normal ${params}`)
         var valor = params.split('=')[1]
 
         if (params.split('=')[0] == "?id") {

@@ -62,7 +62,7 @@ body {
   background-color: rgba(63, 63, 63);
 }
 
-#check:checked~.menu-lateral {
+#check:checked ~ .menu-lateral {
   transform: translateX(280px);
 }
 
@@ -118,7 +118,7 @@ body {
   justify-content: space-between;
 }
 
-.form-produto>* {
+.form-produto > * {
   margin-bottom: 12px;
 }
 
@@ -221,9 +221,8 @@ select {
 }
 
 .box-estabelecimentos .box-image {
-  width: 100%;
-  padding: 1.5rem;
-  margin: 7.5rem 1.5rem;
+  width: 280px;
+  margin: 3.5rem 20%;
 }
 
 .box-estabelecimentos .box-image img {
@@ -231,6 +230,7 @@ select {
 }
 
 .box-status {
+  width: 60%;
   background-color: #e9e8e8;
   display: inline-block;
 }
@@ -258,6 +258,14 @@ select {
   list-style: none;
 }
 
+.box-status .alert-message {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ff5b5b;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 /* Media - Responsive Layout */
 
 @media (max-width: 500px) {
@@ -277,7 +285,7 @@ select {
     margin-top: 5px;
   }
 
-  #check:checked~.menu-lateral {
+  #check:checked ~ .menu-lateral {
     transform: translateX(425px);
   }
 
@@ -318,7 +326,7 @@ select {
     margin-top: 5px;
   }
 
-  #check:checked~.menu-lateral {
+  #check:checked ~ .menu-lateral {
     transform: translateX(240px);
   }
 
@@ -345,7 +353,6 @@ select {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-
   /* ChartArea */
   .chartArea {
     float: none;
@@ -370,7 +377,7 @@ select {
     left: -435px;
   }
 
-  #check:checked~.menu-lateral {
+  #check:checked ~ .menu-lateral {
     transform: translateX(430px);
   }
 
@@ -399,7 +406,7 @@ select {
     margin-top: 10px;
   }
 
-  #check:checked~.menu-lateral {
+  #check:checked ~ .menu-lateral {
     transform: translateX(230px);
   }
 
@@ -484,9 +491,6 @@ select {
   }
 }
 
-
-
-
 /* Modal da pagina de Estabelecimentos */
 
 .modalEstabelecimento {
@@ -501,15 +505,14 @@ select {
   animation-name: slideIn;
 }
 
-
 @keyframes slideIn {
   from {
     bottom: -300px;
-    opacity: 0
+    opacity: 0;
   }
 
   to {
     bottom: 0;
-    opacity: 1
+    opacity: 1;
   }
 }
