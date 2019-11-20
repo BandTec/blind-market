@@ -483,3 +483,33 @@ select {
     padding: 30px;
   }
 }
+
+
+
+
+/* Modal da pagina de Estabelecimentos */
+
+.modalEstabelecimento {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 129px;
+  left: 0;
+  width: 100vw;
+  height: 90%;
+  background-color: rgb(250, 127, 127);
+  animation-name: slideIn;
+}
+
+
+@keyframes slideIn {
+  from {
+    bottom: -300px;
+    opacity: 0
+  }
+
+  to {
+    bottom: 0;
+    opacity: 1
+  }
+}

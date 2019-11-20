@@ -113,6 +113,24 @@ router.get('/dashboard/estabelecimentos/:login', function (req, res, next) {
 		});
 });
 
+// Trazendo todos os estabelecimentos para popular o modal
+router.get('/dashboard/estabelecimentos/modal/:idmodal', function (req, res, next) {
+	console.log(`Recuperando estabelecimentos`);
+
+	let idmodal = req.params.idmodal;
+	const instrucaoSql = `select * from estabelecimento where idEstabelecimento = '${idmodal}'`;
+
+	sequelize.query(instrucaoSql, {
+			type: sequelize.QueryTypes.SELECT
+		})
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
 router.get('/categorias/:login', function (req, res, next) {
 	console.log(`Recuperando a quantidade por categoria`);
 
@@ -217,23 +235,23 @@ router.get('/qtdprodutos/:login', function (req, res, next) {
 });
 
 router.get('/todossensores/:login', function (req, res, next) {
-    console.log(`Recuperando a quantidade por categoria`);
+	console.log(`Recuperando a quantidade por categoria`);
 
-    let login = req.params.login;
-    const instrucaoSql = `SELECT idsensor id, fkProduto, estabelecimento.nome estabelecimento, corredor FROM sensor
+	let login = req.params.login;
+	const instrucaoSql = `SELECT idsensor id, fkProduto, estabelecimento.nome estabelecimento, corredor FROM sensor
 							INNER JOIN estabelecimento on fkEstabelecimento = idEstabelecimento
 							INNER JOIN empresa on fkEmpresa = idempresa
 							WHERE login = '${login}'`;
 
-    sequelize.query(instrucaoSql, {
-            type: sequelize.QueryTypes.SELECT
-        })
-        .then(resultado => {
-            res.json(resultado);
-        }).catch(erro => {
-            console.error(erro);
-            res.status(500).send(erro.message);
-        });
+	sequelize.query(instrucaoSql, {
+			type: sequelize.QueryTypes.SELECT
+		})
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
 });
 
 router.get('/combobox/categorias', function (req, res, next) {

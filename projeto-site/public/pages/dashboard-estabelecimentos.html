@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="..assets/css/all.css" />
-    <link rel="stylesheet" href="../assets/css/pages/dashboard-estebelecimentos.css" />
+    <link rel="stylesheet" href="../assets/css/pages/dashboard-estabelecimentos.css">
     <title>Estabelecimentos - BlindMarket</title>
 </head>
 
 <body>
-    <div class="menu-top">
+    <div class=" menu-top">
         <input type="checkbox" id="check" />
         <label for="check" id="icone"><i class="fas fa-bars"></i></label>
 
@@ -39,16 +39,15 @@
     <div class="chartArea">
         <div class="chart">
             <!-- Gráfico dinâmico -->
-            <div class="section-title"><span id="estabelecimentoNome"></span>{DEVE VIR O NOME DO ESTABELECIMENTO} -
-                Gráfico</div>
+            <div class="section-title"><span id="estabelecimentoNome"></span>Todos os Estabelecimentos</div>
 
             <!-- Gráfico estático 1 -->
             <div class="global-chart">
                 <canvas id="chartEstabelecimento"></canvas>
             </div>
 
-            <div class="section-title mt5">Estebelecimento</div>
-            <div class="mt1 mb5 estabelecimentos">
+            <div class="section-title mt5">Estabelecimento em <span style="color: #b91010;">Alerta</span></div>
+            <div class="mt1 mb5 estabelecimentos" onclick="abrirEstabelecimento(4)">
                 <div class="box-estabelecimentos">
                     <div class="box-img-content">
                         <div class="box-image">
@@ -101,12 +100,23 @@
         </div>
     </div>
 
+    <div id="modalEstabelecimento" class="modalEstabelecimento">
+        <div class="modal-content">
+            <div class="chart">
+                <div class="modal_header" id="modal_header">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 <script src="../assets/js/all.js"></script>
 <script src="../assets/js/chart.js"></script>
 <script src="../assets/js/funcoes.js"></script>
 <script src="../assets/js/pages/dashboardEstabelecimentos.js"></script>
+<script src="../assets/js/pages/modalEstabelecimento.js"></script>
 
 </html>
 
@@ -116,6 +126,17 @@
     nomeEmpresa.value = sessionStorage.id_usuario_meuapp;
 
 
+    // Pegando id do estabelecimento atraves do parametro passado por URL 
+    function getUrlParameter(p) {
+        var params = window.location.search
+        console.log(`Parametro normal ${params}`)
+
+        var valor = params.split('=')[1]
+        console.log(`Parametro editado ${valor}`)
+        abrirEstabelecimento(valor)
+    }
+
+    window.load = getUrlParameter();
 
     function cadastrarEstabelecimento() {
         var cadEstabelecimento = new URLSearchParams(new FormData(formEstabelecimento));
