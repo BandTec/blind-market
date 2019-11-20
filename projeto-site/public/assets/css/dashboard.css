@@ -3,7 +3,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
 a {
@@ -44,7 +44,7 @@ body {
   background-color: #ff5b5b;
   border-top: 2px solid rgba(0, 0, 0, 0.16);
   width: 25vw;
-  height: 63px;
+  min-height: 100%;
   display: flex;
   position: absolute;
   left: -280px;
@@ -121,7 +121,7 @@ body {
   bottom: 0;
   left: 0;
   padding: 8px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-weight: bold;
 }
 
@@ -147,7 +147,7 @@ body {
 }
 
 .section-title {
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: #858796;
   padding: 14px;
   font-size: 1.2em;
@@ -338,6 +338,7 @@ body {
   .menu-lateral {
     width: 30vw;
     left: -235px;
+    margin-top: 10px;
   }
 
   #check:checked~.menu-lateral {
@@ -363,7 +364,6 @@ body {
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-
   .exit {
     margin-top: 10px;
     margin-right: 20px;
@@ -388,9 +388,10 @@ body {
   .menu-lateral {
     width: 100vw;
     left: 0;
-    height: fit-content;
+    min-height: 3.3rem;
     position: fixed;
     z-index: 1;
+    margin-top: 10px;
   }
 
   .menu-lateral nav ul {

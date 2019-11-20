@@ -40,7 +40,7 @@ body {
   background-color: #ff5b5b;
   border-top: 2px solid rgba(0, 0, 0, 0.16);
   width: 25vw;
-  height: 63px;
+  min-height: 100%;
   display: flex;
   position: absolute;
   left: -280px;
@@ -62,7 +62,7 @@ body {
   background-color: rgba(63, 63, 63);
 }
 
-#check:checked ~ .menu-lateral {
+#check:checked~.menu-lateral {
   transform: translateX(280px);
 }
 
@@ -118,7 +118,7 @@ body {
   justify-content: space-between;
 }
 
-.form-produto > * {
+.form-produto>* {
   margin-bottom: 12px;
 }
 
@@ -251,12 +251,12 @@ select {
   padding: 1rem;
 }
 
-.box-status .box-text li{
-    font-size: 1rem;
-    text-align: center;
-    margin: 1.5rem 0; 
-    list-style: none;
-  }
+.box-status .box-text li {
+  font-size: 1rem;
+  text-align: center;
+  margin: 1.5rem 0;
+  list-style: none;
+}
 
 /* Media - Responsive Layout */
 
@@ -277,7 +277,7 @@ select {
     margin-top: 5px;
   }
 
-  #check:checked ~ .menu-lateral {
+  #check:checked~.menu-lateral {
     transform: translateX(425px);
   }
 
@@ -318,7 +318,7 @@ select {
     margin-top: 5px;
   }
 
-  #check:checked ~ .menu-lateral {
+  #check:checked~.menu-lateral {
     transform: translateX(240px);
   }
 
@@ -345,6 +345,7 @@ select {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+
   /* ChartArea */
   .chartArea {
     float: none;
@@ -369,7 +370,7 @@ select {
     left: -435px;
   }
 
-  #check:checked ~ .menu-lateral {
+  #check:checked~.menu-lateral {
     transform: translateX(430px);
   }
 
@@ -395,9 +396,10 @@ select {
   .menu-lateral {
     width: 30vw;
     left: -235px;
+    margin-top: 10px;
   }
 
-  #check:checked ~ .menu-lateral {
+  #check:checked~.menu-lateral {
     transform: translateX(230px);
   }
 
@@ -444,7 +446,7 @@ select {
   .menu-lateral {
     width: 100vw;
     left: 0;
-    height: fit-content;
+    min-height: 3.3rem;
     position: fixed;
     z-index: 1;
   }

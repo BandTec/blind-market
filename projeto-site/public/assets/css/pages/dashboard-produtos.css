@@ -40,7 +40,7 @@ body {
   background-color: #ff5b5b;
   border-top: 2px solid rgba(0, 0, 0, 0.16);
   width: 25vw;
-  height: 63px;
+  min-height: 100%;
   display: flex;
   position: absolute;
   left: -280px;
@@ -110,7 +110,7 @@ body {
 .modal {
   display: none;
   position: fixed;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 1;
   top: 0px;
   left: 0px;
@@ -129,13 +129,25 @@ body {
 }
 
 @keyframes slideIn {
-  from {bottom: -300px; opacity: 0}
-  to {bottom: 0; opacity: 1}
+  from {
+    bottom: -300px;
+    opacity: 0
+  }
+
+  to {
+    bottom: 0;
+    opacity: 1
+  }
 }
 
 @keyframes fadeIn {
-  from {opacity: 0} 
-  to {opacity: 1}
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1
+  }
 }
 
 .modal-header {
@@ -317,6 +329,7 @@ body {
   .menu-lateral {
     width: 30vw;
     left: -235px;
+    margin-top: 10px;
   }
 
   #check:checked~.menu-lateral {
@@ -366,7 +379,7 @@ body {
   .menu-lateral {
     width: 100vw;
     left: 0;
-    height: fit-content;
+    min-height: 3.3rem;
     position: fixed;
     z-index: 1;
   }
