@@ -11,7 +11,7 @@ fetch(`/leituras/qtdestabelecimentos/${login_usuario}`, {
                 for (i = 0; i < resposta.length; i++) {
                     var registro = resposta[i];
 
-                    var card = `<a href='../../../pages/dashboard-estabelecimentos.html?id=${registro.id}'>
+                    var card = `<a href='../../../pages/dashboard-estabelecimentos.html?=${registro.id}=${login_usuario}'>
                                     <div qtd="${registro.qtd}" eid="${registro.id}" class="estabelecimento">
                                         <img src="assets/img/shop.png" alt="">
                                         <span>${registro.nome}</span>

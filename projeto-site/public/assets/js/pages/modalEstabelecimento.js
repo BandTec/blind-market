@@ -10,7 +10,7 @@ function abrirEstabelecimento(param) {
                     for (i = 0; i < resposta.length; i++) {
                         var registro = resposta[i];
 
-                        modal.innerHTML += `
+                        modal.innerHTML = `
                                                 <div class="modal-header-title-bar>
                                                     <div class="modal-header-title>
                                                         <h2>${registro.nome}</h2>
@@ -28,5 +28,4 @@ function abrirEstabelecimento(param) {
         .catch(function (error) {
             console.error(`Erro na obtenção dos dados: ${error.message}`);
         });
-
 }

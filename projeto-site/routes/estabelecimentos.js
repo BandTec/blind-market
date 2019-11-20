@@ -23,20 +23,40 @@ router.post('/cadastrar', function (req, res, next) {
 
 
 router.get('/buscar/:cep', function (req, res, next) {
-	console.log(`Buscando estabelecimentos`);
+    console.log(`Buscando estabelecimentos`);
 
-	let cep = req.params.cep;
-	const instrucaoSql = `select * from estabelecimento where (CONVERT(int, substring(cep, 0, 6))) - ${cep} between -200 and 200`;
+    let cep = req.params.cep;
+    const instrucaoSql = `select * from estabelecimento where (CONVERT(int, substring(cep, 0, 6))) - ${cep} between -200 and 200`;
 
-	sequelize.query(instrucaoSql, {
-			type: sequelize.QueryTypes.SELECT
-		})
-		.then(resultado => {
-			res.json(resultado);
-		}).catch(erro => {
-			console.error(erro);
-			res.status(500).send(erro.message);
-		});
+    sequelize.query(instrucaoSql, {
+            type: sequelize.QueryTypes.SELECT
+        })
+        .then(resultado => {
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
+});
+
+
+router.get('/modal/:idmodal/:login', function (req, res, next) {
+    console.log(`Recuperando estabelecimentos`);
+
+    var idmodal = req.params.idmodal;
+    var login = req.params.login;
+    console.log(idmodal)
+    const instrucaoSql = `select * from estabelecimento, empresa, sensor, registro where idEstabelecimento = '${idmodal}' and fkEstabelecimento = idEstabelecimento and login = '${login}'`;
+
+    sequelize.query(instrucaoSql, {
+            type: sequelize.QueryTypes.SELECT
+        })
+        .then(resultado => {
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
 });
 
 module.exports = router;

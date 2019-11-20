@@ -113,6 +113,8 @@ router.get('/dashboard/estabelecimentos/:login', function (req, res, next) {
 		});
 });
 
+
+
 // Trazendo todos os estabelecimentos para popular o modal
 router.get('/dashboard/estabelecimentos/modal/:idmodal', function (req, res, next) {
 	console.log(`Recuperando estabelecimentos`);

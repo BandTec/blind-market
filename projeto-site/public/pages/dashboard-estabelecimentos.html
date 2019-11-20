@@ -34,8 +34,8 @@
                 </ul>
             </nav>
         </div>
-    </div>
 
+    </div>
     <div class="chartArea">
         <div class="chart">
             <!-- Gráfico dinâmico -->
@@ -65,6 +65,7 @@
                                 <button class="button mb5">Detalhes</button>
                             </div> -->
                         </div>
+                        <div id="idEstabelecimento"></div>
 
                         <div class="alert-message">
                             *Notamos uma queda nas consultas de um determinado estabelecimento,
@@ -109,35 +110,43 @@
         <div class="modal-content">
             <div class="chart">
                 <div class="modal_header" id="modal_header">
+                </div>
 
+                <div class="secondary-charts">
+                    <div class="chart-estabelecimento">
+                        <h2>Estatísticas semanais</h2>
+                        <canvas id="chartModal"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
 
+
 </body>
 <script src="../assets/js/all.js"></script>
 <script src="../assets/js/chart.js"></script>
 <script src="../assets/js/funcoes.js"></script>
-<script src="../assets/js/pages/dashboardEstabelecimentos.js"></script>
 <script src="../assets/js/pages/modalEstabelecimento.js"></script>
+<script src="../assets/js/pages/modalGrafico.js"></script>
+<script src="../assets/js/pages/dashboardEstabelecimentos.js"></script>
 
 </html>
 
 <script>
     verificar_autenticacao()
     validar_sessao()
+    atualizarGrafico()
     nomeEmpresa.value = sessionStorage.id_usuario_meuapp;
 
 
     // Pegando id do estabelecimento atraves do parametro passado por URL 
     function getUrlParameter(p) {
         var params = window.location.search
-        var valor = params.split('=')[1]
-
-        if (params.split('=')[0] == "?id") {
-            abrirEstabelecimento(valor)
+        var valor1 = params.split('=')
+        if (params.split('=')[0] == "?") {
+            abrirEstabelecimento(valor1[1])
             modalEstabelecimento.style.display = "block"
         } else {
             modalEstabelecimento.style.display = "none"
@@ -145,7 +154,7 @@
         }
     }
 
-    window.load = getUrlParameter();
+    document.load = getUrlParameter();
 
     function cadastrarEstabelecimento() {
         var cadEstabelecimento = new URLSearchParams(new FormData(formEstabelecimento));
