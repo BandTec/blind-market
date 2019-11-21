@@ -500,7 +500,7 @@ select {
   bottom: 0;
   width: 100vw;
   height: 70%;
-  background-color: rgb(250, 127, 127);
+  background-color: #fff;
   animation-name: slideIn;
 }
 
@@ -514,4 +514,35 @@ select {
     bottom: 0;
     opacity: 1;
   }
+}
+
+.modal_header{
+  color: black;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.chart-estabelecimento{
+  max-width: 90vw;
+}
+
+.fechar{
+  margin-top: 10px;
+  margin-bottom: 25px;
+  margin-right: 20px;
+  background-color: #ff5b5b;
+  color: white;
+  font-weight: bold;
+  border: 1px solid #4242423a;
+  border-radius: 5px;
+  padding: 10px;
+  float: right;
+  transition: all .09s ease-in;
+}
+
+.fechar:hover{
+  margin-bottom: 25px;
+  margin-right: 20px;
+  background-color: #424242;
+  border-radius: 10px;
 }

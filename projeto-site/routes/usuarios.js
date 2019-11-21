@@ -99,7 +99,6 @@ router.get('/', function (req, res, next) {
 	console.log('Recuperando todos os usuários');
 	Usuario.findAndCountAll().then(resultado => {
 		console.log(`${resultado.count} registros`);
-
 		res.json(resultado.rows);
 	}).catch(erro => {
 		console.error(erro);

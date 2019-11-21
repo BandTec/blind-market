@@ -3,7 +3,7 @@ var exibiu_grafico = false;
 var param;
 var usuarioParam;
 
-function atualizarGrafico() {
+function atualizarGrafico2() {
     modalChart()
     obterDadosGrafico()
     setTimeout(modalChart, 3000);
@@ -71,7 +71,6 @@ function obterDadosGrafico() {
         }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
-                    alert("Entrou vei")
 
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
@@ -79,10 +78,6 @@ function obterDadosGrafico() {
 
                     for (i = 0; i < resposta.length; i++) {
                         var registro = resposta[i];
-
-                        // aqui, após 'registro.' use os nomes 
-                        // dos atributos que vem no JSON 
-                        // que gerou na consulta ao banco de dados
 
                         dados.labels.push(registro.nome);
 
@@ -116,4 +111,5 @@ function plotarGraficoModal(dados) {
 }
 
 configModalGrafico();
-modalChart()
+
+atualizarGrafico2()

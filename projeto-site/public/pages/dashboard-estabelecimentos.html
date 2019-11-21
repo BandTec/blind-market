@@ -12,7 +12,7 @@
 
 <body>
     <div class=" menu-top">
-        <input type="checkbox" id="check" />
+        <input type="checkbox" id="check" onclick="fecharModal()"/>
         <label for="check" id="icone"><i class="fas fa-bars"></i></label>
 
         <span><a onclick="logoff()"><i class="iconeMenu exit mr1 fas fa-sign-out-alt"></i></a>
@@ -112,6 +112,10 @@
                 <div class="modal_header" id="modal_header">
                 </div>
 
+                <div>
+                    <button class="fechar" onclick="fecharModal()">Fechar</button>
+                </div>
+
                 <div class="secondary-charts">
                     <div class="chart-estabelecimento">
                         <h2>Estatísticas semanais</h2>
@@ -140,7 +144,9 @@
     atualizarGrafico()
     nomeEmpresa.value = sessionStorage.id_usuario_meuapp;
 
-
+function fecharModal(){
+    modalEstabelecimento.style.display = "none"
+}
     // Pegando id do estabelecimento atraves do parametro passado por URL 
     function getUrlParameter(p) {
         var params = window.location.search
