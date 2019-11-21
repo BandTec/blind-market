@@ -6,13 +6,13 @@ verificar_autenticacao();
 
 function atualizarProdutos() {    
     popularTabelaProdutos();
-    setTimeout(atualizarProdutos, 2000);
+    //setTimeout(atualizarProdutos, 2000);
 }
 
 function atualizarGraficoProdutos() {
     
     obterDadosGraficoProdutos();
-    setTimeout(obterDadosGraficoProdutos, 2000);
+    //setTimeout(obterDadosGraficoProdutos, 2000);
 }
 
 function popularTabelaProdutos() {    
@@ -169,7 +169,7 @@ function obterDadosGraficoProdutos() {
 
                     dados.datasets[0].data.push(registro.qtd);
                 }
-                console.log(JSON.stringify(dados));
+                //console.log(JSON.stringify(dados));
 
                 //div_aguarde.style.display = 'none';
 
@@ -220,7 +220,7 @@ fetch(`/leituras/combobox/categorias`, { cache: 'no-store' }).then(function (res
 
                 cmbCategoria.innerHTML += `<option value="${registro.id}">${registro.nome}</option>`;
             }
-            console.log(JSON.stringify(dados));
+            //console.log(JSON.stringify(dados));
         });
     } else {
         console.error('Nenhum dado encontrado ou erro na API');
@@ -245,7 +245,7 @@ fetch(`/leituras/combobox/produtos`, { cache: 'no-store' }).then(function (respo
 
                 combobox_produtos.innerHTML += `<option value="${registro.id}">${registro.nome}</option>`;
             }
-            console.log(JSON.stringify(dados));
+            //console.log(JSON.stringify(dados));
         });
     } else {
         console.error('Nenhum dado encontrado ou erro na API');
