@@ -69,4 +69,22 @@ router.get('/produto/:login/:id', function (req, res, next) {
         });
 });
 
+router.get('/topestabelecimentos/:login/:id', function (req, res, next) {
+	console.log(`Recuperando a quantidade por categoria`);
+    let login = req.params.login;
+    let id = req.params.id;
+
+	const instrucaoSql = `select top 5 estabelecimento.nome, count(idregistro) as qtd from registro, sensor, estabelecimento, empresa where fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = idempresa and login = '${login}' and registro.fkProduto = ${id} group by estabelecimento.nome`;
+
+	sequelize.query(instrucaoSql, {
+			type: sequelize.QueryTypes.SELECT
+		})
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
 module.exports = router;

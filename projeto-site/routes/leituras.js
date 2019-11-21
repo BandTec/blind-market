@@ -94,6 +94,25 @@ router.get('/todosestabelecimentos/:login', function (req, res, next) {
 		});
 });
 
+router.get('/produto/:login/:id', function (req, res, next) {
+	console.log(`Recuperando estabelecimentos`);
+
+	let login = req.params.login;
+	let id = req.params.id;
+
+	const instrucaoSql = `select DATEPART(Year, datahora) ano, DATEPART(Month, datahora) as mes, count(idregistro) as qtd from registro, sensor, estabelecimento, empresa where fkSensor = idsensor and fkEstabelecimento = idEstabelecimento and fkEmpresa = idempresa and registro.fkProduto = ${id} and login = '${login}' and datahora >= DATEADD(Month, -12, getdate()) group by DATEPART(Year, datahora), DATEPART(Month, datahora) order by ano desc, mes desc`;
+
+	sequelize.query(instrucaoSql, {
+			type: sequelize.QueryTypes.SELECT
+		})
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
 
 // Gráfico da Dashboard dos estabelecimentos
 router.get('/dashboard/estabelecimentos/:login', function (req, res, next) {

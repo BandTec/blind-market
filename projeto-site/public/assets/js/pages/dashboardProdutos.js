@@ -6,13 +6,13 @@ verificar_autenticacao();
 
 function atualizarProdutos() {    
     popularTabelaProdutos();
-    setTimeout(atualizarProdutos, 2000);
+    //setTimeout(atualizarProdutos, 2000);
 }
 
-function atualizarGrafico() {
+function atualizarGraficoProdutos() {
     
-    obterDadosGrafico();
-    setTimeout(obterDadosGrafico, 2000);
+    obterDadosGraficoProdutos();
+    //setTimeout(obterDadosGraficoProdutos, 2000);
 }
 
 function popularTabelaProdutos() {    
@@ -103,14 +103,14 @@ function popularTabelaSensores() {
 
 // só mexer se quiser alterar o tempo de atualização
 // ou se souber o que está fazendo!
-function atualizarGrafico() {
-    obterDadosGrafico();
-    setTimeout(atualizarGrafico, 10000);
+function atualizarGraficoProdutos() {
+    obterDadosGraficoProdutos();
+    setTimeout(atualizarGraficoProdutos, 10000);
 }
 
 // altere aqui as configurações do gráfico
 // (tamanhos, cores, textos, etc)
-function configurarGrafico() {
+function configurarGraficoProdutos() {
     var configuracoes = {
         responsive: true,
         animation: false,
@@ -132,7 +132,7 @@ function configurarGrafico() {
 
 // altere aqui como os dados serão exibidos
 // e como são recuperados do BackEnd
-function obterDadosGrafico() {
+function obterDadosGraficoProdutos() {
 
     // neste JSON tem que ser 'labels', 'datasets' etc, 
     // porque é o padrão do Chart.js
@@ -169,11 +169,11 @@ function obterDadosGrafico() {
 
                     dados.datasets[0].data.push(registro.qtd);
                 }
-                console.log(JSON.stringify(dados));
+                //console.log(JSON.stringify(dados));
 
                 //div_aguarde.style.display = 'none';
 
-                plotarGrafico(dados);
+                plotarGraficoProdutos(dados);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -186,19 +186,19 @@ function obterDadosGrafico() {
 }
 
 // só altere aqui se souber o que está fazendo!
-function plotarGrafico(dados) {
+function plotarGraficoProdutos(dados) {
     console.log('iniciando plotagem do gráfico...');
 
     var ctx = chart.getContext('2d');
     window.grafico_linha = Chart.Bar(ctx, {
         data: dados,
-        options: configurarGrafico()
+        options: configurarGraficoProdutos()
     });
 }
 
 function load() {
     
-    atualizarGrafico();
+    atualizarGraficoProdutos();
     atualizarProdutos();
     popularTabelaSensores();
 }
@@ -220,7 +220,7 @@ fetch(`/leituras/combobox/categorias`, { cache: 'no-store' }).then(function (res
 
                 cmbCategoria.innerHTML += `<option value="${registro.id}">${registro.nome}</option>`;
             }
-            console.log(JSON.stringify(dados));
+            //console.log(JSON.stringify(dados));
         });
     } else {
         console.error('Nenhum dado encontrado ou erro na API');
@@ -245,7 +245,7 @@ fetch(`/leituras/combobox/produtos`, { cache: 'no-store' }).then(function (respo
 
                 combobox_produtos.innerHTML += `<option value="${registro.id}">${registro.nome}</option>`;
             }
-            console.log(JSON.stringify(dados));
+            //console.log(JSON.stringify(dados));
         });
     } else {
         console.error('Nenhum dado encontrado ou erro na API');
