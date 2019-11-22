@@ -63,17 +63,10 @@ function popularTabelaSensores() {
     
                     var combo = combobox_produtos.cloneNode(true);
                     combo.value = registro.fkProduto;
-
-                    /*tbody.innerHTML += `<tr>
-                                            <td>${registro.id}</td>
-                                            <td>Sensor ${registro.id}</td>
-                                            <td>${combo.outerHTML}</td>
-                                            <td>${registro.estabelecimento}</td>
-                                            <td>Corredor ${registro.corredor}</td>
-                                        </tr>`;*/
+                    combo.setAttribute('onchange', 'atualizarProdutoSensor(this)');
 
                     var tr = document.createElement('tr');
-                    tr.innerHTML += `<td>${registro.id}</td>`;
+                    tr.innerHTML += `<td class="idsensor">${registro.id}</td>`;
                     tr.innerHTML += `<td>Sensor ${registro.id}</td>`;
 
                     var td = document.createElement('td');
@@ -98,6 +91,52 @@ function popularTabelaSensores() {
     })
     .catch(function (error) {
         console.error(`Erro na obtenção dos dados p/ tabela de produtos: ${error.message}`);
+    });
+}
+
+function atualizarProdutoSensor(e) {
+    
+    var idsensor = e.parentNode.parentNode.getElementsByClassName('idsensor')[0].innerHTML;
+    var idproduto = e.value;
+
+    var form = document.createElement("form");
+    form.method = 'post';
+
+    var sensor = document.createElement("input");
+    sensor.setAttribute('type',"text");
+    sensor.setAttribute('name',"idsensor");
+    sensor.value = idsensor;
+
+    var produto = document.createElement("input");
+    produto.setAttribute('type',"text");
+    produto.setAttribute('name',"idproduto");
+    produto.value = idproduto;
+
+    form.appendChild(sensor);
+    form.appendChild(produto);
+
+    var formData = new URLSearchParams(new FormData(form));
+    
+    fetch("/estabelecimentos/trocarproduto", {
+        method: "POST",
+        body: formData
+    }).then(resposta => {
+
+        if (resposta.ok) {
+            resposta.json().then(json => {
+
+                window.location.href = './dashboard-produtos.html';
+            });
+
+        } else {
+
+            console.log('Erro ao trocar produto!');
+
+            response.text().then(texto => {
+                console.error(texto);
+                finalizar_aguardar(texto);
+            });
+        }
     });
 }
 
