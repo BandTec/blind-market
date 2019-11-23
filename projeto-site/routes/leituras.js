@@ -94,6 +94,41 @@ router.get('/todosestabelecimentos/:login', function (req, res, next) {
 		});
 });
 
+router.get('/todosestabelecimentos/listagem/:login', function (req, res, next) {
+	console.log(`Recuperando estabelecimentos para listagem`);
+
+	let login = req.params.login;
+	const instrucaoSql = `select e.*, em.idEmpresa,em.login from estabelecimento as e  inner join 
+	empresa as em on e.fkEmpresa = em.idEmpresa where em.login = '${login}'`;
+
+	sequelize.query(instrucaoSql, {
+			type: sequelize.QueryTypes.SELECT
+		})
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
+router.get('/atualizar/estabelecimento/:id', function (req, res, next) {
+	console.log(`Recuperando estabelecimentos para atualizar usuario`);
+
+	let idestabelecimento = req.params.id;
+	const instrucaoSql = `select * from estabelecimento where idEstabelecimento = ${idestabelecimento}`;
+
+	sequelize.query(instrucaoSql, {
+			type: sequelize.QueryTypes.SELECT
+		})
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
 router.get('/produto/:login/:id', function (req, res, next) {
 	console.log(`Recuperando estabelecimentos`);
 

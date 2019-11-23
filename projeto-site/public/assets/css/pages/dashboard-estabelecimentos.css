@@ -155,22 +155,49 @@ select {
   max-height: 40px;
 }
 
+.button_off {
+  background-color: #fff;
+  color: #ff5b5b;
+  font-weight: bold;
+  border: 1px solid #ff5b5b10;
+  border-radius: 100px;
+  padding: 12px 27px;
+  outline: none;
+  cursor: pointer;
+  transition-duration: 150ms;
+  max-height: 40px;
+}
+
 .button:hover {
   background-color: #000000;
   transition-duration: 0.5s;
+}
+
+.button_off:hover {
+  background-color: #ff5b5b;
+  color: #000;
+  transition-duration: 0.5s;
+}
+
+button:disabled {
+  background-color: #fff;
+  color: #ff5b5b;
+  border: 1px solid #ff5b5b10;
+}
+
+input:read-only {
+  background-color: #aaaaaa;
+  color: white;
 }
 
 .mensagem {
   color: #ff5b5b;
 }
 
-/* Listagem dos produtos */
 
-.listProduct {
-  font-size: 1.1em;
-}
+/* Listagem dos Estabelecimentos */
 
-.listProduct table {
+.listEstabelecimento table {
   margin: 0 auto;
   width: 75vw;
   border-collapse: collapse;
@@ -179,27 +206,27 @@ select {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
-.listProduct thead tr {
+.listEstabelecimento thead tr {
   background-color: #ff5b5b;
   color: white;
   text-align: left;
   font-weight: bold;
 }
 
-.listProduct th,
-.listProduct td {
+.listEstabelecimento th,
+.listEstabelecimento td {
   padding: 12px 15px;
 }
 
-.listProduct tbody {
+.listEstabelecimento tbody {
   background-color: white;
 }
 
-.listProduct tbody td {
+.listEstabelecimento tbody td {
   border-bottom: 1px solid #ddd;
 }
 
-.listProduct tbody tr:last-of-type {
+.listEstabelecimento tbody tr:last-of-type {
   border-bottom: 5px solid #ff5b5b;
 }
 
@@ -592,6 +619,44 @@ select {
 .chart-estabelecimento {
   max-width: 90vw;
 }
+
+
+div#modal_headerAtualiza {
+  width: 60%;
+  margin: 20px auto;
+}
+
+div#modal_headerAtualiza h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+}
+
+
+div#modal_headerAtualiza input[type="text"] {
+  padding: 10px;
+  width: 100%;
+  border-radius: 20px;
+  border: 1px #d0d0d0 solid;
+  outline: none;
+  margin: 10px 0px;
+}
+
+div#modal_headerAtualiza input[type="text"]:last-of-type {
+  margin-bottom: 30px;
+}
+
+.error {
+  color: #fa7f7f;
+  font-size: 1.2rem;
+  margin: 25px auto;
+  float: right;
+}
+
+
+
 
 .fechar {
   margin-top: 10px;

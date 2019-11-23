@@ -34,15 +34,39 @@ router.post('/trocarproduto', function (req, res, next) {
     const instrucaoSql = `update sensor set fkProduto = ${produto} where idsensor = ${idsensor}`;
 
     sequelize.query(instrucaoSql, {
-        type: sequelize.QueryTypes.UPDATE
-    })
-    .then(resultado => {
-        res.json(resultado);
-    }).catch(erro => {
-        console.error(erro);
-        res.status(500).send(erro.message);
-    });
+            type: sequelize.QueryTypes.UPDATE
+        })
+        .then(resultado => {
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
 });
+
+
+// Atualiza o cadastro do Estabelecimento
+router.post('/atualizando/estabelecimento', function (req, res, next) {
+    console.log('Alterando produto');
+
+    let idestabelecimento = req.body.idestab;
+    let nome = req.body.nomeEstab;
+    let endereco = req.body.endEstab;
+    let cep = req.body.cepEstab;
+
+    const instrucaoSql = `update estabelecimento set nome ='${nome}', endereco ='${endereco}', cep ='${cep}' where idEstabelecimento = ${idestabelecimento} `;
+
+    sequelize.query(instrucaoSql, {
+            type: sequelize.QueryTypes.UPDATE
+        })
+        .then(resultado => {
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
+});
+
 
 router.get('/buscar/:cep', function (req, res, next) {
     console.log(`Buscando estabelecimentos`);
@@ -51,14 +75,14 @@ router.get('/buscar/:cep', function (req, res, next) {
     const instrucaoSql = `select * from estabelecimento where (CONVERT(int, substring(cep, 0, 6))) - ${cep} between -200 and 200`;
 
     sequelize.query(instrucaoSql, {
-        type: sequelize.QueryTypes.SELECT
-    })
-    .then(resultado => {
-        res.json(resultado);
-    }).catch(erro => {
-        console.error(erro);
-        res.status(500).send(erro.message);
-    });
+            type: sequelize.QueryTypes.SELECT
+        })
+        .then(resultado => {
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
 });
 
 
@@ -77,14 +101,14 @@ router.get('/modal/:idmodal/:login', function (req, res, next) {
     group by datepart(month,datahora), datepart(year,datahora);`;
 
     sequelize.query(instrucaoSql, {
-        type: sequelize.QueryTypes.SELECT
-    })
-    .then(resultado => {
-        res.json(resultado);
-    }).catch(erro => {
-        console.error(erro);
-        res.status(500).send(erro.message);
-    });
+            type: sequelize.QueryTypes.SELECT
+        })
+        .then(resultado => {
+            res.json(resultado);
+        }).catch(erro => {
+            console.error(erro);
+            res.status(500).send(erro.message);
+        });
 });
 
 module.exports = router;

@@ -12,7 +12,7 @@
 
 <body>
     <div class=" menu-top">
-        <input type="checkbox" id="check" onclick="fecharModal()"/>
+        <input type="checkbox" id="check" onclick="fecharModal()" />
         <label for="check" id="icone"><i class="fas fa-bars"></i></label>
 
         <span><a onclick="logoff()"><i class="iconeMenu exit mr1 fas fa-sign-out-alt"></i></a>
@@ -103,6 +103,38 @@
                     </div>
                 </form>
             </div>
+
+            <div class="section-title mt5">Listagem dos Estabelecimentos</div>
+
+            <div class="listaEstabelecimento mt2">
+                <div>
+                    <div class="listEstabelecimento">
+                        <table id="listEstabelecimentos">
+                            <thead>
+                                <tr>
+                                    <th>ID Estabelecimento</th>
+                                    <th>Nome Estabelecimento</th>
+                                    <th>Endereço</th>
+                                    <th>CEP</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbodyresults">
+                                <!-- Modelo de produto
+                                    <tr>
+                                        <td>001</td>
+                                        <td>Maçã Fuji</td>
+                                        <td>Frutas</td>
+                                        <td>R$ 6,90</td>
+                                        <td>Corredor 7</td>
+                                    </tr>
+                                -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </div>
 
@@ -126,6 +158,16 @@
         </div>
     </div>
 
+    <div id="modalAtualizaEstabelecimento" class="modalEstabelecimento">
+        <div class="modal-content">
+            <div class="chart">
+                <div class="modal_header_Atualizar" id="modal_headerAtualiza">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 </body>
@@ -144,9 +186,12 @@
     atualizarGrafico()
     nomeEmpresa.value = sessionStorage.id_usuario_meuapp;
 
-function fecharModal(){
-    modalEstabelecimento.style.display = "none"
-}
+    function fecharModal() {
+        modalEstabelecimento.style.display = "none"
+        modalAtualizaEstabelecimento.style.display = "none"
+    }
+
+
     // Pegando id do estabelecimento atraves do parametro passado por URL 
     function getUrlParameter(p) {
         var params = window.location.search
@@ -186,4 +231,8 @@ function fecharModal(){
 
         return false;
     }
+
+
+
+    
 </script>
