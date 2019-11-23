@@ -44,7 +44,6 @@ body {
   background-color: #ff5b5b;
   border-top: 2px solid rgba(0, 0, 0, 0.16);
   width: 25vw;
-  min-height: 100%;
   display: flex;
   position: absolute;
   left: -280px;
@@ -54,6 +53,7 @@ body {
 
 .menu-lateral nav {
   width: 100vw;
+  min-height: 100%;
 }
 
 .menu-lateral nav ul li {
@@ -250,8 +250,9 @@ body {
 
   .menu-lateral {
     width: 40vw;
-    left: -240px;
-    margin-top: 5px;
+    min-height: 100%;
+    left: -245px;
+    margin-top: 9px;
   }
 
   #check:checked~.menu-lateral {
@@ -266,7 +267,7 @@ body {
   /* ChartArea */
   .chartArea {
     float: right;
-    min-width: 90%;
+    min-width: 85%;
     height: 100vh;
   }
 
@@ -291,14 +292,14 @@ body {
   /* ChartArea */
   .chartArea {
     float: none;
-    min-width: 100%;
+    min-width: 85%;
     height: 100vh;
     position: absolute;
     z-index: -1;
+    margin-left: 65px;
   }
 
   .chart {
-    max-width: 100vw;
     padding: 10px;
     /*margin-left: 40px;*/
     /*display: inline-block;*/
@@ -309,11 +310,12 @@ body {
 @media only screen and (max-width: 600px) {
   .menu-lateral {
     width: 100vw;
-    left: -435px;
+    left: -500px;
+    margin-top: 10px;
   }
 
   #check:checked~.menu-lateral {
-    transform: translateX(430px);
+    transform: translateX(490px);
   }
 
   /* ChartArea */
@@ -326,10 +328,9 @@ body {
   }
 
   .chart {
-    max-width: 100vw;
+    max-width: 90vw;
     padding: 10px;
-    /*margin-left: 40px;*/
-    /*display: inline-block;*/
+    margin-left: 0px;
   }
 }
 
