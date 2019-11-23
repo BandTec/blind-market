@@ -46,7 +46,13 @@ router.get('/modal/:idmodal/:login', function (req, res, next) {
     var idmodal = req.params.idmodal;
     var login = req.params.login;
     console.log(idmodal)
-    const instrucaoSql = `select * from estabelecimento, empresa, sensor, registro where idEstabelecimento = '${idmodal}' and fkEstabelecimento = idEstabelecimento and login = '${login}'`;
+    const instrucaoSql = `select count(idregistro) as 'Qtd', datepart(month,datahora) as 'Mes', datepart(year,datahora) as 'Ano' 
+    from registro 
+    inner join sensor on fksensor = idsensor
+    inner join estabelecimento on fkestabelecimento = idestabelecimento
+    inner join empresa on fkempresa = idempresa
+    where idestabelecimento = ${idmodal} and login = '${login}'
+    group by datepart(month,datahora), datepart(year,datahora);`;
 
     sequelize.query(instrucaoSql, {
             type: sequelize.QueryTypes.SELECT

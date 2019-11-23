@@ -1,5 +1,6 @@
 var exibiu_grafico = false;
 
+var mesesModal = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 var param;
 var usuarioParam;
 
@@ -74,14 +75,15 @@ function obterDadosGrafico() {
 
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                    resposta.reverse();
+                    
 
                     for (i = 0; i < resposta.length; i++) {
                         var registro = resposta[i];
 
-                        dados.labels.push(registro.nome);
+                        dados.labels.push(mesesModal[Number(registro.Mes) -1]);
 
-                        dados.datasets[0].data.push(registro.idregistro);
+                        dados.datasets[0].data.push(registro.Qtd);
+
 
                     }
 

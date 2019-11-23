@@ -248,7 +248,7 @@ body {
   .menu-lateral {
     width: 40vw;
     left: -240px;
-    margin-top: 5px;
+    margin-top: 10px;
   }
 
   #check:checked~.menu-lateral {
@@ -270,7 +270,7 @@ body {
   .chart {
     max-width: 85vw;
     padding: 10px;
-    margin: 0px auto;
+    margin: 0px 0px 0px 75px;
     /*margin-left: 100px;*/
     /*display: inline-block;*/
   }
@@ -300,11 +300,11 @@ body {
 @media only screen and (max-width: 600px) {
   .menu-lateral {
     width: 100vw;
-    left: -435px;
+    left: -500px;
   }
 
   #check:checked~.menu-lateral {
-    transform: translateX(430px);
+    transform: translateX(490px);
   }
 
   /* ChartArea */
@@ -317,9 +317,9 @@ body {
   }
 
   .chart {
-    max-width: 100vw;
+    max-width: 90vw;
     padding: 10px;
-    /*margin-left: 40px;*/
+    margin-left: 0px;
     /*display: inline-block;*/
   }
 }
@@ -425,6 +425,7 @@ body {
 }
 
 .form-produto {
+  width: 100%;
   margin-top: 8px;
   justify-content: space-between;
 }
@@ -481,9 +482,6 @@ select {
 
 /* Listagem dos produtos */
 
-.listProduct {
-  font-size: 1.1em;
-}
 
 .listProduct table {
   margin: 0 auto;
