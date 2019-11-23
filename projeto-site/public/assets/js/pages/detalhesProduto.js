@@ -1,3 +1,5 @@
+var meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
 /**
  * Exibe uma tela com dados detalhados dos produtos 
  */
@@ -30,40 +32,13 @@ function mostrarProduto(e) {
     .catch(function (error) {
         console.error(`Erro na obtenção dos dados p/ tabela de produtos: ${error.message}`);
     });
-
-    /*var ctx2 = document.getElementById('estabelecimentos').getContext('2d'); // recuperando o contexto de desenho do elemento canvas com id 'chart2'
-    var chart = new Chart(ctx2, { // criando um novo gráfico
-        type: 'doughnut',
-        data: {
-            labels: ['Estabelecimento 1', 'Estabelecimento 2', 'Estabelecimento 3', 'Estabelecimento 4'],
-            datasets: [{
-                label: 'Sensores consultados',
-                data: [12, 19, 14, 20],
-                backgroundColor: [
-                    '#e74a3b',
-                    '#1cc88a',
-                    '#4e73df',
-                    '#36b9cc'
-                ],
-                borderColor: '#FFFFFF',
-                borderWidth: 3,
-                fill: false,
-                lineTension: 0.4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            legend: {
-                display: false
-            }
-        }
-    });*/
 }
 
 function fecharProduto() {
     
     modal.style.display = 'none';
+    window.grafico_doughnut.destroy();
+    window.linha.destroy();
 }
 
 function configurarGrafico() {
@@ -99,7 +74,26 @@ function obterDadosGrafico(id) {
             backgroundColor: 'rgba(255, 99, 132, 1)',
             fill: false,
             lineTension: 0.4
-        }]
+        },
+        {
+            label: 'Baixa demanda',
+            data: [],
+            borderColor: [
+                'rgba(255, 206, 86, 1)'
+            ],
+            fill: false,
+            lineTension: 0.4
+        },
+        {
+            label: 'Alta demanda',
+            data: [],
+            borderColor: [
+                'rgba(54, 162, 235, 1)'
+            ],
+            fill: false,
+            lineTension: 0.4
+        }
+    ]
     };
 
     fetch(`/leituras/produto/${login_usuario}/${id}`, { cache: 'no-store' }).then(function (response) {
@@ -117,15 +111,33 @@ function obterDadosGrafico(id) {
                     // dos atributos que vem no JSON 
                     // que gerou na consulta ao banco de dados
 
-                    dados.labels.push(registro.mes);
+                    dados.labels.push(`${meses[registro.mes - 1]}/${registro.ano}`);
 
                     dados.datasets[0].data.push(registro.qtd);
                 }
                 console.log(JSON.stringify(dados));
 
-                //div_aguarde.style.display = 'none';
+                fetch(`/leituras/estatisticas/produto/${id}/${login_usuario}`, { cache: 'no-store' }).then(function (response) {
+                    if (response.ok) {
+                        response.json().then(function (resposta) {
+        
+                            var registro = resposta[0];
 
-                plotarGrafico(dados);
+                            for (var i = 0; i < dados.datasets[0].data.length; i++) {
+
+                                dados.datasets[1].data.push(registro.Q1);
+                                dados.datasets[2].data.push(registro.Q3);
+                            }
+
+                            plotarGrafico(dados);
+                        });
+                    } else {
+                        console.error('Nenhum dado encontrado ou erro na API');
+                    }
+                })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                });
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -142,11 +154,8 @@ function plotarGrafico(dados) {
     console.log('iniciando plotagem do gráfico...');
 
     var ctx = chartProduto.getContext('2d');
-    
-    if(window.grafico_linha != undefined)
-        window.grafico_linha.destroy();
 
-    window.grafico_linha = new Chart.Line(ctx, {
+    window.linha = new Chart.Line(ctx, {
         data: dados,
         options: configurarGrafico()
     });
@@ -229,9 +238,6 @@ function plotarGraficoEstabelecimento(dados) {
     console.log('iniciando plotagem do gráfico...');
 
     var ctx2 = estabelecimentos.getContext('2d');
-
-    if(window.grafico_doughnut != undefined)
-        window.grafico_doughnut.destroy();
 
     window.grafico_doughnut = Chart.Doughnut(ctx2, {
         data: dados,

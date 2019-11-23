@@ -232,6 +232,40 @@ router.get('/estatisticas/estabelecimento/:estabelecimento', function (req, res,
 		});
 });
 
+router.get('/estatisticas/produto/:id/:login', function (req, res, next) {
+	console.log(`Recuperando a quantidade por categoria`);
+
+	let id = req.params.id;
+	let login = req.params.login;
+
+	const instrucaoSql = `SELECT DISTINCT nome,
+								PERCENTILE_DISC(0.25) WITHIN GROUP (ORDER BY qtd)  
+								OVER (PARTITION BY nome) AS Q1,
+								PERCENTILE_DISC(0.5) WITHIN GROUP (ORDER BY qtd)  
+								OVER (PARTITION BY nome) AS Mediana,
+								PERCENTILE_DISC(0.75) WITHIN GROUP (ORDER BY qtd)  
+								OVER (PARTITION BY nome) AS Q3
+							FROM (
+								SELECT produto.nome, count(idregistro) as qtd from registro
+								INNER JOIN produto on fkProduto = idproduto
+								INNER JOIN sensor on fkSensor = idsensor
+								INNER JOIN estabelecimento on fkEstabelecimento = idEstabelecimento
+								INNER JOIN empresa on fkEmpresa = idempresa
+								WHERE login	= '${login}' and idproduto = ${id}
+								GROUP BY produto.nome, DATEPART(YEAR, datahora), DATEPART(MONTH, datahora)
+							) dados`;
+
+	sequelize.query(instrucaoSql, {
+			type: sequelize.QueryTypes.SELECT
+		})
+		.then(resultado => {
+			res.json(resultado);
+		}).catch(erro => {
+			console.error(erro);
+			res.status(500).send(erro.message);
+		});
+});
+
 router.get('/qtdprodutos/:login', function (req, res, next) {
 	console.log(`Recuperando a quantidade por categoria`);
 
