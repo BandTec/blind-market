@@ -417,6 +417,8 @@ input:read-only {
     width: 40vw;
     left: -240px;
     margin-top: 10px;
+    border-bottom-right-radius: 50%;
+
   }
 
   #check:checked~.menu-lateral {
@@ -498,6 +500,8 @@ input:read-only {
     width: 30vw;
     left: -235px;
     margin-top: 10px;
+    border-bottom-right-radius: 50%;
+
   }
 
   #check:checked~.menu-lateral {
@@ -550,6 +554,8 @@ input:read-only {
     min-height: 3.3rem;
     position: fixed;
     z-index: 1;
+    border-bottom-right-radius: 0%;
+
   }
 
   .menu-lateral nav ul {
