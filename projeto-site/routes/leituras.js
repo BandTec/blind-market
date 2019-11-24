@@ -228,9 +228,9 @@ router.get('/qtdestabelecimentos/:login', function (req, res, next) {
 							LEFT JOIN sensor on fkEstabelecimento = idEstabelecimento
 							LEFT JOIN registro on fkSensor = idsensor
 							INNER JOIN empresa on fkEmpresa = idempresa
-							WHERE (datahora > DATEADD(WEEK, DATEDIFF(WEEK, '1905-01-01', CURRENT_TIMESTAMP), '1905-01-01') or datahora is null) 
+							WHERE (DATEPART(YEAR, datahora) = DATEPART(YEAR, GETDATE()) and DATEPART(MONTH, datahora) = DATEPART(MONTH, GETDATE()) or datahora is null)
 								and login = '${login}'
-							GROUP BY idEstabelecimento, estabelecimento.nome, DATEPART(Year, datahora), DATEPART(Month, datahora), DATEPART(Week, datahora)`;
+							GROUP BY idEstabelecimento, estabelecimento.nome`;
 
 	sequelize.query(instrucaoSql, {
 			type: sequelize.QueryTypes.SELECT
@@ -243,18 +243,31 @@ router.get('/qtdestabelecimentos/:login', function (req, res, next) {
 		});
 });
 
-router.get('/estatisticas/estabelecimento/:estabelecimento', function (req, res, next) {
+router.get('/estatisticas/estabelecimento/:id/:login', function (req, res, next) {
 	console.log(`Recuperando a quantidade por categoria`);
 
-	let estabelecimento = req.params.estabelecimento;
-	const instrucaoSql = `SELECT idestabelecimento id, nome, AVG(qtd) media from (
-							SELECT idestabelecimento, nome, count(idregistro) as qtd 
-							FROM estabelecimento
-							LEFT JOIN sensor on fkEstabelecimento = idEstabelecimento
-							LEFT JOIN registro on fkSensor = idsensor
-							WHERE idEstabelecimento = ${estabelecimento}
-							GROUP BY idestabelecimento, nome, DATEPART(Year, datahora), DATEPART(Month, datahora), DATEPART(Week, datahora)
-						) as quantidade group by idestabelecimento, nome`;
+	let id = req.params.id;
+	let login = req.params.login;
+
+	const instrucaoSql = `SELECT DISTINCT idEstabelecimento id, nome,
+							PERCENTILE_DISC(0) WITHIN GROUP (ORDER BY qtd)  
+							OVER (PARTITION BY nome) AS Minimo,
+							PERCENTILE_DISC(0.25) WITHIN GROUP (ORDER BY qtd)  
+							OVER (PARTITION BY nome) AS Q1,
+							PERCENTILE_DISC(0.5) WITHIN GROUP (ORDER BY qtd)  
+							OVER (PARTITION BY nome) AS Mediana,
+							PERCENTILE_DISC(0.75) WITHIN GROUP (ORDER BY qtd)  
+							OVER (PARTITION BY nome) AS Q3,
+							PERCENTILE_DISC(1) WITHIN GROUP (ORDER BY qtd)  
+							OVER (PARTITION BY nome) AS Maximo
+						FROM (
+							SELECT idEstabelecimento, estabelecimento.nome, count(idregistro) as qtd from registro
+							INNER JOIN sensor on fkSensor = idsensor
+							RIGHT JOIN estabelecimento on fkEstabelecimento = idEstabelecimento
+							INNER JOIN empresa on fkEmpresa = idempresa
+							WHERE login	= '${login}' and idEstabelecimento = ${id}
+							GROUP BY idEstabelecimento, estabelecimento.nome, DATEPART(YEAR, datahora), DATEPART(MONTH, datahora)
+						) dados`;
 
 	sequelize.query(instrucaoSql, {
 			type: sequelize.QueryTypes.SELECT
@@ -306,11 +319,11 @@ router.get('/qtdprodutos/:login', function (req, res, next) {
 
 	let login = req.params.login;
 	const instrucaoSql = `SELECT TOP 10 idproduto, produto.nome, count(idregistro) qtd FROM registro
-							INNER JOIN produto on fkProduto = idproduto
+							INNER JOIN produto on registro.fkProduto = idproduto
 							INNER JOIN sensor on fkSensor = idsensor
 							INNER JOIN estabelecimento on fkEstabelecimento = idEstabelecimento
-							INNER JOIN empresa on fkEstabelecimento = idempresa
-							WHERE (datahora > DATEADD(DAY, -(DATEPART(WEEKDAY, '2019-11-16') - 1), '2019-11-16')) and login = '${login}'
+							LEFT JOIN empresa on fkEmpresa = idempresa
+							WHERE DATEPART(YEAR, datahora) = DATEPART(YEAR, GETDATE()) and DATEPART(MONTH, datahora) = DATEPART(MONTH, GETDATE()) and login = '${login}'
 							GROUP BY idproduto, produto.nome`;
 
 	sequelize.query(instrucaoSql, {

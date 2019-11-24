@@ -20,7 +20,7 @@ fetch(`/leituras/qtdestabelecimentos/${login_usuario}`, {
 
                     cards_estabelecimentos.innerHTML += card;
 
-                    fetch(`leituras/estatisticas/estabelecimento/${registro.id}`, {
+                    fetch(`leituras/estatisticas/estabelecimento/${registro.id}/${login_usuario}`, {
                             cache: 'no-store'
                         }).then(function (response) {
                             if (response.ok) {
@@ -34,9 +34,17 @@ fetch(`/leituras/qtdestabelecimentos/${login_usuario}`, {
                                     var card = document.querySelector(`[eid='${registro.id}']`);
                                     var qtd = card.getAttribute('qtd');
 
-                                    if (qtd <= registro.media) {
+                                    if (qtd < registro.Minimo) {
+
+                                        card.classList.add('danger');
+                                    }
+                                    else if (qtd <= registro.Q1) {
 
                                         card.classList.add('warning');
+                                    }
+                                    else if (qtd >= registro.Q3) {
+
+                                        card.classList.add('ok');
                                     }
                                 });
                             } else {

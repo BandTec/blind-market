@@ -24,7 +24,10 @@ function configurarGraficoCategoria() {
         scales: {
             yAxes: [{
                 display: false,
-            }]
+                ticks: {
+                    beginAtZero: true
+                },
+            }],
         }
     };
 
