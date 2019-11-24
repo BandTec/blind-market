@@ -144,7 +144,7 @@ function atualizarProdutoSensor(e) {
 // ou se souber o que está fazendo!
 function atualizarGraficoProdutos() {
     obterDadosGraficoProdutos();
-    setTimeout(atualizarGraficoProdutos, 10000);
+    setTimeout(atualizarGraficoProdutos, 1000);
 }
 
 // altere aqui as configurações do gráfico
@@ -229,6 +229,12 @@ function plotarGraficoProdutos(dados) {
     console.log('iniciando plotagem do gráfico...');
 
     var ctx = chart.getContext('2d');
+
+    if (window.grafico_linha != undefined) {
+        
+        window.grafico_linha.destroy();
+    }
+
     window.grafico_linha = Chart.Bar(ctx, {
         data: dados,
         options: configurarGraficoProdutos()

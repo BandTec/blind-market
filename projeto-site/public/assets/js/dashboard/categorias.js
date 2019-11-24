@@ -6,7 +6,7 @@ verificar_autenticacao();
 // ou se souber o que está fazendo!
 function atualizarGraficoCategoria() {
     obterDadosGraficoCategoria();
-    setTimeout(atualizarGraficoCategoria, 10000);
+    setTimeout(atualizarGraficoCategoria, 1000);
 }
 
 // altere aqui as configurações do gráfico

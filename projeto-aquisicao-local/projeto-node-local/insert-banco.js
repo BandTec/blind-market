@@ -64,18 +64,39 @@ function iniciar_escuta() {
                 // O Arduino deve enviar a temperatura e umidade de uma vez,
                 // separadas por ":" (temperatura : umidade)
                 var leitura = dados.split(':');
+				
+				banco.conectar().then(() => {
 
-                if (leitura[1] == 1) {
-                    player.play({
-                        path: `./assets/audios/produto_detalhado_${leitura[0]}.wav`
-                    });
-                } else if (leitura[1] == 2) {
-                    player.play({
-                        path: `./assets/audios/produto_${leitura[0]}.wav`
-                    });
-                }
+					return banco.sql.query(`select fkproduto from sensor where idsensor = ${leitura[0]}`);
 
-                registrar_leitura(Number(leitura[0]));
+				}).then(result => {
+					
+					return result.recordset[0].fkproduto;
+					
+				}).then(id => {
+					
+					if (leitura[1] == 1) {
+						player.play({
+							path: `./assets/audios/produto_detalhado_${id}.wav`
+						});
+					} else if (leitura[1] == 2) {
+						player.play({
+							path: `./assets/audios/produto_${id}.wav`
+						});
+					}
+					
+				}).catch(erro => {
+
+					console.error(`Erro ao reproduzir audio: ${erro}`);
+					registrar_leitura(Number(leitura[0]));
+
+				}).finally(() => {
+					console.log('Valor recuperado com sucesso! \n');
+					banco.sql.close();
+					registrar_leitura(Number(leitura[0]));
+				});
+
+                //registrar_leitura(Number(leitura[0]));
             } catch (e) {
                 throw new Error(`Erro ao tratar os dados recebidos do Arduino: ${e}`);
             }

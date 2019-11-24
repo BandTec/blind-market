@@ -4,7 +4,7 @@ var exibiu_grafico = false;
 // ou se souber o que está fazendo!
 function atualizarGraficoEstabelecimento() {
     obterDadosGraficoEstabelecimento();
-    setTimeout(atualizarGraficoEstabelecimento, 10000);
+    setTimeout(atualizarGraficoEstabelecimento, 1000);
 }
 
 // altere aqui as configurações do gráfico
