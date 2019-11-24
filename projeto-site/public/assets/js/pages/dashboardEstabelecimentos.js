@@ -1,3 +1,5 @@
+var meses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+
 var exibiu_grafico = false;
 
 // só mexer se quiser alterar o tempo de atualização
@@ -72,9 +74,9 @@ function obterDadosGrafico() {
                         // dos atributos que vem no JSON 
                         // que gerou na consulta ao banco de dados
 
-                        dados.labels.push(registro.nome);
+                        dados.labels.push(`${meses[Number(registro.mes) - 1]}/${registro.ano}`);
 
-                        dados.datasets[0].data.push(registro.idregistro);
+                        dados.datasets[0].data.push(registro.qtd);
 
                     }
                     nomeEstabelecimento.innerHTML = `${registro.nome}`

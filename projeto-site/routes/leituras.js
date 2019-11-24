@@ -154,7 +154,27 @@ router.get('/dashboard/estabelecimentos/:login', function (req, res, next) {
 	console.log(`Recuperando estabelecimentos`);
 
 	let login = req.params.login;
-	const instrucaoSql = `select TOP 10 * from empresa, estabelecimento, sensor, registro where fkEmpresa = idEmpresa and fkEstabelecimento = idEstabelecimento and fkSensor = idSensor and login = '${login}'`;
+	const instrucaoSql = `select datepart(year, datahora) ano, datepart(month, datahora) mes, estabelecimento.nome, 
+							estabelecimento.endereco, estabelecimento.cep, count(idregistro) qtd 
+							from registro
+							inner join sensor on fkSensor = idsensor
+							right join estabelecimento on fkEstabelecimento = idEstabelecimento
+							inner join empresa on fkEmpresa = idempresa
+							where login = '${login}' and idestabelecimento = (
+								select id from (
+									select top 1 idEstabelecimento id, count(idregistro) qtd from registro
+									inner join sensor on fkSensor = idsensor
+									right join estabelecimento on fkEstabelecimento = idEstabelecimento
+									inner join empresa on fkEmpresa = idempresa
+									where login = '${login}' and ((datepart(year, datahora) = datepart(year, getdate())
+									and datepart(month, datahora) = datepart(month, getdate())) or datahora is null)
+									group by idEstabelecimento, datepart(year, datahora), datepart(month, datahora)
+									order by qtd
+								) dados
+							)
+							group by datepart(year, datahora), datepart(month, datahora), estabelecimento.nome, 
+							estabelecimento.endereco, estabelecimento.cep
+							order by ano desc, mes desc`;
 
 	sequelize.query(instrucaoSql, {
 			type: sequelize.QueryTypes.SELECT
