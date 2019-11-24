@@ -247,14 +247,17 @@ body {
 
   .menu-lateral {
     width: 40vw;
-    left: -240px;
+    left: -275px;
     margin-top: 10px;
     border-bottom-right-radius: 50%;
+    transition: all 1s ease-in-out;
 
   }
 
   #check:checked~.menu-lateral {
-    transform: translateX(240px);
+    transform: translateX(270px);
+    border-bottom-right-radius: 100%;
+
   }
 
   .iconeMenu {
@@ -300,13 +303,19 @@ body {
 
 /* Small devices (portrait tablets and large phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  .menu-top {
+    position: fixed;
+    width: 97%;
+  }
+
   .menu-lateral {
     width: 100vw;
-    left: -500px;
+    left: -555px;
+    position: fixed;
   }
 
   #check:checked~.menu-lateral {
-    transform: translateX(490px);
+    transform: translateX(540px);
   }
 
   /* ChartArea */
@@ -316,6 +325,7 @@ body {
     height: 100vh;
     position: absolute;
     z-index: -1;
+    margin-top: 50px;
   }
 
   .chart {
@@ -330,12 +340,15 @@ body {
 @media only screen and (min-width: 992px) {
   .menu-lateral {
     width: 30vw;
-    left: -235px;
+    left: -270px;
     margin-top: 10px;
+    border-bottom-right-radius: 50%;
+    transition: all 1s ease-in-out;
   }
 
   #check:checked~.menu-lateral {
     transform: translateX(230px);
+    border-bottom-right-radius: 100%;
   }
 
   /* ChartArea */

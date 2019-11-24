@@ -415,14 +415,16 @@ input:read-only {
 
   .menu-lateral {
     width: 40vw;
-    left: -240px;
+    left: -275px;
     margin-top: 10px;
     border-bottom-right-radius: 50%;
+    transition: all 1s ease-in-out;
 
   }
 
   #check:checked~.menu-lateral {
-    transform: translateX(240px);
+    transform: translateX(260px);
+    border-bottom-right-radius: 100%;
   }
 
   .iconeMenu {
@@ -468,13 +470,19 @@ input:read-only {
 
 /* Small devices (portrait tablets and large phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  .menu-top {
+    position: fixed;
+    width: 97%;
+  }
+
   .menu-lateral {
     width: 100vw;
-    left: -500px;
+    left: -555px;
+    position: fixed;
   }
 
   #check:checked~.menu-lateral {
-    transform: translateX(490px);
+    transform: translateX(540px);
   }
 
   /* ChartArea */
@@ -484,6 +492,7 @@ input:read-only {
     height: 100vh;
     position: absolute;
     z-index: -1;
+    margin-top: 50px;
   }
 
   .chart {
@@ -492,20 +501,61 @@ input:read-only {
     margin-left: 0px;
     /*display: inline-block;*/
   }
+
+  .estabelecimentos {
+    min-width: 73%;
+  }
+
+  .box-img-content {
+    max-width: 60%;
+  }
+
+  .box-estabelecimentos .box-image {
+    width: 60%;
+    margin-top: 60%;
+  }
+
+  .box-status {
+    width: 100%;
+  }
+
+  .box-status .box-title {
+    width: 85%;
+    font-size: 1.3rem;
+    margin: 10%;
+  }
+
+  .box-status .box-text {
+    width: 85%;
+    font-size: 1rem;
+    margin: 20% 10%;
+    padding: 0;
+  }
+
+  .box-status .alert-message {
+    font-size: .75rem;
+    padding: 20px;
+  }
+
+  .listEstabelecimento table {
+    max-width: 100%;
+  }
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .menu-lateral {
     width: 30vw;
-    left: -235px;
+    left: -265px;
     margin-top: 10px;
     border-bottom-right-radius: 50%;
-
+    transition: all 1s ease-in-out;
   }
 
   #check:checked~.menu-lateral {
-    transform: translateX(230px);
+    transform: translateX(250px);
+    border-bottom-right-radius: 100%;
   }
 
   /* ChartArea */

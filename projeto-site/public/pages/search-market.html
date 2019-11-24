@@ -8,6 +8,7 @@
     <title>BlindMarket - Busca de Supermercados na região</title>
     <link rel="stylesheet" href="../assets/css/pages/page-search.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
 </head>
 
 <body>
@@ -25,9 +26,6 @@
                 <li>Busca de Estabelecimentos</li>
             </a>
 
-            <a href="./search-product.html">
-                <li>Busca de Produtos</li>
-            </a>
         </ul>
     </nav>
     <header>
@@ -65,7 +63,7 @@
                         </td>
                     </tr> -->
 
-                    
+
                 </tbody>
             </table>
         </div>
@@ -77,8 +75,6 @@
 <script src="../assets/js/pages/searchMarket.js"></script>
 
 <script>
-    
-
     function procurar(event) {
         event.preventDefault()
 
@@ -87,8 +83,8 @@
         tabelaSearchMarket(form_cep.cep.value)
     }
 
-    function fechar() { 
+    function fechar() {
         search.style.display = 'block'
         search_results.style.display = 'none'
-     }
+    }
 </script>

@@ -191,9 +191,6 @@ body {
   margin-bottom: 30px;
 }
 
-
-
-
 /* ------------- Modal Mensagem -------------------------- */
 
 .modalMensagem {
@@ -223,7 +220,7 @@ body {
   border-radius: 5px;
   padding: 10px;
   float: right;
-  transition: all .09s ease-in;
+  transition: all 0.09s ease-in;
 }
 
 .fechar:hover {
@@ -264,15 +261,12 @@ body {
 
 .modalImg {
   text-align: center;
-
 }
 
 .modalImg img {
   width: 30%;
   padding: 80px;
 }
-
-
 
 @media (max-width: 500px) {
   .menu-top {
@@ -335,14 +329,15 @@ body {
   .menu-lateral {
     width: 40vw;
     min-height: 100%;
-    left: -245px;
+    left: -280px;
     margin-top: 9px;
     border-bottom-right-radius: 50%;
-
+    transition: all 1s ease-in-out;
   }
 
   #check:checked~.menu-lateral {
     transform: translateX(240px);
+    border-bottom-right-radius: 100%;
   }
 
   .iconeMenu {
@@ -370,7 +365,6 @@ body {
     align-content: space-between;
     margin-left: 20px;
   }
-
 
   .modalMensagem {
     top: 0%;
@@ -422,20 +416,25 @@ body {
     /*margin-left: 40px;*/
     /*display: inline-block;*/
   }
-
-
 }
 
 /* Small devices (portrait tablets and large phones, 600px and down) */
 @media only screen and (max-width: 600px) {
+  .menu-top {
+    position: fixed;
+    width: 97%;
+  }
+
   .menu-lateral {
     width: 100vw;
-    left: -500px;
+    left: -560px;
     margin-top: 10px;
+    min-height: 100%;
+    position: fixed;
   }
 
   #check:checked~.menu-lateral {
-    transform: translateX(490px);
+    transform: translateX(550px);
   }
 
   /* ChartArea */
@@ -445,6 +444,7 @@ body {
     height: 100vh;
     position: absolute;
     z-index: -1;
+    margin-top: 50px;
   }
 
   .chart {
@@ -459,6 +459,10 @@ body {
     height: 100%;
   }
 
+  .mensagemUsuario {
+    max-height: 560px;
+  }
+
   .mensagemUsuario p {
     font-size: 1.2rem;
     line-height: 2rem;
@@ -467,20 +471,21 @@ body {
   .modalImg img {
     width: 60%;
   }
-
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .menu-lateral {
     width: 30vw;
-    left: -235px;
+    left: -265px;
     margin-top: 10px;
     border-bottom-right-radius: 50%;
+    transition: all 1s ease-in-out;
   }
 
   #check:checked~.menu-lateral {
-    transform: translateX(230px);
+    transform: translateX(220px);
+    border-bottom-right-radius: 100%;
   }
 
   /* ChartArea */
@@ -560,7 +565,6 @@ body {
     z-index: 1;
     margin-top: 10px;
     border-bottom-right-radius: 0%;
-
   }
 
   .menu-lateral nav ul {
@@ -600,5 +604,22 @@ body {
   .chart01 {
     width: 100%;
     margin-left: 0px;
+  }
+
+  .modalMensagem {
+    top: 10%;
+    width: 100vw;
+    height: 100%;
+    margin-left: 0;
+    min-height: 100vh;
+  }
+
+  .mensagemUsuario{
+    padding: 50px;
+    min-height: 500px;
+  }
+
+  .modalImg{
+    margin-top: 80px;
   }
 }
