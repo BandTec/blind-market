@@ -22,7 +22,7 @@
 		<div class="menu-lateral">
 			<nav>
 				<ul>
-					<a href="#">
+					<a href="./dashboard.html">
 						<li class="active">Principal<i class="iconeMenu fas fa-home"></i></li>
 					</a>
 					<a href="./pages/dashboard-estabelecimentos.html">
@@ -69,26 +69,39 @@
 
 			<div class="section-title">Mensagens</div>
 
+
 			<div class="mensagens">
-				<div class="mensagem">
+				<div class="mensagem" onclick="newFeature()">
 					<img src="assets/img/mail-send.png" alt="">
-					<span>Mensagem 1</span>
+					<span>Nova Funcionalidade</span>
 				</div>
-				<div class="mensagem">
+				<div class="mensagem" onclick="bemVindoModal()">
 					<img src="assets/img/mail-send.png" alt="">
-					<span>Mensagem 2</span>
-				</div>
-				<div class="mensagem">
-					<img src="assets/img/mail-send.png" alt="">
-					<span>Mensagem 3</span>
-				</div>
-				<div class="mensagem">
-					<img src="assets/img/mail-send.png" alt="">
-					<span>Mensagem 4</span>
+					<span>Bem-Vindo</span>
 				</div>
 			</div>
 
+
 		</div>
+
+		<div id="modalMensagem" class="modalMensagem">
+			<div class="modal-content">
+				<div class="chart">
+					<div class="modal_header" id="modal_header">
+						<h2 id="userNome"></h2>
+					</div>
+
+					<div class="sectionFechar">
+						<button class="fechar" onclick="fecharModal()">Fechar</button>
+					</div>
+
+					<div class="mensagemUsuario" id="mensagemUsuario">
+
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 	<div id="b_usuario"></div>
 </body>
@@ -101,3 +114,67 @@
 <script src="assets/js/dashboard/todosEstabelecimentos.js"></script>
 
 </html>
+
+<script>
+	function fecharModal() {
+		modalMensagem.style.display = 'none'
+	}
+
+	function newFeature() {
+		mensagemUsuario.innerHTML = ''
+		modalMensagem.style.display = 'block'
+		userNome.innerHTML =
+			`Olá <b style="text-transform: uppercase;color:#ff5b5b;">${login_usuario}</b> &#128525;`
+
+
+
+		mensagemUsuario.innerHTML = `
+					<p>Ei! Surpresa para você &#127873;,<br><br>
+							Vamos facilitar a sua vida ainda mais.
+							Nossa nova feature disponibiliza uma consulta entre o CEP do cliente final aos seus estabelecimentos que contêm os nossos
+							serviços, facilitando a vida do cliente final para encontrar o estabelecimento que ajude ele
+							tanto na sua atividade quanto na sua comodidade.
+							Modéstia a parte ficou fera &#128526
+						</p>
+
+						<br>
+
+						<p>
+							Mas ok! chega de conversa e vá dar uma olhada lá &#x2192 <a
+								href="./pages/search-market.html">Clica aqui</a>
+						</p>
+
+						<div class="modalImg">
+							<img src="assets/img/logo.png" alt="">
+						</div>
+		`
+
+
+	}
+
+	function bemVindoModal() {
+		mensagemUsuario.innerHTML = ''
+		modalMensagem.style.display = 'block'
+		userNome.innerHTML =
+			`Sejá Bem-Vindo <b style="text-transform: uppercase;color:#ff5b5b;">${login_usuario}</b> &#128513;`
+
+		mensagemUsuario.innerHTML = `
+		<p>Ficamos extremamente felizes em telo como nosso cliente, esperamos que a nossa plataforma
+							ajude a alavancar a sua empresa ainda mais, nos esforçamos para fazer o melhor para sua
+							empresa, lhe auxiliando a cativar um publico esquecido, nossa função aqui e garantir o
+							melhor funcionamento para você e sua empresa, espero que goste.</p>
+
+						<br>
+
+						<p>Qualquer duvida entre em contato com o nosso suporte clicando aqui &#x2192;
+							<a
+								href="https://blindmarket-bandtec.tomticket.com/chat/?id=EP36755&amp;ac=2352320P11112019054801">Suporte
+							</a>
+						</p>
+
+						<div class="modalImg">
+							<img src="assets/img/logo.png" alt="">
+						</div>
+		`
+	}
+</script>

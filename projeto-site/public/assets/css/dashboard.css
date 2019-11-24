@@ -104,6 +104,7 @@ body {
 .mensagens {
   display: flex;
   flex-wrap: wrap;
+  cursor: pointer;
 }
 
 .mensagem {
@@ -189,6 +190,88 @@ body {
   color: #424242;
   margin-bottom: 30px;
 }
+
+
+
+
+/* ------------- Modal Mensagem -------------------------- */
+
+.modalMensagem {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 13%;
+  width: 100vw;
+  height: 100%;
+  margin-left: 0;
+  background-color: #fff;
+}
+
+.sectionFechar {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.fechar {
+  margin-top: 10px;
+  margin-bottom: 25px;
+  margin-right: 20px;
+  background-color: #ff5b5b;
+  color: white;
+  font-weight: bold;
+  border: 1px solid #4242423a;
+  border-radius: 5px;
+  padding: 10px;
+  float: right;
+  transition: all .09s ease-in;
+}
+
+.fechar:hover {
+  margin-bottom: 25px;
+  margin-right: 20px;
+  background-color: #424242;
+  border-radius: 10px;
+}
+
+.modal_header {
+  color: black;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.modal_header h2 {
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.mensagemUsuario {
+  background-color: #8587961e;
+  padding: 60px;
+  border-radius: 20px;
+}
+
+.mensagemUsuario p {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  text-align: justify;
+}
+
+.mensagemUsuario a {
+  color: #ff5b5b;
+  font-weight: bold;
+}
+
+.modalImg {
+  text-align: center;
+
+}
+
+.modalImg img {
+  width: 30%;
+  padding: 80px;
+}
+
+
 
 @media (max-width: 500px) {
   .menu-top {
@@ -284,6 +367,14 @@ body {
     align-content: space-between;
     margin-left: 20px;
   }
+
+
+  .modalMensagem {
+    top: 6%;
+    width: 92vw;
+    height: 100%;
+    margin-left: 0;
+  }
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
@@ -304,6 +395,8 @@ body {
     /*margin-left: 40px;*/
     /*display: inline-block;*/
   }
+
+
 }
 
 /* Small devices (portrait tablets and large phones, 600px and down) */
@@ -332,6 +425,22 @@ body {
     padding: 10px;
     margin-left: 0px;
   }
+
+  .modalMensagem {
+    top: 0%;
+    width: 97vw;
+    height: 100%;
+  }
+
+  .mensagemUsuario p {
+    font-size: 1.2rem;
+    line-height: 2rem;
+  }
+
+  .modalImg img {
+    width: 60%;
+  }
+
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
@@ -360,6 +469,15 @@ body {
     padding: 10px;
     /*margin-left: 40px;*/
     /*display: inline-block;*/
+  }
+
+  /* ------------- Modal Mensagem -------------------------- */
+
+  .modalMensagem {
+    top: 6%;
+    width: 92vw;
+    height: 100%;
+    margin-left: 0;
   }
 }
 
