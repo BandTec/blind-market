@@ -14,9 +14,9 @@ a:hover {
 
 body {
     background: linear-gradient(rgba(255, 91, 91, .2),
-    rgba(248, 41, 41, 1)), url(../../img/product-search.jpg);
+            rgba(248, 41, 41, 1)), url(../../img/product-search.jpg);
     -webkit-background-size: cover;
-    background-size: cover;    
+    background-size: cover;
     background-repeat: no-repeat;
     min-height: 100vh;
 
@@ -112,13 +112,13 @@ nav ul a li:hover {
 }
 
 /* Resultados da pesquisa */
-.fechar{
-    cursor: pointer; 
+.fechar {
+    cursor: pointer;
     background-color: rgb(197, 22, 22);
     transition: all .09s ease-in;
 }
 
-.fechar:hover{
+.fechar:hover {
     background-color: rgb(236, 49, 49);
     color: rgb(126, 2, 2);
 }
@@ -132,7 +132,7 @@ nav ul a li:hover {
     font-size: 1.3em;
 
     background: linear-gradient(rgba(255, 91, 91, .2),
-    rgba(248, 41, 41, 1)), url(../../img/product-search.jpg);
+            rgba(248, 41, 41, 1)), url(../../img/product-search.jpg);
     -webkit-background-size: cover;
     background-size: cover;
     background-repeat: no-repeat;
@@ -175,7 +175,7 @@ nav ul a li:hover {
     border-right: 3px solid #ddd;
 }
 
-.results-search thead tr th{
+.results-search thead tr th {
     border-right: 1px solid #CC1C1C;
 }
 
@@ -195,6 +195,12 @@ nav ul a li:hover {
     border-right: none;
 }
 
+.iconeMenu {
+    float: right;
+    color: white;
+    font-size: 20px;
+    margin-left: 10px;
+}
 
 
 /* Media Queries */
@@ -214,7 +220,7 @@ nav ul a li:hover {
         font-size: .9rem;
         text-transform: uppercase;
     }
-} 
+}
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
@@ -223,6 +229,7 @@ nav ul a li:hover {
         padding: 15px;
         margin-left: 10px;
     }
+
     nav ul a li {
         display: inline-block;
         margin-left: 0px;
@@ -231,7 +238,7 @@ nav ul a li:hover {
         font-size: .9rem;
         text-transform: uppercase;
     }
-} 
+}
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
@@ -257,7 +264,7 @@ nav ul a li:hover {
     .results-search tbody td {
         font-size: 1rem;
     }
-} 
+}
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (max-width: 992px) {
@@ -279,4 +286,4 @@ nav ul a li:hover {
     .results-search tbody td {
         font-size: 1rem;
     }
-} 
+}
